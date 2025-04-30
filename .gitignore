@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+nepalhacks_venv/
+.nepalhacks_venv/
+env/
+venv/
+ENV/
+
+# Data files
+*.npy
+output/
+models/
+data/
+*.csv
+audit_logs/
+nltk_data/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# Local development
+.env
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Batch files
+*.bat
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Keep specific exceptions
+!requirements.txt
+!README.md
+
+
+kl_enhancer(1).ipynb
+qna_embeddings_reduced.npy
+qna_embeddings.npy
+run_app.bat
+setup_and_run.bat
