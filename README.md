@@ -133,3 +133,27 @@ You can customize various parameters:
 - Embedding model: Change the model_name parameter in generate_embeddings()
 - Similarity threshold: Adjust the similarity_threshold in find_similar_pairs()
 - Clustering parameters: Modify min_cluster_size and min_samples in perform_clustering()
+
+## 🚀 Performance Optimized Similarity Search
+
+The system now includes a highly optimized similarity search pipeline using:
+
+1. **FAISS Indices** - Pre-built indices for ultra-fast vector similarity search
+2. **In-Memory Caching** - Avoids repeated loading of models, embeddings, and indices
+3. **Smart Product-Specific Indexing** - Separate indices for each product to improve search relevance
+
+### Key Benefits:
+
+- **Faster Searches**: Similarity searches are now significantly faster, especially for repeated queries
+- **Lower Memory Usage**: The system only loads models and indices when needed
+- **Better Performance**: No need to regenerate embeddings for every search
+- **Improved UI Responsiveness**: The application remains responsive even during complex searches
+
+### Using the Optimized Search:
+
+The optimization is automatic - simply use the search functionality as before. The system will automatically use the fastest available method:
+
+1. First, it attempts to use the cached FAISS index for the selected product
+2. If that fails, it falls back to generating embeddings on-the-fly (the previous method)
+
+The performance monitor in the sidebar shows which indices and data are currently cached in memory.
