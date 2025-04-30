@@ -4,7 +4,36 @@ import numpy as np
 import os
 import sys
 import time
+import traceback
 from pathlib import Path
+
+# Add global error handling
+st.set_option('client.showErrorDetails', True)  # Show detailed error messages
+
+# Handle mixed data types in DataFrames
+def safe_sort(values):
+    """Safely sort mixed type values by converting everything to strings first"""
+    try:
+        # Convert all values to strings for consistent sorting
+        str_values = [str(x) if x is not None else "None" for x in values]
+        return sorted(str_values)
+    except Exception as e:
+        # If sorting fails, just return the original values
+        print(f"Error sorting values: {str(e)}")
+        return list(values)
+
+# Monkey patch pandas unique to safely handle mixed types
+original_unique = pd.Series.unique
+def safe_unique(self):
+    """Safe wrapper around pandas unique to handle mixed types"""
+    try:
+        return original_unique(self)
+    except TypeError:
+        # If TypeError occurs (likely due to mixed types), convert all to strings
+        return self.astype(str).unique()
+        
+# Apply the monkey patch
+pd.Series.unique = safe_unique
 
 # Add the src directory to the path so we can import kl_enhancer
 src_path = Path(__file__).parent.absolute()
@@ -29,6 +58,17 @@ from kl_enhancer import (
     filter_by_product,
     get_product_list,
     generate_embeddings
+)
+
+# Import our new index_manager for optimized searches
+from index_manager import (
+    load_index,
+    load_embeddings,
+    load_data as load_indexed_data,
+    perform_similarity_search,
+    get_available_products,
+    clear_cache,
+    get_model
 )
 
 # Import merge functionality
@@ -211,55 +251,114 @@ with st.container():
 # Function to load saved data if it exists
 def load_existing_data(product_id=None):
     """Load existing processed data, prioritizing product-specific files"""
-    # First check for product-specific files
-    if product_id and product_id != "all":
-        product_merged_path = os.path.join(OUTPUT_DIR, f"merged_data_{product_id}.csv")
-        product_embeddings_path = os.path.join(MODELS_DIR, f"qna_embeddings_{product_id}.npy")
+    try:
+        # First try to load from index_manager (optimized path)
+        df = load_indexed_data(product_id)
+        embeddings = load_embeddings(product_id)
+        index = load_index(product_id)
         
-        if os.path.exists(product_merged_path) and os.path.exists(product_embeddings_path):
-            st.success(f"Found product-specific data for {product_id}")
-            merged_df = pd.read_csv(product_merged_path)
-            embeddings = np.load(product_embeddings_path)
-            return merged_df, embeddings
-    
-    # Fall back to general data
-    merged_path = os.path.join(OUTPUT_DIR, "merged_data.csv")
-    embeddings_path = os.path.join(MODELS_DIR, "qna_embeddings.npy")
-    
-    if os.path.exists(merged_path):
-        merged_df = pd.read_csv(merged_path)
+        if df is not None and embeddings is not None and index is not None:
+            st.success(f"✅ Loaded optimized data for {'product ' + product_id if product_id and product_id != 'all' else 'all products'}")
+            # Ensure that string columns are properly handled to prevent type errors
+            for col in df.columns:
+                if col in ['category', 'question', 'answer', 'details']:
+                    # Convert NaN to None for string comparisons
+                    df[col] = df[col].astype(object).where(df[col].notna(), None)
+            return df, embeddings
         
-        # Load merged questions and combine with original data
-        if MERGE_AVAILABLE:
-            try:
-                merged_df = load_merged_with_original_data(merged_df)
-            except Exception as e:
-                print(f"Error loading merged questions: {str(e)}")
+        # Fall back to original method if index_manager fails
         
-        # Filter by product if specified
+        # First check for product-specific files
         if product_id and product_id != "all":
-            merged_df = filter_by_product(merged_df, product_id)
+            product_merged_path = os.path.join(OUTPUT_DIR, f"merged_data_{product_id}.csv")
+            product_embeddings_path = os.path.join(MODELS_DIR, f"qna_embeddings_{product_id}.npy")
             
-            # If filtering by product, we need to regenerate embeddings
-            from sentence_transformers import SentenceTransformer
-            model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-            
-            # Generate embeddings for the filtered data
-            questions = merged_df['question'].tolist()
-            embeddings = model.encode(questions)
-            
-            return merged_df, embeddings
+            if os.path.exists(product_merged_path) and os.path.exists(product_embeddings_path):
+                st.success(f"Found product-specific data for {product_id}")
+                merged_df = pd.read_csv(product_merged_path)
+                # Handle mixed types in string columns
+                for col in merged_df.columns:
+                    if col in ['category', 'question', 'answer', 'details']:
+                        # Convert NaN to None for string comparisons
+                        merged_df[col] = merged_df[col].astype(object).where(merged_df[col].notna(), None)
+                embeddings = np.load(product_embeddings_path)
+                return merged_df, embeddings
         
-        # For all products, load the saved embeddings
-        if os.path.exists(embeddings_path):
-            embeddings = np.load(embeddings_path)
-            return merged_df, embeddings
+        # Fall back to general data
+        merged_path = os.path.join(OUTPUT_DIR, "merged_data.csv")
+        embeddings_path = os.path.join(MODELS_DIR, "qna_embeddings.npy")
+        
+        if os.path.exists(merged_path):
+            merged_df = pd.read_csv(merged_path)
+            
+            # Handle mixed types in string columns
+            for col in merged_df.columns:
+                if col in ['category', 'question', 'answer', 'details']:
+                    # Convert NaN to None for string comparisons
+                    merged_df[col] = merged_df[col].astype(object).where(merged_df[col].notna(), None)
+            
+            # Load merged questions and combine with original data
+            if MERGE_AVAILABLE:
+                try:
+                    merged_df = load_merged_with_original_data(merged_df)
+                except Exception as e:
+                    print(f"Error loading merged questions: {str(e)}")
+            
+            # Filter by product if specified
+            if product_id and product_id != "all":
+                merged_df = filter_by_product(merged_df, product_id)
+                
+                # If filtering by product, we need to regenerate embeddings
+                try:
+                    # Use cached model if available
+                    model = get_model()
+                except:
+                    from sentence_transformers import SentenceTransformer
+                    model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                
+                # Generate embeddings for the filtered data
+                questions = merged_df['question'].tolist()
+                embeddings = model.encode(questions)
+                
+                return merged_df, embeddings
+            
+            # For all products, load the saved embeddings
+            if os.path.exists(embeddings_path):
+                embeddings = np.load(embeddings_path)
+                return merged_df, embeddings
+    except Exception as e:
+        st.error(f"Error loading data: {str(e)}")
+        import traceback
+        st.error(traceback.format_exc())
     
     return None, None
 
-# Modified search function to include deleted_at field in results
+# Modified search function to use the index_manager for optimized searches
 def search_similar_questions_with_deleted_status(query_text, model, index, embeddings, df, top_k=5):
-    """Search for similar questions and include deleted_at status"""
+    """Search for similar questions and include deleted_at status using the optimized index_manager"""
+    # Try to use the optimized search function from index_manager first
+    product_id = st.session_state.get('selected_product_id', None)
+    
+    results = perform_similarity_search(
+        query_text=query_text,
+        product_id=product_id if product_id != "all" else None,
+        top_k=top_k,
+        threshold=0.0  # No threshold filtering
+    )
+    
+    # If the optimized search works, return the results
+    if results:
+        return results
+    
+    # Fall back to original method if optimized search fails - but use the cached model
+    try:
+        # Get cached model from index_manager
+        model = get_model()
+    except:
+        # If index_manager fails, create a new model
+        from sentence_transformers import SentenceTransformer
+        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    
     # Encode the query
     query_embedding = model.encode([query_text])
     
@@ -293,7 +392,62 @@ if selected_product_id != "all":
 else:
     st.sidebar.info("Analyzing all products")
 
+# Add performance monitor section
+st.sidebar.markdown("---")
+st.sidebar.subheader("Performance Monitor")
+
+# Add memory usage monitoring
+def get_memory_usage():
+    """Get the current memory usage of the Python process"""
+    import psutil
+    import os
+    
+    # Get the current process
+    process = psutil.Process(os.getpid())
+    
+    # Get memory info in MB
+    memory_info = process.memory_info()
+    memory_usage_mb = memory_info.rss / 1024 / 1024
+    
+    return memory_usage_mb
+
+# Try to show memory usage
+try:
+    memory_usage = get_memory_usage()
+    st.sidebar.metric("Memory Usage", f"{memory_usage:.1f} MB")
+except:
+    st.sidebar.info("Memory monitoring not available")
+
+# Check which indices and data are currently cached
+cached_indices = []
+try:
+    from index_manager import INDEX_CACHE, EMBEDDING_CACHE, DF_CACHE, MODEL_CACHE
+    
+    cached_indices = list(INDEX_CACHE.keys())
+    cached_embeddings = list(EMBEDDING_CACHE.keys())
+    cached_dataframes = list(DF_CACHE.keys())
+    model_loaded = MODEL_CACHE is not None
+    
+    # Display cache status
+    st.sidebar.write("📊 Cache Status:")
+    cache_col1, cache_col2 = st.sidebar.columns(2)
+    
+    cache_col1.metric("Cached Indices", len(cached_indices))
+    cache_col2.metric("Cached Embeddings", len(cached_embeddings))
+    
+    cache_col1.metric("Cached Dataframes", len(cached_dataframes))
+    cache_col2.metric("Model Loaded", "Yes" if model_loaded else "No")
+    
+    # Add a button to clear cache
+    if st.sidebar.button("Clear Cache"):
+        clear_cache()
+        st.sidebar.success("Cache cleared!")
+        
+except ImportError:
+    st.sidebar.warning("Index Manager not available")
+
 # Data processing section - STEP 2
+st.sidebar.markdown("---")
 st.sidebar.header("Step 2: Data Processing")
 
 # Check if data is already processed for the selected product
@@ -331,19 +485,23 @@ if st.sidebar.button(process_button_text):
         
         # Step 3: Generate embeddings
         progress_placeholder.info("Step 3/5: Generating embeddings...")
-        embeddings, model = generate_embeddings(merged_df, selected_product_id)
+        # Use cached model if available
+        try:
+            # Use the get_model function to get a cached model
+            cached_model = get_model()
+            embeddings, model = generate_embeddings(merged_df, selected_product_id)
+        except:
+            # Fall back to standard generation if index_manager not available
+            embeddings, model = generate_embeddings(merged_df, selected_product_id)
         
         # Step 4: Create similarity index
         progress_placeholder.info("Step 4/5: Creating similarity index...")
         index, norm_embeddings = create_similarity_index(embeddings)
         
-        # Step 5: Find similar pairs
-        progress_placeholder.info("Step 5/5: Finding similar pairs...")
-        similar_pairs_df = find_similar_pairs(index, norm_embeddings, merged_df)
-        similar_pairs_path = os.path.join(OUTPUT_DIR, "similar_qna_pairs.csv")
-        if selected_product_id != "all":
-            similar_pairs_path = os.path.join(OUTPUT_DIR, f"similar_qna_pairs_{selected_product_id}.csv")
-        similar_pairs_df.to_csv(similar_pairs_path, index=False)
+        # Step 5: Skip redundant file operations unless explicitly needed
+        progress_placeholder.info("Step 5/5: Completing processing...")
+        # Only create the similar_qna_pairs file if explicitly needed by other parts of the app
+        # This is no longer needed since we use the index directly for searches
         
         # Clear progress message and show success
         progress_placeholder.empty()
@@ -360,6 +518,10 @@ tab_objects = st.tabs(tabs)
 tab1, tab2, tab3, tab4, tab5 = tab_objects[0], tab_objects[1], tab_objects[2], tab_objects[3], tab_objects[4]
 if MERGE_AVAILABLE:
     tab6 = tab_objects[5]
+
+# Store product context in session state for use by index_manager
+if 'selected_product_id' not in st.session_state:
+    st.session_state.selected_product_id = selected_product_id
 
 # Helper function to display product context info in each tab
 def show_product_context():
@@ -395,15 +557,31 @@ with tab1:
         
         if st.button("Search") and query:
             with st.spinner('Searching for similar questions...'):
-                # Load the model
-                from sentence_transformers import SentenceTransformer
-                model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                # Get the product ID for search
+                search_product_id = selected_product_id if selected_product_id != "all" else None
                 
-                # Create index again for search
-                index, norm_embeddings = create_similarity_index(embeddings)
+                # OPTIMIZED SEARCH: Use index_manager.perform_similarity_search
+                results = perform_similarity_search(
+                    query_text=query,
+                    product_id=search_product_id,
+                    top_k=top_k,
+                    threshold=0.0
+                )
                 
-                # Perform search with modified function
-                results = search_similar_questions_with_deleted_status(query, model, index, norm_embeddings, merged_df, top_k=top_k)
+                # Fall back to original search if needed
+                if not results:
+                    # Get cached model or create a new one
+                    try:
+                        model = get_model()
+                    except:
+                        from sentence_transformers import SentenceTransformer
+                        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                    
+                    # Create index again for search
+                    index, norm_embeddings = create_similarity_index(embeddings)
+                    
+                    # Perform search with original function
+                    results = search_similar_questions_with_deleted_status(query, model, index, norm_embeddings, merged_df, top_k=top_k)
                 
                 # Filter active vs archived questions
                 active_results = [r for r in results if not r['is_archived']]
@@ -470,7 +648,18 @@ with tab2:
         # Filter options
         col1, col2, col3 = st.columns(3)
         with col1:
-            categories = ["All"] + sorted(merged_df['category'].unique().tolist())
+            # Get unique categories safely using our helper function
+            categories = ["All"]
+            if merged_df is not None:
+                try:
+                    # Use our safe_sort function to handle mixed types
+                    category_values = safe_sort(merged_df['category'].unique())
+                    categories.extend(category_values)
+                except Exception as e:
+                    st.error(f"Error getting categories: {str(e)}")
+                    # Fallback to simple string conversion
+                    categories.extend([str(x) for x in merged_df['category'].unique()])
+            
             selected_category = st.selectbox("Filter by category:", categories)
         
         with col2:
@@ -483,10 +672,30 @@ with tab2:
         filtered_df = merged_df.copy()
         
         if selected_category != "All":
-            filtered_df = filtered_df[filtered_df['category'] == selected_category]
-            
+            # Handle the case where category could be a float or None in the dataframe
+            if selected_category == "None":
+                filtered_df = filtered_df[filtered_df['category'].isna()]
+            else:
+                # Try to convert back to the original type if needed
+                try:
+                    # Try float conversion if it looks like a number
+                    if selected_category.replace('.', '', 1).isdigit():
+                        category_value = float(selected_category)
+                        filtered_df = filtered_df[filtered_df['category'] == category_value]
+                    else:
+                        filtered_df = filtered_df[filtered_df['category'].astype(str) == selected_category]
+                except:
+                    # Fallback to string comparison
+                    filtered_df = filtered_df[filtered_df['category'].astype(str) == selected_category]
+        
         if search_term:
-            filtered_df = filtered_df[filtered_df['question'].str.contains(search_term, case=False, na=False)]
+            try:
+                # Convert to string explicitly to handle mixed data types
+                filtered_df = filtered_df[filtered_df['question'].astype(str).str.contains(search_term, case=False, na=False)]
+            except Exception as e:
+                st.error(f"Error filtering by search term: {str(e)}")
+                # Fallback filtering that handles None values
+                filtered_df = filtered_df[filtered_df['question'].fillna('').astype(str).str.contains(search_term, case=False)]
         
         if archive_status == "Active Only":
             filtered_df = filtered_df[filtered_df['deleted_at'].isna()]
@@ -727,37 +936,88 @@ with tab5:
         
         if st.button("Find Potential Duplicates"):
             with st.spinner('Analyzing for potential duplicates...'):
-                # Load the model if needed
-                from sentence_transformers import SentenceTransformer
-                model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                # OPTIMIZED: Load index, embeddings, and data using index_manager
+                product_id = selected_product_id if selected_product_id != "all" else None
+                index = load_index(product_id)
+                embeddings = load_embeddings(product_id)
+                df = load_indexed_data(product_id)
                 
-                print("Creating index...")
-                # Create index again for search
-                index, norm_embeddings = create_similarity_index(embeddings)
+                if index is None or embeddings is None or df is None:
+                    # Fall back to original method
+                    try:
+                        model = get_model()
+                    except:
+                        from sentence_transformers import SentenceTransformer
+                        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                    
+                    print("Creating index...")
+                    # Create index again for search
+                    index, norm_embeddings = create_similarity_index(embeddings)
 
-                
-                # Filter out archived questions if needed
-                if not show_archived:
-                    filter_df = merged_df[merged_df['deleted_at'].isna()].reset_index(drop=True)
-                    # If selected product is not "all", make sure we're only using questions from that product
-                    if selected_product_id != "all":
-                        filter_df = filter_df[filter_df['product_id'] == selected_product_id].reset_index(drop=True)
-                    
-                    filtered_embeddings = model.encode(filter_df['question'].tolist())
-                    filtered_index, filtered_norm_embeddings = create_similarity_index(filtered_embeddings)
-                    
-                    # Perform duplicate detection
-                    duplicate_df = find_potential_duplicates(
-                        filtered_index, 
-                        filtered_norm_embeddings, 
-                        filter_df, 
-                        similarity_threshold
-                    )
+                    # Filter out archived questions if needed
+                    if not show_archived:
+                        filter_df = merged_df[merged_df['deleted_at'].isna()].reset_index(drop=True)
+                        # If selected product is not "all", make sure we're only using questions from that product
+                        if selected_product_id != "all":
+                            filter_df = filter_df[filter_df['product_id'] == selected_product_id].reset_index(drop=True)
+                        
+                        # Add safety check to handle None values
+                        question_list = filter_df['question'].tolist()
+                        question_list = [q if q is not None else "" for q in question_list]
+                        filtered_embeddings = model.encode(question_list)
+                        filtered_index, filtered_norm_embeddings = create_similarity_index(filtered_embeddings)
+                        
+                        # Perform duplicate detection
+                        duplicate_df = find_potential_duplicates(
+                            filtered_index, 
+                            filtered_norm_embeddings, 
+                            filter_df, 
+                            similarity_threshold
+                        )
+                    else:
+                        # If selected product is not "all", filter merged_df
+                        if selected_product_id != "all":
+                            filter_df = merged_df[merged_df['product_id'] == selected_product_id].reset_index(drop=True)
+                            # Add safety check to handle None values
+                            question_list = filter_df['question'].tolist()
+                            question_list = [q if q is not None else "" for q in question_list]
+                            filtered_embeddings = model.encode(question_list)
+                            filtered_index, filtered_norm_embeddings = create_similarity_index(filtered_embeddings)
+                            
+                            # Perform duplicate detection with filtered data
+                            duplicate_df = find_potential_duplicates(
+                                filtered_index, 
+                                filtered_norm_embeddings, 
+                                filter_df, 
+                                similarity_threshold
+                            )
+                        else:
+                            # Perform duplicate detection with all questions
+                            duplicate_df = find_potential_duplicates(
+                                index, 
+                                norm_embeddings, 
+                                merged_df, 
+                                similarity_threshold
+                            )
                 else:
-                    # If selected product is not "all", filter merged_df
-                    if selected_product_id != "all":
-                        filter_df = merged_df[merged_df['product_id'] == selected_product_id].reset_index(drop=True)
-                        filtered_embeddings = model.encode(filter_df['question'].tolist())
+                    # OPTIMIZED PATH: Use loaded index, embeddings, and data
+                    st.success("Using optimized duplicate detection!")
+                    
+                    # Filter out archived questions if needed
+                    filter_df = df
+                    if not show_archived:
+                        filter_df = df[df['deleted_at'].isna()].reset_index(drop=True)
+                    
+                    # Get embeddings subset for filtered data if needed
+                    if len(filter_df) != len(df):
+                        # Need to regenerate index for filtered data
+                        from sentence_transformers import SentenceTransformer
+                        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                        
+                        # Add safety check to handle None values
+                        question_list = filter_df['question'].tolist()
+                        question_list = [q if q is not None else "" for q in question_list]
+                        filtered_embeddings = model.encode(question_list)
                         filtered_index, filtered_norm_embeddings = create_similarity_index(filtered_embeddings)
                         
                         # Perform duplicate detection with filtered data
@@ -768,11 +1028,12 @@ with tab5:
                             similarity_threshold
                         )
                     else:
-                        # Perform duplicate detection with all questions
+                        # Use full dataset
+                        norm_embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
                         duplicate_df = find_potential_duplicates(
                             index, 
                             norm_embeddings, 
-                            merged_df, 
+                            filter_df, 
                             similarity_threshold
                         )
                 
@@ -855,31 +1116,45 @@ with tab5:
         
         if st.button("Check for Similar Questions") and new_question:
             with st.spinner('Searching for similar existing questions...'):
-                # Load the model
-                from sentence_transformers import SentenceTransformer
-                model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                # OPTIMIZED: Use perform_similarity_search directly
+                similar_questions = perform_similarity_search(
+                    query_text=new_question,
+                    product_id=selected_product_id if selected_product_id != "all" else None,
+                    top_k=10,
+                    threshold=similarity_threshold
+                )
                 
-                # Create index again for search or use the existing one
-                index, norm_embeddings = create_similarity_index(embeddings)
-                
-                # Filter merged_df for specific product if needed
-                search_df = merged_df
-                if selected_product_id != "all":
+                # Fall back to original method if needed
+                if not similar_questions:
+                    # Get cached model or create a new one
+                    try:
+                        model = get_model()
+                    except:
+                        from sentence_transformers import SentenceTransformer
+                        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+                    
+                    # Create index again for search
+                    index, norm_embeddings = create_similarity_index(embeddings)
+                    
+                    # Filter merged_df for specific product if needed
                     search_df = merged_df[merged_df['product_id'] == selected_product_id].reset_index(drop=True)
                     # Regenerate embeddings for filtered data
-                    search_embeddings = model.encode(search_df['question'].tolist())
+                    # Add safety check to handle None values
+                    question_list = search_df['question'].tolist()
+                    question_list = [q if q is not None else "" for q in question_list]
+                    search_embeddings = model.encode(question_list)
                     index, norm_embeddings = create_similarity_index(search_embeddings)
-                
-                # Perform similarity search
-                similar_questions = find_similar_to_new_question(
-                    new_question, 
-                    model, 
-                    index, 
-                    norm_embeddings, 
-                    search_df, 
-                    top_k=10,
-                    similarity_threshold=similarity_threshold
-                )
+                    
+                    # Perform similarity search
+                    similar_questions = find_similar_to_new_question(
+                        new_question, 
+                        model, 
+                        index, 
+                        norm_embeddings, 
+                        search_df, 
+                        top_k=10,
+                        similarity_threshold=similarity_threshold
+                    )
                 
                 # Filter based on archive status if needed
                 if not show_archived_similar:
@@ -974,10 +1249,21 @@ if MERGE_AVAILABLE and 'tab6' in locals():
                         return None
                 
                 with col1:
+                    # Safely get the question text for a given cqid
+                    def safe_get_question(cqid):
+                        try:
+                            if cqid in merged_df['cqid'].values:
+                                questions = merged_df[merged_df['cqid'] == cqid]['question'].values
+                                if len(questions) > 0 and questions[0] is not None:
+                                    return str(questions[0])
+                            return str(cqid)
+                        except:
+                            return str(cqid)
+                    
                     q1_id = st.selectbox(
                         "Select first question:", 
                         options=merged_df['cqid'].tolist(),
-                        format_func=lambda x: merged_df[merged_df['cqid'] == x]['question'].values[0] if x in merged_df['cqid'].values else str(x)
+                        format_func=safe_get_question
                     )
                     q1_data = get_question_data(q1_id)
                     
@@ -998,7 +1284,7 @@ if MERGE_AVAILABLE and 'tab6' in locals():
                     q2_id = st.selectbox(
                         "Select second question:", 
                         options=merged_df['cqid'].tolist(),
-                        format_func=lambda x: merged_df[merged_df['cqid'] == x]['question'].values[0] if x in merged_df['cqid'].values else str(x),
+                        format_func=safe_get_question,
                         index=index_option
                     )
                     q2_data = get_question_data(q2_id)

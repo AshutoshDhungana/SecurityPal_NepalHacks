@@ -8,6 +8,20 @@ from sklearn.decomposition import PCA
 import hdbscan
 import os
 
+# Import functions from index_manager
+try:
+    from index_manager import (
+        get_model,
+        load_index,
+        load_embeddings,
+        load_data as load_indexed_data,
+        perform_similarity_search
+    )
+    INDEX_MANAGER_AVAILABLE = True
+except ImportError:
+    INDEX_MANAGER_AVAILABLE = False
+    print("Warning: index_manager not available. Using legacy methods.")
+
 # Define paths
 DATA_DIR = "../data"
 OUTPUT_DIR = "../output"
@@ -17,6 +31,22 @@ MODELS_DIR = "../models"
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(MODELS_DIR, exist_ok=True)
+
+# Global model cache
+_MODEL_CACHE = None
+
+def get_cached_model(model_name='sentence-transformers/all-MiniLM-L6-v2'):
+    """Get or initialize the sentence transformer model (cached version)"""
+    global _MODEL_CACHE
+    
+    # Use index_manager's get_model if available
+    if INDEX_MANAGER_AVAILABLE:
+        return get_model()
+    
+    # Otherwise use our own cache
+    if _MODEL_CACHE is None:
+        _MODEL_CACHE = SentenceTransformer(model_name)
+    return _MODEL_CACHE
 
 def load_data():
     """Load data from local files in the data directory"""
@@ -120,8 +150,16 @@ def generate_embeddings(merged_df, product_id=None, model_name='sentence-transfo
         Tuple of (embeddings, model)
     """
     print("Generating embeddings...")
+    
+    # Try to load embeddings from index_manager first if available
+    if INDEX_MANAGER_AVAILABLE:
+        cached_embeddings = load_embeddings(product_id)
+        if cached_embeddings is not None:
+            print(f"Loaded embeddings from index_manager cache for {'product ' + product_id if product_id and product_id != 'all' else 'all products'}")
+            return cached_embeddings, get_cached_model(model_name)
 
-    model = SentenceTransformer(model_name)
+    # Get cached model (either from index_manager or local cache)
+    model = get_cached_model(model_name)
     
     # Determine the embeddings file path based on product_id
     embeddings_file = os.path.join(MODELS_DIR, "qna_embeddings.npy")
@@ -139,6 +177,8 @@ def generate_embeddings(merged_df, product_id=None, model_name='sentence-transfo
     
     # Generate embeddings for questions
     questions = merged_df['question'].tolist()
+    # Handle None values in questions
+    questions = [q if q is not None else "" for q in questions]
     embeddings = model.encode(questions)
     
     if save:
@@ -163,14 +203,26 @@ def create_similarity_index(embeddings):
     return index, norm_embeddings
 
 def find_similar_pairs(index, embeddings, df, k=2, similarity_threshold=0.6):
-
-    print("this funstion was activated")
     """Find similar question pairs based on embeddings"""
-    # Search for top k most similar items for each entry
-    similarities, indices = index.search(embeddings, k)
-
-    print("its lagging here")
+    # Try to use the cached index from index_manager if available
+    product_id = df.get('product_id', None).iloc[0] if 'product_id' in df.columns else None
     
+    if INDEX_MANAGER_AVAILABLE:
+        cached_index = load_index(product_id)
+        if cached_index is not None:
+            print(f"Using cached index from index_manager for finding similar pairs")
+            index = cached_index
+            # Normalize embeddings if needed
+            norm_embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+        else:
+            # If no cached index, use the provided index and normalize embeddings
+            norm_embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+    else:
+        # If index_manager not available, use the provided index and normalize embeddings
+        norm_embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+    
+    # Search for top k most similar items for each entry
+    similarities, indices = index.search(norm_embeddings, k)
     
     # Store pairs with high similarity (> threshold) but exclude self-matches
     similar_pairs = []
@@ -204,17 +256,39 @@ def find_potential_duplicates(index, embeddings, df, similarity_threshold=0.85):
     Returns:
         DataFrame containing pairs of potential duplicate questions with their similarity scores
     """
+    # Try to use cached index if available
+    product_id = df.get('product_id', None).iloc[0] if 'product_id' in df.columns else None
+    
+    if INDEX_MANAGER_AVAILABLE:
+        cached_index = load_index(product_id)
+        if cached_index is not None:
+            print(f"Using cached index from index_manager for duplicate detection")
+            index = cached_index
+            # We need to make sure we're using normalized embeddings
+            norm_embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+        else:
+            norm_embeddings = embeddings
+    else:
+        norm_embeddings = embeddings
+    
     # Check if dataframe is too small for duplicate detection
     if len(df) <= 1:
         print("DataFrame has too few rows for duplicate detection")
         return pd.DataFrame()  # Return empty dataframe
     
     # Ensure index and embeddings match dataframe size
-    if len(embeddings) != len(df):
-        print(f"Warning: Embeddings size ({len(embeddings)}) doesn't match dataframe size ({len(df)}). Regenerating embeddings.")
-        from sentence_transformers import SentenceTransformer
-        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-        embeddings = model.encode(df['question'].tolist())
+    if len(norm_embeddings) != len(df):
+        print(f"Warning: Embeddings size ({len(norm_embeddings)}) doesn't match dataframe size ({len(df)}). Regenerating embeddings.")
+        
+        # Use cached model if available
+        model = get_cached_model()
+        
+        # Generate embeddings for the filtered data
+        questions = df['question'].tolist()
+        # Handle None values in questions
+        questions = [q if q is not None else "" for q in questions]
+        embeddings = model.encode(questions)
+        
         # Recreate index
         norm_embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
         dimension = embeddings.shape[1]
@@ -223,7 +297,7 @@ def find_potential_duplicates(index, embeddings, df, similarity_threshold=0.85):
     
     # Search for top k most similar items for each entry
     k = min(10, len(df))  # Don't try to get more neighbors than there are rows
-    similarities, indices = index.search(embeddings, k)
+    similarities, indices = index.search(norm_embeddings, k)
     
     # Store pairs with very high similarity (> threshold) excluding self-matches
     duplicate_pairs = []
@@ -299,7 +373,24 @@ def find_similar_to_new_question(question_text, model, index, embeddings, df, to
     Returns:
         List of dictionaries containing similar questions and their similarity scores
     """
-    # Encode the query
+    # Try to use the optimized search from index_manager if available
+    product_id = df.get('product_id', None).iloc[0] if 'product_id' in df.columns else None
+    
+    if INDEX_MANAGER_AVAILABLE:
+        results = perform_similarity_search(
+            query_text=question_text,
+            product_id=product_id,
+            top_k=top_k,
+            threshold=similarity_threshold
+        )
+        if results:
+            print("Using optimized similarity search from index_manager")
+            return results
+    
+    # Fall back to standard search if index_manager not available or search fails
+    # Encode the query with safety check for None
+    if question_text is None:
+        question_text = ""
     query_embedding = model.encode([question_text])
     
     # Normalize the query embedding
@@ -357,27 +448,16 @@ def separate_deleted_data(merged_df):
 
 def search_similar_questions(query_text, model, index, embeddings, df, top_k=5):
     """Search for similar questions to a given query"""
-    # Encode the query
-    query_embedding = model.encode([query_text])
-    
-    # Normalize the query embedding
-    query_embedding = query_embedding / np.linalg.norm(query_embedding)
-    
-    # Search for similar questions
-    similarities, indices = index.search(query_embedding, top_k)
-    
-    # Get the results
-    results = []
-    for i in range(top_k):
-        results.append({
-            "question": df.iloc[indices[0][i]]['question'],
-            "similarity": similarities[0][i],
-            "answer": df.iloc[indices[0][i]]['answer'],
-            "details": df.iloc[indices[0][i]]['details'],
-            "category": df.iloc[indices[0][i]]['category']
-        })
-    
-    return results
+    # Use the optimized version that handles caching
+    return find_similar_to_new_question(
+        question_text=query_text,
+        model=model,
+        index=index,
+        embeddings=embeddings,
+        df=df,
+        top_k=top_k,
+        similarity_threshold=0.0  # No threshold filtering
+    )
 
 def generate_duplicate_report(duplicate_df, output_path=None):
     """
@@ -445,6 +525,17 @@ def main(product_id=None):
     Returns:
         Tuple of (merged_df, embeddings, model, index, norm_embeddings)
     """
+    # First try loading from index_manager if available
+    if INDEX_MANAGER_AVAILABLE:
+        indexed_df = load_indexed_data(product_id)
+        indexed_embeddings = load_embeddings(product_id)
+        indexed_index = load_index(product_id)
+        
+        if indexed_df is not None and indexed_embeddings is not None and indexed_index is not None:
+            print(f"Successfully loaded cached data from index_manager for {'product ' + product_id if product_id else 'all products'}")
+            model = get_cached_model()
+            return indexed_df, indexed_embeddings, model, indexed_index, indexed_embeddings
+    
     # Load products data (for reference)
     products_df = get_product_list()
     product_name = "All Products"
@@ -462,14 +553,17 @@ def main(product_id=None):
     print(f"Preprocessing data for {product_name}...")
     merged_df = preprocess_data(ans_df, can_df, product_id)
     
-    # Save merged data
+    # Save merged data (only needed for first-time processing, can be skipped if data already exists)
     output_path = os.path.join(OUTPUT_DIR, "merged_data.csv")
     if product_id and product_id != "all":
         output_path = os.path.join(OUTPUT_DIR, f"merged_data_{product_id}.csv")
-    merged_df.to_csv(output_path, index=False)
-    print(f"Merged data saved to {output_path}")
+    if not os.path.exists(output_path):
+        merged_df.to_csv(output_path, index=False)
+        print(f"Merged data saved to {output_path}")
+    else:
+        print(f"Using existing merged data from {output_path}")
     
-    # Generate embeddings
+    # Generate embeddings (use cached model)
     print("Generating embeddings...")
     embeddings, model = generate_embeddings(merged_df, product_id)
     
@@ -477,59 +571,62 @@ def main(product_id=None):
     print("Creating similarity index...")
     index, norm_embeddings = create_similarity_index(embeddings)
     
-    # Find similar pairs
-    print("Finding similar pairs...")
-    similar_pairs_df = find_similar_pairs(index, norm_embeddings, merged_df)
-    similar_pairs_path = os.path.join(OUTPUT_DIR, "similar_qna_pairs.csv")
-    if product_id and product_id != "all":
-        similar_pairs_path = os.path.join(OUTPUT_DIR, f"similar_qna_pairs_{product_id}.csv")
-    similar_pairs_df.to_csv(similar_pairs_path, index=False)
-    print(f"Similar pairs saved to {similar_pairs_path}")
-    
-    # Find potential duplicates
-    print("Finding potential duplicate questions...")
-    duplicate_df = find_potential_duplicates(index, norm_embeddings, merged_df, similarity_threshold=0.85)
-    duplicates_path = os.path.join(OUTPUT_DIR, "potential_duplicates.csv")
-    if product_id and product_id != "all":
-        duplicates_path = os.path.join(OUTPUT_DIR, f"potential_duplicates_{product_id}.csv")
-    summary_df = generate_duplicate_report(duplicate_df, duplicates_path)
-    print("Duplicate Detection Summary:")
-    print(summary_df)
-    
-    # Perform clustering
-    print("Performing clustering...")
-    labels, reduced_embeddings = perform_clustering(embeddings)
-    
-    # Add cluster labels to merged dataframe
-    merged_df['cluster'] = labels
-    clustered_data_path = os.path.join(OUTPUT_DIR, "clustered_data.csv")
-    if product_id and product_id != "all":
-        clustered_data_path = os.path.join(OUTPUT_DIR, f"clustered_data_{product_id}.csv")
-    merged_df.to_csv(clustered_data_path, index=False)
-    print(f"Clustered data saved to {clustered_data_path}")
-    
-    # Separate deleted and non-deleted data
-    print("Separating deleted and non-deleted data...")
-    deleted_df, not_deleted_df = separate_deleted_data(merged_df)
-    deleted_data_path = os.path.join(OUTPUT_DIR, "deleted_data.csv")
-    not_deleted_data_path = os.path.join(OUTPUT_DIR, "not_deleted_data.csv")
-    if product_id and product_id != "all":
-        deleted_data_path = os.path.join(OUTPUT_DIR, f"deleted_data_{product_id}.csv")
-        not_deleted_data_path = os.path.join(OUTPUT_DIR, f"not_deleted_data_{product_id}.csv")
-    deleted_df.to_csv(deleted_data_path, index=False)
-    not_deleted_df.to_csv(not_deleted_data_path, index=False)
-    print(f"Deleted data saved to {deleted_data_path}")
-    print(f"Non-deleted data saved to {not_deleted_data_path}")
+    # Only execute these operations if explicitly required
+    # To reduce file operations, we won't run these as part of the default pipeline
+    if os.environ.get('GENERATE_SIMILARITY_FILES', 'False').lower() == 'true':
+        # Find similar pairs and save to file
+        print("Finding similar pairs...")
+        similar_pairs_df = find_similar_pairs(index, norm_embeddings, merged_df)
+        similar_pairs_path = os.path.join(OUTPUT_DIR, "similar_qna_pairs.csv")
+        if product_id and product_id != "all":
+            similar_pairs_path = os.path.join(OUTPUT_DIR, f"similar_qna_pairs_{product_id}.csv")
+        similar_pairs_df.to_csv(similar_pairs_path, index=False)
+        print(f"Similar pairs saved to {similar_pairs_path}")
+        
+        # Find potential duplicates and save to file
+        print("Finding potential duplicate questions...")
+        duplicate_df = find_potential_duplicates(index, norm_embeddings, merged_df, similarity_threshold=0.85)
+        duplicates_path = os.path.join(OUTPUT_DIR, "potential_duplicates.csv")
+        if product_id and product_id != "all":
+            duplicates_path = os.path.join(OUTPUT_DIR, f"potential_duplicates_{product_id}.csv")
+        summary_df = generate_duplicate_report(duplicate_df, duplicates_path)
+        print("Duplicate Detection Summary:")
+        print(summary_df)
+        
+        # Perform clustering and save to file
+        print("Performing clustering...")
+        labels, reduced_embeddings = perform_clustering(embeddings)
+        
+        # Add cluster labels to merged dataframe and save
+        merged_df['cluster'] = labels
+        clustered_data_path = os.path.join(OUTPUT_DIR, "clustered_data.csv")
+        if product_id and product_id != "all":
+            clustered_data_path = os.path.join(OUTPUT_DIR, f"clustered_data_{product_id}.csv")
+        merged_df.to_csv(clustered_data_path, index=False)
+        print(f"Clustered data saved to {clustered_data_path}")
+        
+        # Separate deleted and non-deleted data and save to files
+        print("Separating deleted and non-deleted data...")
+        deleted_df, not_deleted_df = separate_deleted_data(merged_df)
+        deleted_data_path = os.path.join(OUTPUT_DIR, "deleted_data.csv")
+        not_deleted_data_path = os.path.join(OUTPUT_DIR, "not_deleted_data.csv")
+        if product_id and product_id != "all":
+            deleted_data_path = os.path.join(OUTPUT_DIR, f"deleted_data_{product_id}.csv")
+            not_deleted_data_path = os.path.join(OUTPUT_DIR, f"not_deleted_data_{product_id}.csv")
+        deleted_df.to_csv(deleted_data_path, index=False)
+        not_deleted_df.to_csv(not_deleted_data_path, index=False)
+        print(f"Deleted data saved to {deleted_data_path}")
+        print(f"Non-deleted data saved to {not_deleted_data_path}")
     
     print("Pipeline completed successfully!")
     
-    # Example of how to use the search function
+    # Example of how to use the search function (uses cached resources)
     print("\nExample search:")
     query = "What is the information security policy?"
     results = search_similar_questions(query, model, index, norm_embeddings, merged_df)
-    for i, result in enumerate(results):
+    for i, result in enumerate(results[:3]):  # Show only top 3 results for brevity
         print(f"Result {i+1}: {result['question']} (Similarity: {result['similarity']:.4f})")
-        if result['answer'] is not None:
+        if 'answer' in result and result['answer'] is not None:
             print(f"Answer: {result['answer']}")
     
     return merged_df, embeddings, model, index, norm_embeddings
