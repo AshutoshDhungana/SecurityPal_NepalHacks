@@ -277,9 +277,173 @@ class CleanedDatasetCreator:
             except:
                 logger.warning("Could not convert deleted_at to datetime")
         
+        if 'updated_at' in result_df.columns:
+            try:
+                result_df['updated_at'] = pd.to_datetime(result_df['updated_at'], errors='coerce')
+            except:
+                logger.warning("Could not convert updated_at to datetime")
+        
+        # Label rows as healthy or unhealthy
+        result_df = self.label_health_status(result_df)
+        
+        # Add freshness flags based on update dates
+        result_df = self.add_update_freshness_flags(result_df)
+        
         # Add embeddings if requested
         if self.embeddings_included:
             result_df = self.add_embeddings_to_dataframe(result_df)
+        
+        return result_df
+    
+    def label_health_status(self, df):
+        """
+        Label rows as healthy or unhealthy based on the existence of values
+        in ['question', 'answer', 'details'] columns for active questions
+        
+        Args:
+            df: DataFrame with processed data
+            
+        Returns:
+            DataFrame with added health_status column
+        """
+        logger.info("Labeling rows as healthy or unhealthy")
+        
+        # Make a copy to avoid modifying the input
+        result_df = df.copy()
+        
+        # Add health_status column
+        result_df['health_status'] = 'unknown'
+        
+        # Define required columns for health check
+        required_columns = ['question', 'answer']
+        optional_columns = ['details']
+        
+        # Check if all required columns exist in the DataFrame
+        required_exist = all(col in result_df.columns for col in required_columns)
+        
+        if not required_exist:
+            logger.warning("Required columns for health check not found in DataFrame")
+            return result_df
+        
+        # Get active questions (if is_active column exists)
+        active_mask = True
+        if 'is_active' in result_df.columns:
+            active_mask = result_df['is_active'] == True
+        
+        # Check which rows have valid values for required fields
+        for col in required_columns:
+            if col in result_df.columns:
+                # Consider empty strings and NaN values as invalid
+                active_mask = active_mask & result_df[col].notna() & (result_df[col] != '')
+        
+        # Check optional columns if they exist
+        for col in optional_columns:
+            if col in result_df.columns:
+                # For optional columns, if they exist but are empty, it still counts as valid
+                # No additional filtering needed
+                pass
+        
+        # Apply the health status label
+        result_df.loc[active_mask, 'health_status'] = 'healthy'
+        result_df.loc[~active_mask & result_df['is_active'] == True, 'health_status'] = 'unhealthy'
+        
+        # Count healthy and unhealthy entries
+        if 'is_active' in result_df.columns:
+            active_count = (result_df['is_active'] == True).sum()
+            healthy_count = (result_df['health_status'] == 'healthy').sum()
+            unhealthy_count = (result_df['health_status'] == 'unhealthy').sum()
+            
+            logger.info(f"Total active entries: {active_count}")
+            logger.info(f"Healthy entries: {healthy_count}")
+            logger.info(f"Unhealthy entries: {unhealthy_count}")
+        
+        return result_df
+    
+    def add_update_freshness_flags(self, df):
+        """
+        Flag questions according to their updated dates for active questions only
+        
+        Categories:
+        1. Very New (0-3 months): Up-to-date
+        2. New (3-6 months): Fresh
+        3. Moderate (6-12 months): Aging
+        4. Old (12-24 months): Outdated
+        5. Very Old (Over 24 months): Stale
+        
+        Args:
+            df: DataFrame with processed data
+            
+        Returns:
+            DataFrame with added update_freshness column
+        """
+        logger.info("Adding update freshness flags")
+        
+        # Make a copy to avoid modifying the input
+        result_df = df.copy()
+        
+        # Add update_freshness column
+        result_df['update_freshness'] = 'unknown'
+        result_df['freshness_category'] = 'unknown'
+        
+        # Check if updated_at column exists and is in datetime format
+        if 'updated_at' not in result_df.columns:
+            logger.warning("updated_at column not found, cannot add freshness flags")
+            return result_df
+        
+        # Get current date
+        current_date = pd.Timestamp.now()
+        
+        # Only process active questions if is_active column exists
+        active_mask = True
+        if 'is_active' in result_df.columns:
+            active_mask = result_df['is_active'] == True
+        
+        # Calculate time difference in months
+        result_df['months_since_update'] = (current_date - pd.to_datetime(result_df['updated_at'])).dt.days / 30
+        
+        # Apply freshness flags based on months since update
+        # Very New (0-3 months)
+        mask = active_mask & (result_df['months_since_update'] <= 3)
+        result_df.loc[mask, 'update_freshness'] = 'Up-to-date'
+        result_df.loc[mask, 'freshness_category'] = 'Very New'
+        
+        # New (3-6 months)
+        mask = active_mask & (result_df['months_since_update'] > 3) & (result_df['months_since_update'] <= 6)
+        result_df.loc[mask, 'update_freshness'] = 'Fresh'
+        result_df.loc[mask, 'freshness_category'] = 'New'
+        
+        # Moderate (6-12 months)
+        mask = active_mask & (result_df['months_since_update'] > 6) & (result_df['months_since_update'] <= 12)
+        result_df.loc[mask, 'update_freshness'] = 'Aging'
+        result_df.loc[mask, 'freshness_category'] = 'Moderate'
+        
+        # Old (12-24 months)
+        mask = active_mask & (result_df['months_since_update'] > 12) & (result_df['months_since_update'] <= 24)
+        result_df.loc[mask, 'update_freshness'] = 'Outdated'
+        result_df.loc[mask, 'freshness_category'] = 'Old'
+        
+        # Very Old (Over 24 months)
+        mask = active_mask & (result_df['months_since_update'] > 24)
+        result_df.loc[mask, 'update_freshness'] = 'Stale'
+        result_df.loc[mask, 'freshness_category'] = 'Very Old'
+        
+        # Log statistics about freshness
+        if 'is_active' in result_df.columns:
+            active_count = (result_df['is_active'] == True).sum()
+            
+            # Count entries in each freshness category
+            up_to_date_count = ((result_df['update_freshness'] == 'Up-to-date') & active_mask).sum()
+            fresh_count = ((result_df['update_freshness'] == 'Fresh') & active_mask).sum()
+            aging_count = ((result_df['update_freshness'] == 'Aging') & active_mask).sum()
+            outdated_count = ((result_df['update_freshness'] == 'Outdated') & active_mask).sum()
+            stale_count = ((result_df['update_freshness'] == 'Stale') & active_mask).sum()
+            
+            logger.info(f"Total active entries: {active_count}")
+            logger.info(f"Up-to-date entries (0-3 months): {up_to_date_count}")
+            logger.info(f"Fresh entries (3-6 months): {fresh_count}")
+            logger.info(f"Aging entries (6-12 months): {aging_count}")
+            logger.info(f"Outdated entries (12-24 months): {outdated_count}")
+            logger.info(f"Stale entries (>24 months): {stale_count}")
         
         return result_df
     
@@ -403,6 +567,98 @@ class CleanedDatasetCreator:
                     output_file = os.path.join(self.output_dir, f"{prefix}noise_points.parquet")
                     noise_points.to_parquet(output_file, index=False)
                 logger.info(f"Noise points dataset ({len(noise_points)} records) saved to {output_file}")
+                
+        # 6. Healthy and unhealthy entries
+        if 'health_status' in df.columns and 'is_active' in df.columns:
+            # Healthy entries
+            healthy_entries = df[(df['health_status'] == 'healthy') & (df['is_active'] == True)]
+            if len(healthy_entries) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}healthy_entries.csv")
+                    healthy_entries.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}healthy_entries.parquet")
+                    healthy_entries.to_parquet(output_file, index=False)
+                logger.info(f"Healthy entries dataset ({len(healthy_entries)} records) saved to {output_file}")
+            
+            # Unhealthy entries
+            unhealthy_entries = df[(df['health_status'] == 'unhealthy') & (df['is_active'] == True)]
+            if len(unhealthy_entries) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}unhealthy_entries.csv")
+                    unhealthy_entries.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}unhealthy_entries.parquet")
+                    unhealthy_entries.to_parquet(output_file, index=False)
+                logger.info(f"Unhealthy entries dataset ({len(unhealthy_entries)} records) saved to {output_file}")
+        
+        # 7. Freshness categories
+        if 'update_freshness' in df.columns and 'is_active' in df.columns:
+            # Up-to-date entries (0-3 months)
+            up_to_date = df[(df['update_freshness'] == 'Up-to-date') & (df['is_active'] == True)]
+            if len(up_to_date) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}up_to_date_entries.csv")
+                    up_to_date.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}up_to_date_entries.parquet")
+                    up_to_date.to_parquet(output_file, index=False)
+                logger.info(f"Up-to-date entries dataset ({len(up_to_date)} records) saved to {output_file}")
+            
+            # Fresh entries (3-6 months)
+            fresh = df[(df['update_freshness'] == 'Fresh') & (df['is_active'] == True)]
+            if len(fresh) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}fresh_entries.csv")
+                    fresh.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}fresh_entries.parquet")
+                    fresh.to_parquet(output_file, index=False)
+                logger.info(f"Fresh entries dataset ({len(fresh)} records) saved to {output_file}")
+            
+            # Aging entries (6-12 months)
+            aging = df[(df['update_freshness'] == 'Aging') & (df['is_active'] == True)]
+            if len(aging) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}aging_entries.csv")
+                    aging.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}aging_entries.parquet")
+                    aging.to_parquet(output_file, index=False)
+                logger.info(f"Aging entries dataset ({len(aging)} records) saved to {output_file}")
+            
+            # Outdated entries (12-24 months)
+            outdated = df[(df['update_freshness'] == 'Outdated') & (df['is_active'] == True)]
+            if len(outdated) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}outdated_entries.csv")
+                    outdated.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}outdated_entries.parquet")
+                    outdated.to_parquet(output_file, index=False)
+                logger.info(f"Outdated entries dataset ({len(outdated)} records) saved to {output_file}")
+            
+            # Stale entries (>24 months)
+            stale = df[(df['update_freshness'] == 'Stale') & (df['is_active'] == True)]
+            if len(stale) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}stale_entries.csv")
+                    stale.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}stale_entries.parquet")
+                    stale.to_parquet(output_file, index=False)
+                logger.info(f"Stale entries dataset ({len(stale)} records) saved to {output_file}")
+            
+            # Combined needs-attention entries (aging, outdated, and stale)
+            needs_attention = df[(df['update_freshness'].isin(['Aging', 'Outdated', 'Stale'])) & (df['is_active'] == True)]
+            if len(needs_attention) > 0:
+                if format.lower() == 'csv':
+                    output_file = os.path.join(self.output_dir, f"{prefix}needs_attention_entries.csv")
+                    needs_attention.to_csv(output_file, index=False)
+                elif format.lower() == 'parquet':
+                    output_file = os.path.join(self.output_dir, f"{prefix}needs_attention_entries.parquet")
+                    needs_attention.to_parquet(output_file, index=False)
+                logger.info(f"Needs-attention entries dataset ({len(needs_attention)} records) saved to {output_file}")
     
     def run_pipeline(self, product=None, format='csv'):
         """

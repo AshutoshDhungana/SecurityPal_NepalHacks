@@ -50,9 +50,9 @@ class PipelineTrigger:
                 "args": ["--product", product] if product else []
             },
             {
-                "name": "MongoDB Loader",
-                "file": "mongodb_loader.py",
-                "args": ["--filename", f"{product}_complete_dataset.csv"] if product else ["--filename", "all_complete_dataset.csv"]
+                "name": "Cluster Cache Generation",
+                "file": "cluster_cache.py",
+                "args": ["--input", f"{product}_complete_dataset.csv" if product else "all_complete_dataset.csv"]
             }
         ]
     
