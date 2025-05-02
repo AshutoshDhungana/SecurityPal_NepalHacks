@@ -1,0 +1,19 @@
+2025-05-02 12:44:20,109 - api_server - WARNING - Product summary not found for Danfe_Corp_Product_1, using all_summary.json
+2025-05-02 12:44:30,353 - api_server - WARNING - Product summary not found for Danfe_Corp_Product_3, using all_summary.json
+2025-05-02 12:47:46,610 - api_server - WARNING - Product summary not found for Danfe_Corp_Product_4, using all_summary.json
+2025-05-02 14:02:05,941 - merge_pipeline - INFO - Initializing QuestionMerger with model: facebook/bart-large-cnn
+2025-05-02 14:02:05,944 - merge_pipeline - INFO - Successfully loaded facebook/bart-large-cnn for question merging
+2025-05-02 14:02:05,945 - merge_pipeline - INFO - Merging 2 questions
+2025-05-02 14:02:05,946 - merge_pipeline - INFO - Merged questions into: What are the security measures in place for data access?
+2025-05-02 14:02:05,947 - merge_pipeline - INFO - Merging 2 answers
+2025-05-02 14:02:05,948 - merge_pipeline - INFO - Merged 2 answers
+2025-05-02 14:02:05,955 - merge_pipeline - INFO - Logged merge operation: qa1 + qa2 -> merged_qa1_qa2
+2025-05-02 14:02:48,711 - merge_pipeline - INFO - Initializing QuestionMerger with model: facebook/bart-large-cnn
+2025-05-02 14:02:48,714 - merge_pipeline - INFO - Successfully loaded facebook/bart-large-cnn for question merging
+2025-05-02 14:02:48,726 - merge_pipeline - INFO - Saved merged pair to C:\Users\Nirmal\Desktop\projects\final\KL_qualityEnhancer\merged_qa_pairs\merged_qa_20250502_140248_merged_qa1_qa2.json
+2025-05-02 14:02:56,497 - merge_pipeline - INFO - Initializing QuestionMerger with model: facebook/bart-large-cnn
+2025-05-02 14:02:56,499 - merge_pipeline - INFO - Successfully loaded facebook/bart-large-cnn for question merging
+2025-05-02 14:02:56,506 - merge_pipeline - INFO - Saved merged pair to C:\Users\Nirmal\Desktop\projects\final\KL_qualityEnhancer\merged_qa_pairs\merged_qa_20250502_140256_merged_qa1_qa2.json
+2025-05-02 14:11:27,313 - api - WARNING - Product summary not found for Danfe_Corp_Product_1, using all_summary.json
+2025-05-02 15:07:16,433 - api - WARNING - Product summary not found for Danfe_Corp_Product_1, using all_summary.json
+2025-05-02 15:07:20,597 - api - WARNING - Product summary not found for Danfe_Corp_Product_3, using all_summary.json

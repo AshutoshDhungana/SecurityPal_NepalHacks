@@ -1,0 +1,367 @@
+2025-05-02 21:24:26,148 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:24:26,155 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:24:27,010 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:24:27,236 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-05-02 21:24:29,634 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-05-02 21:24:29,779 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+2025-05-02 21:24:29,780 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:24:29,783 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-02 21:24:29,783 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:24:29,863 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:24:29,863 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:24:42,174 - similarity_pipeline - ERROR - Error loading product metadata: [Errno 2] No such file or directory: 'C:\\Users\\Nirmal\\Desktop\\projects\\final\\KL_qualityEnhancer\\models\\product_metadata.json'
+2025-05-02 21:24:57,150 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:24:57,150 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:24:59,201 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:24:59,201 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:24:59,202 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-02 21:24:59,202 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:24:59,209 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:24:59,209 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:25:02,363 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:25:02,716 - similarity_pipeline - INFO - Searching category: Access_Control
+2025-05-02 21:25:02,897 - similarity_pipeline - INFO - Searching category: Anti-virus_and_Malware_Control
+2025-05-02 21:25:03,101 - similarity_pipeline - INFO - Searching category: API_Security
+2025-05-02 21:25:03,285 - similarity_pipeline - INFO - Searching category: Application
+2025-05-02 21:25:03,417 - similarity_pipeline - INFO - Searching category: Application_Security
+2025-05-02 21:25:03,540 - similarity_pipeline - INFO - Searching category: Artificial_Intelligence
+2025-05-02 21:25:03,713 - similarity_pipeline - INFO - Searching category: Asset_Management
+2025-05-02 21:25:03,908 - similarity_pipeline - INFO - Searching category: Audit_Assurance
+2025-05-02 21:25:04,041 - similarity_pipeline - INFO - Searching category: Backup_Policy_and_Procedures
+2025-05-02 21:25:04,177 - similarity_pipeline - INFO - Searching category: Business_Continuity_and_Disaster_Recovery
+2025-05-02 21:25:04,328 - similarity_pipeline - INFO - Searching category: Change_Control_and_Configuration_Management
+2025-05-02 21:25:04,451 - similarity_pipeline - INFO - Searching category: Data_Governance_and_Classification
+2025-05-02 21:25:04,576 - similarity_pipeline - INFO - Searching category: Data_Retention_and_Deletion
+2025-05-02 21:25:04,703 - similarity_pipeline - INFO - Searching category: Data_Security
+2025-05-02 21:25:04,833 - similarity_pipeline - INFO - Searching category: Email_Security
+2025-05-02 21:25:05,016 - similarity_pipeline - INFO - Searching category: Encryption_and_Key_Management
+2025-05-02 21:25:05,178 - similarity_pipeline - INFO - Searching category: ESG
+2025-05-02 21:25:05,296 - similarity_pipeline - INFO - Searching category: Hosting
+2025-05-02 21:25:05,427 - similarity_pipeline - INFO - Searching category: Human_Resources
+2025-05-02 21:25:05,548 - similarity_pipeline - INFO - Searching category: Identity_and_Access_Management_(IAM)
+2025-05-02 21:25:05,716 - similarity_pipeline - INFO - Searching category: Incident_Management
+2025-05-02 21:25:05,860 - similarity_pipeline - INFO - Searching category: Information_Security
+2025-05-02 21:25:06,015 - similarity_pipeline - INFO - Searching category: Integration
+2025-05-02 21:25:06,166 - similarity_pipeline - INFO - Searching category: Interoperability_and_Portability_Measures
+2025-05-02 21:25:06,291 - similarity_pipeline - INFO - Searching category: Legal
+2025-05-02 21:25:06,410 - similarity_pipeline - INFO - Searching category: Logging,_Monitoring_and_Audit_Trail
+2025-05-02 21:25:06,541 - similarity_pipeline - INFO - Searching category: Mobile_Device_Security
+2025-05-02 21:25:06,731 - similarity_pipeline - INFO - Searching category: Network_Security
+2025-05-02 21:25:06,862 - similarity_pipeline - INFO - Searching category: Organization
+2025-05-02 21:25:07,033 - similarity_pipeline - INFO - Searching category: Password_Policy_and_authentication_procedures
+2025-05-02 21:25:07,149 - similarity_pipeline - INFO - Searching category: Patch_Management
+2025-05-02 21:25:07,306 - similarity_pipeline - INFO - Searching category: Penetration_Testing
+2025-05-02 21:25:07,448 - similarity_pipeline - INFO - Searching category: Physical_Security_and_Environmental_Controls
+2025-05-02 21:25:07,602 - similarity_pipeline - INFO - Searching category: Privacy_and_Compliance
+2025-05-02 21:25:07,747 - similarity_pipeline - INFO - Searching category: Risk_Management
+2025-05-02 21:25:07,882 - similarity_pipeline - INFO - Searching category: Security_Awareness
+2025-05-02 21:25:07,992 - similarity_pipeline - INFO - Searching category: Server_Security
+2025-05-02 21:25:08,145 - similarity_pipeline - INFO - Searching category: Session_Management
+2025-05-02 21:25:08,261 - similarity_pipeline - INFO - Searching category: Software_Development_Life_Cycle
+2025-05-02 21:25:08,398 - similarity_pipeline - INFO - Searching category: Supply_Chain__Vendor_Management
+2025-05-02 21:25:08,532 - similarity_pipeline - INFO - Searching category: Vulnerability_and_Threat_Management
+2025-05-02 21:25:08,710 - similarity_pipeline - INFO - Searching category: Wireless_Security
+2025-05-02 21:28:20,366 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:28:20,366 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:28:22,049 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:28:22,050 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:28:22,050 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-02 21:28:22,050 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:28:22,055 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:28:22,055 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:28:25,689 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:28:25,807 - similarity_pipeline - INFO - Searching category: Access_Control
+2025-05-02 21:28:25,950 - similarity_pipeline - INFO - Searching category: Anti-virus_and_Malware_Control
+2025-05-02 21:28:26,073 - similarity_pipeline - INFO - Searching category: API_Security
+2025-05-02 21:28:26,170 - similarity_pipeline - INFO - Searching category: Application
+2025-05-02 21:28:26,269 - similarity_pipeline - INFO - Searching category: Application_Security
+2025-05-02 21:28:26,369 - similarity_pipeline - INFO - Searching category: Artificial_Intelligence
+2025-05-02 21:28:26,465 - similarity_pipeline - INFO - Searching category: Asset_Management
+2025-05-02 21:28:26,563 - similarity_pipeline - INFO - Searching category: Audit_Assurance
+2025-05-02 21:28:26,654 - similarity_pipeline - INFO - Searching category: Backup_Policy_and_Procedures
+2025-05-02 21:28:26,748 - similarity_pipeline - INFO - Searching category: Business_Continuity_and_Disaster_Recovery
+2025-05-02 21:28:26,844 - similarity_pipeline - INFO - Searching category: Change_Control_and_Configuration_Management
+2025-05-02 21:28:26,955 - similarity_pipeline - INFO - Searching category: Data_Governance_and_Classification
+2025-05-02 21:28:27,048 - similarity_pipeline - INFO - Searching category: Data_Retention_and_Deletion
+2025-05-02 21:28:27,135 - similarity_pipeline - INFO - Searching category: Data_Security
+2025-05-02 21:28:27,239 - similarity_pipeline - INFO - Searching category: Email_Security
+2025-05-02 21:28:27,381 - similarity_pipeline - INFO - Searching category: Encryption_and_Key_Management
+2025-05-02 21:28:27,464 - similarity_pipeline - INFO - Searching category: ESG
+2025-05-02 21:28:27,543 - similarity_pipeline - INFO - Searching category: Hosting
+2025-05-02 21:28:27,629 - similarity_pipeline - INFO - Searching category: Human_Resources
+2025-05-02 21:28:27,711 - similarity_pipeline - INFO - Searching category: Identity_and_Access_Management_(IAM)
+2025-05-02 21:28:27,793 - similarity_pipeline - INFO - Searching category: Incident_Management
+2025-05-02 21:28:27,896 - similarity_pipeline - INFO - Searching category: Information_Security
+2025-05-02 21:28:28,020 - similarity_pipeline - INFO - Searching category: Integration
+2025-05-02 21:28:28,163 - similarity_pipeline - INFO - Searching category: Interoperability_and_Portability_Measures
+2025-05-02 21:28:28,258 - similarity_pipeline - INFO - Searching category: Legal
+2025-05-02 21:28:28,362 - similarity_pipeline - INFO - Searching category: Logging,_Monitoring_and_Audit_Trail
+2025-05-02 21:28:28,459 - similarity_pipeline - INFO - Searching category: Mobile_Device_Security
+2025-05-02 21:28:28,555 - similarity_pipeline - INFO - Searching category: Network_Security
+2025-05-02 21:28:28,658 - similarity_pipeline - INFO - Searching category: Organization
+2025-05-02 21:28:28,782 - similarity_pipeline - INFO - Searching category: Password_Policy_and_authentication_procedures
+2025-05-02 21:28:28,918 - similarity_pipeline - INFO - Searching category: Patch_Management
+2025-05-02 21:28:29,088 - similarity_pipeline - INFO - Searching category: Penetration_Testing
+2025-05-02 21:28:29,201 - similarity_pipeline - INFO - Searching category: Physical_Security_and_Environmental_Controls
+2025-05-02 21:28:29,291 - similarity_pipeline - INFO - Searching category: Privacy_and_Compliance
+2025-05-02 21:28:29,398 - similarity_pipeline - INFO - Searching category: Risk_Management
+2025-05-02 21:28:29,518 - similarity_pipeline - INFO - Searching category: Security_Awareness
+2025-05-02 21:28:29,599 - similarity_pipeline - INFO - Searching category: Server_Security
+2025-05-02 21:28:29,695 - similarity_pipeline - INFO - Searching category: Session_Management
+2025-05-02 21:28:29,817 - similarity_pipeline - INFO - Searching category: Software_Development_Life_Cycle
+2025-05-02 21:28:29,962 - similarity_pipeline - INFO - Searching category: Supply_Chain__Vendor_Management
+2025-05-02 21:28:30,083 - similarity_pipeline - INFO - Searching category: Vulnerability_and_Threat_Management
+2025-05-02 21:28:30,217 - similarity_pipeline - INFO - Searching category: Wireless_Security
+2025-05-02 21:29:38,101 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:29:38,101 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:29:39,861 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:29:39,861 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:29:39,861 - similarity_pipeline - INFO - Finding similar questions for query: password...
+2025-05-02 21:29:39,861 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:29:39,871 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:29:39,872 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:29:43,621 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:29:43,772 - similarity_pipeline - INFO - Searching category: Access_Control
+2025-05-02 21:29:43,924 - similarity_pipeline - INFO - Searching category: Anti-virus_and_Malware_Control
+2025-05-02 21:29:44,073 - similarity_pipeline - INFO - Searching category: API_Security
+2025-05-02 21:29:44,211 - similarity_pipeline - INFO - Searching category: Application
+2025-05-02 21:29:44,353 - similarity_pipeline - INFO - Searching category: Application_Security
+2025-05-02 21:29:44,509 - similarity_pipeline - INFO - Searching category: Artificial_Intelligence
+2025-05-02 21:29:44,659 - similarity_pipeline - INFO - Searching category: Asset_Management
+2025-05-02 21:29:44,800 - similarity_pipeline - INFO - Searching category: Audit_Assurance
+2025-05-02 21:29:44,952 - similarity_pipeline - INFO - Searching category: Backup_Policy_and_Procedures
+2025-05-02 21:29:45,076 - similarity_pipeline - INFO - Searching category: Business_Continuity_and_Disaster_Recovery
+2025-05-02 21:29:45,210 - similarity_pipeline - INFO - Searching category: Change_Control_and_Configuration_Management
+2025-05-02 21:29:45,318 - similarity_pipeline - INFO - Searching category: Data_Governance_and_Classification
+2025-05-02 21:29:45,453 - similarity_pipeline - INFO - Searching category: Data_Retention_and_Deletion
+2025-05-02 21:29:45,559 - similarity_pipeline - INFO - Searching category: Data_Security
+2025-05-02 21:29:45,686 - similarity_pipeline - INFO - Searching category: Email_Security
+2025-05-02 21:29:45,812 - similarity_pipeline - INFO - Searching category: Encryption_and_Key_Management
+2025-05-02 21:29:45,931 - similarity_pipeline - INFO - Searching category: ESG
+2025-05-02 21:29:46,048 - similarity_pipeline - INFO - Searching category: Hosting
+2025-05-02 21:29:46,168 - similarity_pipeline - INFO - Searching category: Human_Resources
+2025-05-02 21:29:46,279 - similarity_pipeline - INFO - Searching category: Identity_and_Access_Management_(IAM)
+2025-05-02 21:29:46,389 - similarity_pipeline - INFO - Searching category: Incident_Management
+2025-05-02 21:29:46,491 - similarity_pipeline - INFO - Searching category: Information_Security
+2025-05-02 21:29:46,608 - similarity_pipeline - INFO - Searching category: Integration
+2025-05-02 21:29:46,751 - similarity_pipeline - INFO - Searching category: Interoperability_and_Portability_Measures
+2025-05-02 21:29:46,876 - similarity_pipeline - INFO - Searching category: Legal
+2025-05-02 21:29:47,023 - similarity_pipeline - INFO - Searching category: Logging,_Monitoring_and_Audit_Trail
+2025-05-02 21:29:47,157 - similarity_pipeline - INFO - Searching category: Mobile_Device_Security
+2025-05-02 21:29:47,282 - similarity_pipeline - INFO - Searching category: Network_Security
+2025-05-02 21:29:47,402 - similarity_pipeline - INFO - Searching category: Organization
+2025-05-02 21:29:47,536 - similarity_pipeline - INFO - Searching category: Password_Policy_and_authentication_procedures
+2025-05-02 21:29:47,688 - similarity_pipeline - INFO - Searching category: Patch_Management
+2025-05-02 21:29:47,831 - similarity_pipeline - INFO - Searching category: Penetration_Testing
+2025-05-02 21:29:47,948 - similarity_pipeline - INFO - Searching category: Physical_Security_and_Environmental_Controls
+2025-05-02 21:29:48,093 - similarity_pipeline - INFO - Searching category: Privacy_and_Compliance
+2025-05-02 21:29:48,199 - similarity_pipeline - INFO - Searching category: Risk_Management
+2025-05-02 21:29:48,327 - similarity_pipeline - INFO - Searching category: Security_Awareness
+2025-05-02 21:29:48,441 - similarity_pipeline - INFO - Searching category: Server_Security
+2025-05-02 21:29:48,574 - similarity_pipeline - INFO - Searching category: Session_Management
+2025-05-02 21:29:48,698 - similarity_pipeline - INFO - Searching category: Software_Development_Life_Cycle
+2025-05-02 21:29:48,824 - similarity_pipeline - INFO - Searching category: Supply_Chain__Vendor_Management
+2025-05-02 21:29:48,943 - similarity_pipeline - INFO - Searching category: Vulnerability_and_Threat_Management
+2025-05-02 21:29:49,089 - similarity_pipeline - INFO - Searching category: Wireless_Security
+2025-05-02 21:48:22,135 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:48:22,137 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:48:23,177 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:48:23,178 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:48:23,178 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-02 21:48:23,178 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:48:23,203 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:48:23,203 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:48:26,508 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:48:26,593 - similarity_pipeline - INFO - Searching category: Access_Control
+2025-05-02 21:48:26,665 - similarity_pipeline - INFO - Searching category: Anti-virus_and_Malware_Control
+2025-05-02 21:48:26,730 - similarity_pipeline - INFO - Searching category: API_Security
+2025-05-02 21:48:26,795 - similarity_pipeline - INFO - Searching category: Application
+2025-05-02 21:48:26,860 - similarity_pipeline - INFO - Searching category: Application_Security
+2025-05-02 21:48:26,924 - similarity_pipeline - INFO - Searching category: Artificial_Intelligence
+2025-05-02 21:48:26,994 - similarity_pipeline - INFO - Searching category: Asset_Management
+2025-05-02 21:48:27,059 - similarity_pipeline - INFO - Searching category: Audit_Assurance
+2025-05-02 21:48:27,120 - similarity_pipeline - INFO - Searching category: Backup_Policy_and_Procedures
+2025-05-02 21:48:27,185 - similarity_pipeline - INFO - Searching category: Business_Continuity_and_Disaster_Recovery
+2025-05-02 21:48:27,250 - similarity_pipeline - INFO - Searching category: Change_Control_and_Configuration_Management
+2025-05-02 21:48:27,317 - similarity_pipeline - INFO - Searching category: Data_Governance_and_Classification
+2025-05-02 21:48:27,386 - similarity_pipeline - INFO - Searching category: Data_Retention_and_Deletion
+2025-05-02 21:48:27,452 - similarity_pipeline - INFO - Searching category: Data_Security
+2025-05-02 21:48:27,524 - similarity_pipeline - INFO - Searching category: Email_Security
+2025-05-02 21:48:27,587 - similarity_pipeline - INFO - Searching category: Encryption_and_Key_Management
+2025-05-02 21:48:27,655 - similarity_pipeline - INFO - Searching category: ESG
+2025-05-02 21:48:27,724 - similarity_pipeline - INFO - Searching category: Hosting
+2025-05-02 21:48:27,782 - similarity_pipeline - INFO - Searching category: Human_Resources
+2025-05-02 21:48:27,840 - similarity_pipeline - INFO - Searching category: Identity_and_Access_Management_(IAM)
+2025-05-02 21:48:27,898 - similarity_pipeline - INFO - Searching category: Incident_Management
+2025-05-02 21:48:27,958 - similarity_pipeline - INFO - Searching category: Information_Security
+2025-05-02 21:48:28,023 - similarity_pipeline - INFO - Searching category: Integration
+2025-05-02 21:48:28,082 - similarity_pipeline - INFO - Searching category: Interoperability_and_Portability_Measures
+2025-05-02 21:48:28,144 - similarity_pipeline - INFO - Searching category: Legal
+2025-05-02 21:48:28,205 - similarity_pipeline - INFO - Searching category: Logging,_Monitoring_and_Audit_Trail
+2025-05-02 21:48:28,265 - similarity_pipeline - INFO - Searching category: Mobile_Device_Security
+2025-05-02 21:48:28,325 - similarity_pipeline - INFO - Searching category: Network_Security
+2025-05-02 21:48:28,393 - similarity_pipeline - INFO - Searching category: Organization
+2025-05-02 21:48:28,459 - similarity_pipeline - INFO - Searching category: Password_Policy_and_authentication_procedures
+2025-05-02 21:48:28,523 - similarity_pipeline - INFO - Searching category: Patch_Management
+2025-05-02 21:48:28,583 - similarity_pipeline - INFO - Searching category: Penetration_Testing
+2025-05-02 21:48:28,643 - similarity_pipeline - INFO - Searching category: Physical_Security_and_Environmental_Controls
+2025-05-02 21:48:28,705 - similarity_pipeline - INFO - Searching category: Privacy_and_Compliance
+2025-05-02 21:48:28,769 - similarity_pipeline - INFO - Searching category: Risk_Management
+2025-05-02 21:48:28,830 - similarity_pipeline - INFO - Searching category: Security_Awareness
+2025-05-02 21:48:28,890 - similarity_pipeline - INFO - Searching category: Server_Security
+2025-05-02 21:48:28,954 - similarity_pipeline - INFO - Searching category: Session_Management
+2025-05-02 21:48:29,016 - similarity_pipeline - INFO - Searching category: Software_Development_Life_Cycle
+2025-05-02 21:48:29,079 - similarity_pipeline - INFO - Searching category: Supply_Chain__Vendor_Management
+2025-05-02 21:48:29,143 - similarity_pipeline - INFO - Searching category: Vulnerability_and_Threat_Management
+2025-05-02 21:48:29,208 - similarity_pipeline - INFO - Searching category: Wireless_Security
+2025-05-02 21:48:36,178 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:48:36,179 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:48:36,913 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:48:36,913 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:48:36,913 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-02 21:48:36,914 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:48:36,924 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:48:36,924 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:48:39,710 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:49:43,920 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:49:43,920 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:49:44,698 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:49:44,698 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:49:44,698 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-02 21:49:44,698 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:49:44,700 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:49:44,700 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:49:47,457 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:50:19,420 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:50:19,420 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:50:20,161 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:50:20,161 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:50:20,161 - similarity_pipeline - INFO - Finding similar questions for query: Do you have Security Policies in place that establ...
+2025-05-02 21:50:20,161 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:50:20,163 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:50:20,163 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:50:22,868 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:50:40,799 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:50:40,799 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:50:41,526 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:50:41,526 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:50:41,526 - similarity_pipeline - INFO - Finding similar questions for query: Do you have Security Policies in place that establ...
+2025-05-02 21:50:41,527 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:50:41,528 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:50:41,528 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:50:44,269 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:50:48,775 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:50:48,775 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:50:49,549 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:50:49,549 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:50:49,550 - similarity_pipeline - INFO - Finding similar questions for query: Do you have Security Policies in place that establ...
+2025-05-02 21:50:49,550 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:50:49,551 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:50:49,551 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:50:52,167 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:51:00,252 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:51:00,252 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:51:00,998 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:51:00,998 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:51:00,998 - similarity_pipeline - INFO - Finding similar questions for query: Do you have Security Policies in place that establ...
+2025-05-02 21:51:00,998 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:51:00,999 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:51:00,999 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:51:03,612 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:51:16,502 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:51:16,502 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:51:17,257 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:51:17,257 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:51:17,257 - similarity_pipeline - INFO - Finding similar questions for query: Do you have Security Policies in place that establ...
+2025-05-02 21:51:17,257 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:51:17,259 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:51:17,259 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:51:19,936 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-02 21:51:27,105 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-02 21:51:27,105 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 21:51:27,861 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 21:51:27,862 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-02 21:51:27,862 - similarity_pipeline - INFO - Finding similar questions for query: Do you have Security Policies in place that establ...
+2025-05-02 21:51:27,862 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-02 21:51:27,865 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-02 21:51:27,865 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 21:51:30,638 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-03 00:21:22,583 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata
+2025-05-03 00:21:22,591 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-03 00:21:24,583 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-03 00:21:24,586 - similarity_pipeline - INFO - Imported FAISS successfully
+2025-05-03 00:21:24,588 - similarity_pipeline - INFO - Finding similar questions for query: security...
+2025-05-03 00:21:24,588 - similarity_pipeline - INFO - Loading embedding model temporarily for query encoding
+2025-05-03 00:21:24,674 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-05-03 00:21:24,674 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-03 00:21:29,489 - similarity_pipeline - INFO - Searching category: Acceptable_Use_Policy
+2025-05-03 00:21:29,693 - similarity_pipeline - INFO - Searching category: Access_Control
+2025-05-03 00:21:29,852 - similarity_pipeline - INFO - Searching category: Anti-virus_and_Malware_Control
+2025-05-03 00:21:30,125 - similarity_pipeline - INFO - Searching category: API_Security
+2025-05-03 00:21:30,288 - similarity_pipeline - INFO - Searching category: Application
+2025-05-03 00:21:30,416 - similarity_pipeline - INFO - Searching category: Application_Security
+2025-05-03 00:21:30,544 - similarity_pipeline - INFO - Searching category: Artificial_Intelligence
+2025-05-03 00:21:30,681 - similarity_pipeline - INFO - Searching category: Asset_Management
+2025-05-03 00:21:30,851 - similarity_pipeline - INFO - Searching category: Audit_Assurance
+2025-05-03 00:21:31,027 - similarity_pipeline - INFO - Searching category: Backup_Policy_and_Procedures
+2025-05-03 00:21:31,202 - similarity_pipeline - INFO - Searching category: Business_Continuity_and_Disaster_Recovery
+2025-05-03 00:21:31,388 - similarity_pipeline - INFO - Searching category: Change_Control_and_Configuration_Management
+2025-05-03 00:21:31,510 - similarity_pipeline - INFO - Searching category: Data_Governance_and_Classification
+2025-05-03 00:21:31,704 - similarity_pipeline - INFO - Searching category: Data_Retention_and_Deletion
+2025-05-03 00:21:31,867 - similarity_pipeline - INFO - Searching category: Data_Security
+2025-05-03 00:21:32,013 - similarity_pipeline - INFO - Searching category: Email_Security
+2025-05-03 00:21:32,160 - similarity_pipeline - INFO - Searching category: Encryption_and_Key_Management
+2025-05-03 00:21:32,327 - similarity_pipeline - INFO - Searching category: ESG
+2025-05-03 00:21:32,488 - similarity_pipeline - INFO - Searching category: Hosting
+2025-05-03 00:21:32,651 - similarity_pipeline - INFO - Searching category: Human_Resources
+2025-05-03 00:21:32,803 - similarity_pipeline - INFO - Searching category: Identity_and_Access_Management_(IAM)
+2025-05-03 00:21:32,954 - similarity_pipeline - INFO - Searching category: Incident_Management
+2025-05-03 00:21:33,133 - similarity_pipeline - INFO - Searching category: Information_Security
+2025-05-03 00:21:33,303 - similarity_pipeline - INFO - Searching category: Integration
+2025-05-03 00:21:33,463 - similarity_pipeline - INFO - Searching category: Interoperability_and_Portability_Measures
+2025-05-03 00:21:33,638 - similarity_pipeline - INFO - Searching category: Legal
+2025-05-03 00:21:33,807 - similarity_pipeline - INFO - Searching category: Logging,_Monitoring_and_Audit_Trail
+2025-05-03 00:21:34,004 - similarity_pipeline - INFO - Searching category: Mobile_Device_Security
+2025-05-03 00:21:34,177 - similarity_pipeline - INFO - Searching category: Network_Security
+2025-05-03 00:21:34,339 - similarity_pipeline - INFO - Searching category: Organization
+2025-05-03 00:21:34,503 - similarity_pipeline - INFO - Searching category: Password_Policy_and_authentication_procedures
+2025-05-03 00:21:34,671 - similarity_pipeline - INFO - Searching category: Patch_Management
+2025-05-03 00:21:34,839 - similarity_pipeline - INFO - Searching category: Penetration_Testing
+2025-05-03 00:21:35,008 - similarity_pipeline - INFO - Searching category: Physical_Security_and_Environmental_Controls
+2025-05-03 00:21:35,193 - similarity_pipeline - INFO - Searching category: Privacy_and_Compliance
+2025-05-03 00:21:35,368 - similarity_pipeline - INFO - Searching category: Risk_Management
+2025-05-03 00:21:35,532 - similarity_pipeline - INFO - Searching category: Security_Awareness
+2025-05-03 00:21:35,695 - similarity_pipeline - INFO - Searching category: Server_Security
+2025-05-03 00:21:35,851 - similarity_pipeline - INFO - Searching category: Session_Management
+2025-05-03 00:21:36,039 - similarity_pipeline - INFO - Searching category: Software_Development_Life_Cycle
+2025-05-03 00:21:36,216 - similarity_pipeline - INFO - Searching category: Supply_Chain__Vendor_Management
+2025-05-03 00:21:36,359 - similarity_pipeline - INFO - Searching category: Vulnerability_and_Threat_Management
+2025-05-03 00:21:36,528 - similarity_pipeline - INFO - Searching category: Wireless_Security
+2025-05-03 00:23:24,652 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Server.serve() done, defined at C:\Users\Nirmal\Desktop\projects\final\KL_qualityEnhancer\venv\Lib\site-packages\uvicorn\server.py:68> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Nirmal\Desktop\projects\final\KL_qualityEnhancer\venv\Lib\site-packages\uvicorn\server.py", line 69, in serve
+    with self.capture_signals():
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "C:\Users\Nirmal\Desktop\projects\final\KL_qualityEnhancer\venv\Lib\site-packages\uvicorn\server.py", line 330, in capture_signals
+    signal.raise_signal(captured_signal)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2025-05-03 00:23:24,699 - asyncio - ERROR - Task was destroyed but it is pending!
+task: <Task cancelling name='Task-2' coro=<LifespanOn.main() running at C:\Users\Nirmal\Desktop\projects\final\KL_qualityEnhancer\venv\Lib\site-packages\uvicorn\lifespan\on.py:86> wait_for=<Future cancelled> cb=[gather.<locals>._done_callback() at C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py:764]>
