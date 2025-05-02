@@ -1,0 +1,28 @@
+{
+  "product": "Danfe_Corp_Product_3",
+  "total_questions": 2925,
+  "clusters": {
+    "total": 1487,
+    "noise_points": 323
+  },
+  "questions": {
+    "canonical": 1720,
+    "redundant": 1205,
+    "archived": 34,
+    "active": 2891,
+    "active_canonical": 1698,
+    "archived_canonical": 22
+  },
+  "cluster_size_distribution": {
+    "min": 1,
+    "max": 13,
+    "mean": 1.749831876260928,
+    "median": 1.0
+  },
+  "cluster_health": {
+    "Healthy": 0,
+    "Needs Review": 1488,
+    "Critical": 0
+  },
+  "health_score": 0.3528205128205128
+}

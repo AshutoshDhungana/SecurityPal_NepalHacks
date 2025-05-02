@@ -1,0 +1,198 @@
+2025-05-02 13:05:55,427 - pipeline_trigger - INFO - Starting pipeline at step 5 and ending at step 6
+2025-05-02 13:05:55,427 - pipeline_trigger - INFO - Step 6/6: Cluster Cache Generation
+2025-05-02 13:05:55,427 - pipeline_trigger - INFO - Running Cluster Cache Generation: F:\SecurityPal_NepalHacks\nepalhacks_venv\scripts\python.exe F:\SecurityPal_NepalHacks\periodic_script\cluster_cache.py --input all_complete_dataset.csv
+2025-05-02 13:06:29,420 - pipeline_trigger - INFO - Starting pipeline at step 0 and ending at step 6
+2025-05-02 13:06:29,420 - pipeline_trigger - INFO - Step 1/6: Timed.py
+2025-05-02 13:06:29,420 - pipeline_trigger - INFO - Running Timed.py: F:\SecurityPal_NepalHacks\nepalhacks_venv\scripts\python.exe F:\SecurityPal_NepalHacks\periodic_script\timed.py
+2025-05-02 13:06:31,140 - pipeline_trigger - INFO - Output from Timed.py:
+Starting data pipeline...
+Loading data from: F:\SecurityPal_NepalHacks\data
+Loaded Product data: 4 rows
+Loaded Canonical Questions Products data: 53036 rows
+Loaded Answer data: 53026 rows
+After merging product data: 53035 rows
+After merging answer data: 53026 rows
+Saving output to: F:\SecurityPal_NepalHacks\output
+Processing product: Danfe Corp Product 4
+  - Saved API_Security data: 24 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\API_Security\data.csv
+  - Saved Acceptable_Use_Policy data: 7 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Acceptable_Use_Policy\data.csv
+  - Saved Access_Control data: 174 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Access_Control\data.csv
+  - Saved Anti-virus_and_Malware_Control data: 27 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Anti-virus_and_Malware_Control\data.csv
+  - Saved Application data: 2755 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Application\data.csv
+  - Saved Application_Security data: 150 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Application_Security\data.csv
+  - Saved Artificial_Intelligence data: 11 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Artificial_Intelligence\data.csv
+  - Saved Asset_Management data: 59 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Asset_Management\data.csv
+  - Saved Audit_Assurance data: 93 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Audit_Assurance\data.csv
+  - Saved Backup_Policy_and_Procedures data: 29 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Backup_Policy_and_Procedures\data.csv
+  - Saved Business_Continuity_and_Disaster_Recovery data: 158 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Business_Continuity_and_Disaster_Recovery\data.csv
+  - Saved Change_Control_and_Configuration_Management data: 48 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Change_Control_and_Configuration_Management\data.csv
+  - Saved Data_Governance_and_Classification data: 138 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Governance_and_Classification\data.csv
+  - Saved Data_Retention_and_Deletion data: 55 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Retention_and_Deletion\data.csv
+  - Saved Data_Security data: 76 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Security\data.csv
+  - Saved ESG data: 1 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\ESG\data.csv
+  - Saved Email_Security data: 5 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Email_Security\data.csv
+  - Saved Encryption_and_Key_Management data: 112 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Encryption_and_Key_Management\data.csv
+  - Saved Hosting data: 61 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Hosting\data.csv
+  - Saved Human_Resources data: 83 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Human_Resources\data.csv
+  - Saved Identity_and_Access_Management_(IAM) data: 44 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Identity_and_Access_Management_(IAM)\data.csv
+  - Saved Incident_Management data: 89 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Incident_Management\data.csv
+  - Saved Information_Security data: 50 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Information_Security\data.csv
+  - Saved Integration data: 12 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Integration\data.csv
+  - Saved Interoperability_and_Portability_Measures data: 6 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Interoperability_and_Portability_Measures\data.csv
+  - Saved Legal data: 27 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Legal\data.csv
+  - Saved Logging,_Monitoring_and_Audit_Trail data: 84 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Logging,_Monitoring_and_Audit_Trail\data.csv
+  - Saved Mobile_Device_Security data: 37 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Mobile_Device_Security\data.csv
+  - Saved Network_Security data: 121 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Network_Security\data.csv
+  - Saved Organization data: 261 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Organization\data.csv
+  - Saved Password_Policy_and_authentication_procedures data: 102 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Password_Policy_and_authentication_procedures\data.csv
+  - Saved Patch_Management data: 22 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Patch_Management\data.csv
+  - Saved Penetration_Testing data: 25 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Penetration_Testing\data.csv
+  - Saved Physical_Security_and_Environmental_Controls data: 101 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Physical_Security_and_Environmental_Controls\data.csv
+  - Saved Privacy_and_Compliance data: 69 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Privacy_and_Compliance\data.csv
+  - Saved Risk_Management data: 50 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Risk_Management\data.csv
+  - Saved Security_Awareness data: 26 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Security_Awareness\data.csv
+  - Saved Server_Security data: 30 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Server_Security\data.csv
+  - Saved Session_Management data: 6 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Session_Management\data.csv
+  - Saved Software_Development_Life_Cycle data: 80 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Software_Development_Life_Cycle\data.csv
+  - Saved Supply_Chain__Vendor_Management data: 81 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Supply_Chain__Vendor_Management\data.csv
+  - Saved Vulnerability_and_Threat_Management data: 58 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Vulnerability_and_Threat_Management\data.csv
+  - Saved Wireless_Security data: 6 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Wireless_Security\data.csv
+Processing product: Danfe Corp Product 1
+  - Saved API_Security data: 309 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\API_Security\data.csv
+  - Saved Acceptable_Use_Policy data: 158 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Acceptable_Use_Policy\data.csv
+  - Saved Access_Control data: 2274 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Access_Control\data.csv
+  - Saved Anti-virus_and_Malware_Control data: 328 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Anti-virus_and_Malware_Control\data.csv
+  - Saved Application data: 1910 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Application\data.csv
+  - Saved Application_Security data: 695 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Application_Security\data.csv
+  - Saved Artificial_Intelligence data: 920 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Artificial_Intelligence\data.csv
+  - Saved Asset_Management data: 961 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Asset_Management\data.csv
+  - Saved Audit_Assurance data: 985 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Audit_Assurance\data.csv
+  - Saved Backup_Policy_and_Procedures data: 589 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Backup_Policy_and_Procedures\data.csv
+  - Saved Business_Continuity_and_Disaster_Recovery data: 1545 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Business_Continuity_and_Disaster_Recovery\data.csv
+  - Saved Change_Control_and_Configuration_Management data: 607 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Change_Control_and_Configuration_Management\data.csv
+  - Saved Data_Governance_and_Classification data: 2235 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Governance_and_Classification\data.csv
+  - Saved Data_Retention_and_Deletion data: 637 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Retention_and_Deletion\data.csv
+  - Saved Data_Security data: 3709 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Security\data.csv
+  - Saved ESG data: 251 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\ESG\data.csv
+  - Saved Email_Security data: 174 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Email_Security\data.csv
+  - Saved Encryption_and_Key_Management data: 1741 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Encryption_and_Key_Management\data.csv
+  - Saved Hosting data: 953 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Hosting\data.csv
+  - Saved Human_Resources data: 869 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Human_Resources\data.csv
+  - Saved Identity_and_Access_Management_(IAM) data: 950 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Identity_and_Access_Management_(IAM)\data.csv
+  - Saved Incident_Management data: 1490 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Incident_Management\data.csv
+  - Saved Information_Security data: 517 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Information_Security\data.csv
+  - Saved Integration data: 246 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Integration\data.csv
+  - Saved Interoperability_and_Portability_Measures data: 123 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Interoperability_and_Portability_Measures\data.csv
+  - Saved Legal data: 616 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Legal\data.csv
+  - Saved Logging,_Monitoring_and_Audit_Trail data: 1489 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Logging,_Monitoring_and_Audit_Trail\data.csv
+  - Saved Mobile_Device_Security data: 246 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Mobile_Device_Security\data.csv
+  - Saved Network_Security data: 1820 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Network_Security\data.csv
+  - Saved Organization data: 3139 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Organization\data.csv
+  - Saved Password_Policy_and_authentication_procedures data: 1306 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Password_Policy_and_authentication_procedures\data.csv
+  - Saved Patch_Management data: 409 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Patch_Management\data.csv
+  - Saved Penetration_Testing data: 321 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Penetration_Testing\data.csv
+  - Saved Physical_Security_and_Environmental_Controls data: 766 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Physical_Security_and_Environmental_Controls\data.csv
+  - Saved Privacy_and_Compliance data: 1388 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Privacy_and_Compliance\data.csv
+  - Saved Risk_Management data: 553 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Risk_Management\data.csv
+  - Saved Security_Awareness data: 480 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Security_Awareness\data.csv
+  - Saved Server_Security data: 441 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Server_Security\data.csv
+  - Saved Session_Management data: 176 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Session_Management\data.csv
+  - Saved Software_Development_Life_Cycle data: 1080 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Software_Development_Life_Cycle\data.csv
+  - Saved Supply_Chain__Vendor_Management data: 1430 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Supply_Chain__Vendor_Management\data.csv
+  - Saved Vulnerability_and_Threat_Management data: 981 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Vulnerability_and_Threat_Management\data.csv
+  - Saved Wireless_Security data: 106 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Wireless_Security\data.csv
+Processing product: Danfe Corp Product 3
+  - Saved API_Security data: 15 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\API_Security\data.csv
+  - Saved Acceptable_Use_Policy data: 18 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Acceptable_Use_Policy\data.csv
+  - Saved Access_Control data: 169 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Access_Control\data.csv
+  - Saved Anti-virus_and_Malware_Control data: 36 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Anti-virus_and_Malware_Control\data.csv
+  - Saved Application data: 88 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Application\data.csv
+  - Saved Application_Security data: 148 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Application_Security\data.csv
+  - Saved Artificial_Intelligence data: 1 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Artificial_Intelligence\data.csv
+  - Saved Asset_Management data: 65 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Asset_Management\data.csv
+  - Saved Audit_Assurance data: 106 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Audit_Assurance\data.csv
+  - Saved Backup_Policy_and_Procedures data: 33 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Backup_Policy_and_Procedures\data.csv
+  - Saved Business_Continuity_and_Disaster_Recovery data: 99 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Business_Continuity_and_Disaster_Recovery\data.csv
+  - Saved Change_Control_and_Configuration_Management data: 65 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Change_Control_and_Configuration_Management\data.csv
+  - Saved Data_Governance_and_Classification data: 134 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Governance_and_Classification\data.csv
+  - Saved Data_Retention_and_Deletion data: 61 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Retention_and_Deletion\data.csv
+  - Saved Data_Security data: 94 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Security\data.csv
+  - Saved Email_Security data: 5 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Email_Security\data.csv
+  - Saved Encryption_and_Key_Management data: 124 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Encryption_and_Key_Management\data.csv
+  - Saved Hosting data: 58 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Hosting\data.csv
+  - Saved Human_Resources data: 85 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Human_Resources\data.csv
+  - Saved Identity_and_Access_Management_(IAM) data: 51 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Identity_and_Access_Management_(IAM)\data.csv
+  - Saved Incident_Management data: 109 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Incident_Management\data.csv
+  - Saved Information_Security data: 58 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Information_Security\data.csv
+  - Saved Integration data: 6 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Integration\data.csv
+  - Saved Interoperability_and_Portability_Measures data: 10 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Interoperability_and_Portability_Measures\data.csv
+  - Saved Legal data: 37 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Legal\data.csv
+  - Saved Logging,_Monitoring_and_Audit_Trail data: 100 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Logging,_Monitoring_and_Audit_Trail\data.csv
+  - Saved Mobile_Device_Security data: 34 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Mobile_Device_Security\data.csv
+  - Saved Network_Security data: 137 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Network_Security\data.csv
+  - Saved Organization data: 217 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Organization\data.csv
+  - Saved Password_Policy_and_authentication_procedures data: 121 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Password_Policy_and_authentication_procedures\data.csv
+  - Saved Patch_Management data: 25 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Patch_Management\data.csv
+  - Saved Penetration_Testing data: 35 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Penetration_Testing\data.csv
+  - Saved Physical_Security_and_Environmental_Controls data: 116 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Physical_Security_and_Environmental_Controls\data.csv
+  - Saved Privacy_and_Compliance data: 89 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Privacy_and_Compliance\data.csv
+  - Saved Risk_Management data: 56 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Risk_Management\data.csv
+  - Saved Security_Awareness data: 31 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Security_Awareness\data.csv
+  - Saved Server_Security data: 29 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Server_Security\data.csv
+  - Saved Session_Management data: 7 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Session_Management\data.csv
+  - Saved Software_Development_Life_Cycle data: 80 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Software_Development_Life_Cycle\data.csv
+  - Saved Supply_Chain__Vendor_Management data: 93 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Supply_Chain__Vendor_Management\data.csv
+  - Saved Vulnerability_and_Threat_Management data: 73 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Vulnerability_and_Threat_Management\data.csv
+  - Saved Wireless_Security data: 7 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Wireless_Security\data.csv
+Processing product: Danfe Corp Product 2
+  - Saved API_Security data: 18 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\API_Security\data.csv
+  - Saved Acceptable_Use_Policy data: 18 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Acceptable_Use_Policy\data.csv
+  - Saved Access_Control data: 162 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Access_Control\data.csv
+  - Saved Anti-virus_and_Malware_Control data: 23 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Anti-virus_and_Malware_Control\data.csv
+  - Saved Application data: 89 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Application\data.csv
+  - Saved Application_Security data: 163 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Application_Security\data.csv
+  - Saved Asset_Management data: 59 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Asset_Management\data.csv
+  - Saved Audit_Assurance data: 111 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Audit_Assurance\data.csv
+  - Saved Backup_Policy_and_Procedures data: 29 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Backup_Policy_and_Procedures\data.csv
+  - Saved Business_Continuity_and_Disaster_Recovery data: 95 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Business_Continuity_and_Disaster_Recovery\data.csv
+  - Saved Change_Control_and_Configuration_Management data: 57 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Change_Control_and_Configuration_Management\data.csv
+  - Saved Data_Governance_and_Classification data: 114 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Governance_and_Classification\data.csv
+  - Saved Data_Retention_and_Deletion data: 55 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Retention_and_Deletion\data.csv
+  - Saved Data_Security data: 73 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Security\data.csv
+  - Saved Email_Security data: 6 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Email_Security\data.csv
+  - Saved Encryption_and_Key_Management data: 120 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Encryption_and_Key_Management\data.csv
+  - Saved Hosting data: 49 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Hosting\data.csv
+  - Saved Human_Resources data: 100 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Human_Resources\data.csv
+  - Saved Identity_and_Access_Management_(IAM) data: 60 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Identity_and_Access_Management_(IAM)\data.csv
+  - Saved Incident_Management data: 77 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Incident_Management\data.csv
+  - Saved Information_Security data: 62 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Information_Security\data.csv
+  - Saved Integration data: 9 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Integration\data.csv
+  - Saved Interoperability_and_Portability_Measures data: 9 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Interoperability_and_Portability_Measures\data.csv
+  - Saved Legal data: 44 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Legal\data.csv
+  - Saved Logging,_Monitoring_and_Audit_Trail data: 108 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Logging,_Monitoring_and_Audit_Trail\data.csv
+  - Saved Mobile_Device_Security data: 47 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Mobile_Device_Security\data.csv
+  - Saved Network_Security data: 123 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Network_Security\data.csv
+  - Saved Organization data: 172 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Organization\data.csv
+  - Saved Password_Policy_and_authentication_procedures data: 116 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Password_Policy_and_authentication_procedures\data.csv
+  - Saved Patch_Management data: 23 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Patch_Management\data.csv
+  - Saved Penetration_Testing data: 37 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Penetration_Testing\data.csv
+  - Saved Physical_Security_and_Environmental_Controls data: 95 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Physical_Security_and_Environmental_Controls\data.csv
+  - Saved Privacy_and_Compliance data: 77 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Privacy_and_Compliance\data.csv
+  - Saved Risk_Management data: 31 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Risk_Management\data.csv
+  - Saved Security_Awareness data: 26 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Security_Awareness\data.csv
+  - Saved Server_Security data: 18 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Server_Security\data.csv
+  - Saved Session_Management data: 8 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Session_Management\data.csv
+  - Saved Software_Development_Life_Cycle data: 84 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Software_Development_Life_Cycle\data.csv
+  - Saved Supply_Chain__Vendor_Management data: 90 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Supply_Chain__Vendor_Management\data.csv
+  - Saved Vulnerability_and_Threat_Management data: 60 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Vulnerability_and_Threat_Management\data.csv
+  - Saved Wireless_Security data: 8 rows to F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Wireless_Security\data.csv
+Pipeline completed successfully.
+
+2025-05-02 13:06:31,377 - pipeline_trigger - INFO - Successfully completed Timed.py
+2025-05-02 13:06:31,377 - pipeline_trigger - INFO - Step 2/6: Embedding
+2025-05-02 13:06:31,377 - pipeline_trigger - INFO - Running Embedding: F:\SecurityPal_NepalHacks\nepalhacks_venv\scripts\python.exe F:\SecurityPal_NepalHacks\periodic_script\embedding.py
+2025-05-02 13:06:57,014 - pipeline_trigger - INFO - Successfully completed Cluster Cache Generation
+2025-05-02 13:06:57,014 - pipeline_trigger - INFO - Pipeline completed successfully in 61.59 seconds
+2025-05-02 13:07:13,337 - pipeline_trigger - INFO - Successfully completed Embedding
+2025-05-02 13:07:13,337 - pipeline_trigger - INFO - Step 3/6: Clustering
+2025-05-02 13:07:13,338 - pipeline_trigger - INFO - Running Clustering: F:\SecurityPal_NepalHacks\nepalhacks_venv\scripts\python.exe F:\SecurityPal_NepalHacks\periodic_script\clustering.py

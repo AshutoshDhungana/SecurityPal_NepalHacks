@@ -34,6 +34,9 @@ from visualizations import (
 # Import merge_utils
 from merge_utils import QuestionMerger, merge_qa_pairs, log_merge_operation, merge_qa_pairs_by_ids, get_qa_pair_by_id
 
+# Import similarity_check
+from similarity_check import SimilarityCheck, similarity_pipeline
+
 app = FastAPI(title="QnA Content Management API", 
               description="API for managing QnA content clusters and analysis")
 
@@ -87,6 +90,14 @@ class MergeByIdsRequest(BaseModel):
     user_id: str
     priority_id: Optional[str] = None  # ID of the question to prioritize
     similarity_score: float = 0.0
+
+# Add a model for similarity search
+class SimilaritySearchRequest(BaseModel):
+    query: str
+    product_id: str
+    category: Optional[str] = None
+    threshold: float = 0.6
+    top_k: int = 5
 
 # -- API Routes --
 @app.get("/")
@@ -813,4 +824,45 @@ async def get_merged_qa_pairs():
         raise HTTPException(
             status_code=500,
             detail=f"Error listing merged QA pairs: {str(e)}"
+        )
+
+@app.post("/search/similarity")
+async def search_similar_questions(search_request: SimilaritySearchRequest):
+    """
+    Find questions similar to the query text within the specified product and category.
+    
+    Args:
+        search_request: SimilaritySearchRequest object with query and filters
+        
+    Returns:
+        List of similar questions with their cq_id and similarity scores
+    """
+    try:
+        # Run the similarity pipeline
+        results = similarity_pipeline(
+            query=search_request.query,
+            product_id=search_request.product_id,
+            category=search_request.category,
+            threshold=search_request.threshold,
+            top_k=search_request.top_k
+        )
+        
+        # If no results found, provide feedback
+        if not results:
+            return {
+                "message": "No similar questions found.",
+                "results": []
+            }
+        
+        # Return the results
+        return {
+            "message": f"Found {len(results)} similar questions.",
+            "results": results
+        }
+    except Exception as e:
+        import traceback
+        trace = traceback.format_exc()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error searching for similar questions: {str(e)}\nTrace: {trace}"
         ) 

@@ -2,21 +2,27 @@
   "product": "Danfe_Corp_Product_2",
   "total_questions": 2725,
   "clusters": {
-    "total": 240,
-    "noise_points": 295
+    "total": 1269,
+    "noise_points": 286
   },
   "questions": {
-    "canonical": 725,
-    "redundant": 1705,
+    "canonical": 1449,
+    "redundant": 1276,
     "archived": 16,
     "active": 2709,
-    "active_canonical": 722,
-    "archived_canonical": 3
+    "active_canonical": 1439,
+    "archived_canonical": 10
   },
   "cluster_size_distribution": {
-    "min": 5,
-    "max": 47,
-    "mean": 10.125,
-    "median": 8.0
-  }
+    "min": 1,
+    "max": 17,
+    "mean": 1.9219858156028369,
+    "median": 1.0
+  },
+  "cluster_health": {
+    "Healthy": 0,
+    "Needs Review": 1270,
+    "Critical": 0
+  },
+  "health_score": 0.319045871559633
 }

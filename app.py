@@ -259,12 +259,22 @@ def fetch_api_data(endpoint, params=None):
     """Fetch data from the FastAPI backend"""
     try:
         url = f"{API_URL}{endpoint}"
-        response = requests.get(url, params=params, timeout=10)
+        
+        # Use a longer timeout for endpoints that might take more time
+        if endpoint.startswith("/search"):
+            timeout_value = 60  # 60 seconds for search operations
+        else:
+            timeout_value = 20  # 20 seconds for other operations
+            
+        response = requests.get(url, params=params, timeout=timeout_value)
         if response.status_code == 200:
             return response.json()
         else:
             st.error(f"Error fetching data: {response.status_code} - {response.text}")
             return None
+    except requests.exceptions.Timeout:
+        st.warning(f"API call to {endpoint} timed out after {timeout_value} seconds. Try again or use simpler query.")
+        return None
     except Exception as e:
         st.error(f"Error connecting to API: {str(e)}")
         return None
@@ -273,12 +283,22 @@ def post_api_data(endpoint, data):
     """Post data to the FastAPI backend"""
     try:
         url = f"{API_URL}{endpoint}"
-        response = requests.post(url, json=data, timeout=10)
+        
+        # Use a longer timeout for endpoints that might take more time
+        if endpoint.startswith("/search"):
+            timeout_value = 60  # 60 seconds for search operations
+        else:
+            timeout_value = 20  # 20 seconds for other operations
+            
+        response = requests.post(url, json=data, timeout=timeout_value)
         if response.status_code == 200:
             return response.json()
         else:
             st.error(f"Error posting data: {response.status_code} - {response.text}")
             return None
+    except requests.exceptions.Timeout:
+        st.warning(f"API call to {endpoint} timed out after {timeout_value} seconds. Try again or use simpler query.")
+        return None
     except Exception as e:
         st.error(f"Error connecting to API: {str(e)}")
         return None
@@ -620,7 +640,7 @@ elif page == "Cluster Explorer":
                 # Show loading indicator
                 with st.spinner(f"Loading entries for cluster {cluster_id}..."):
                     # Debug info
-                    st.info(f"Requesting data from endpoint: /cluster/{cluster_id}/entries")
+                    # st.info(f"Requesting data from endpoint: /cluster/{cluster_id}/entries")
                     
                     # Ensure cluster_id is properly formatted - strip any possible spaces and convert to string
                     formatted_cluster_id = str(cluster_id).strip()
@@ -632,7 +652,7 @@ elif page == "Cluster Explorer":
                         
                         # If that fails, try with the cluster ID as a numeric value
                         if not entries:
-                            st.info("Trying alternative API call method...")
+                            # st.info("Trying alternative API call method...")
                             # Check if the ID can be converted to integer
                             try:
                                 numeric_id = int(formatted_cluster_id)
@@ -643,7 +663,7 @@ elif page == "Cluster Explorer":
                         
                         # If still no entries, try fetching directly from cluster data
                         if not entries:
-                            st.info("Attempting to extract entries from cluster data...")
+                            # st.info("Attempting to extract entries from cluster data...")
                             # Try to get entries from the cluster data if the API endpoint fails
                             if 'questions' in cluster:
                                 # Construct basic entries from questions in the cluster
@@ -845,14 +865,14 @@ elif page == "Similarity Search":
         st.markdown("""
         <div class="card">
             <p>Enter a question or sentence to find similar questions in the database. 
-            The system will calculate embeddings for your query and find the closest matches.</p>
+            The system uses the all-MiniLM-L6-v2 model to calculate semantic similarity.</p>
         </div>
         """, unsafe_allow_html=True)
         
         # User input
         with st.container():
             st.markdown("<div class='card'>", unsafe_allow_html=True)
-            user_query = st.text_area("Enter your question or sentence:", 
+            user_query = st.text_area("Enter your question or sentence:",   
                                 placeholder="e.g., How do I reset my password?", 
                                 height=100)
             
@@ -860,108 +880,80 @@ elif page == "Similarity Search":
             with col1:
                 top_k = st.slider("Number of results to show", 1, 20, 5)
             with col2:
-                min_similarity = st.slider("Minimum similarity threshold", 0.0, 1.0, 0.5)
+                min_similarity = st.slider("Minimum similarity threshold", 0.0, 1.0, 0.3)
                 
-            # Product filter for search
-            product_for_search = None
+            # Product and category selection
             if products:
-                product_options = ["All Products"] + [p["product_name"] for p in products]
-                product_for_search = st.selectbox("Search in specific product:", product_options, key="search_product")
-                if product_for_search == "All Products":
-                    product_for_search = None
+                col1, col2 = st.columns([1, 1])
+                with col1:
+                    product_options = ["All Products"] + [p["product_name"] for p in products]
+                    selected_product = st.selectbox("Product:", product_options, key="search_product")
+                    product_id = None if selected_product == "All Products" else selected_product
+                
+                with col2:
+                    # Category selection would typically come from an API call
+                    # For now, use a placeholder
+                    categories = ["All Categories", "Security", "Compliance", "Integration", "Authentication", "Data Privacy"]
+                    selected_category = st.selectbox("Category:", categories, key="search_category")
+                    category = None if selected_category == "All Categories" else selected_category
+            else:
+                product_id = None
+                category = None
+                st.warning("Unable to load products. Using default settings.")
             
             search_button = st.button("🔍 Search Similar Questions")
             st.markdown("</div>", unsafe_allow_html=True)
         
         # Perform search when button is clicked
         if search_button and user_query:
-            with st.spinner("Computing embeddings and searching for similar questions..."):
+            # Create a loading status indicator
+            search_status = st.empty()
+            search_status.info("Starting search...")
+            
+            with st.spinner("Computing real embeddings and searching for similar questions..."):
                 try:
-                    # Step 1: Skip the API call and directly use mock embeddings
-                    st.info("Using local mock embeddings (API endpoint /embedding not available)")
-                    query_embedding = get_mock_embedding(user_query)
+                    # Give feedback about what's happening
+                    search_status.info("Preparing search data...")
                     
-                    # Step 2: Generate mock question data from clusters
-                    st.info("Using data from cluster information for searching")
+                    # Use our new API endpoint instead of mock embeddings
+                    search_data = {
+                        "query": user_query,
+                        "product_id": product_id or "Danfe_Corp_Product_1",  # Default product if none selected
+                        "category": category,
+                        "threshold": min_similarity,
+                        "top_k": top_k
+                    }
                     
-                    # Fetch questions based on product filter
-                    params = {}
-                    if product_for_search:
-                        formatted_product = product_for_search.replace(" ", "_")
-                        params["product"] = formatted_product
+                    # Show that we're sending the request
+                    search_status.info("Sending request to embedding model and calculating similarities...")
                     
-                    # Skip the API call for questions with embeddings and directly use clusters
-                    clusters = fetch_api_data("/clusters", params)
-                    questions_with_embeddings = []
+                    # Start time measurement
+                    start_time = time.time()
                     
-                    if clusters:
-                        for cluster in clusters:
-                            # Add canonical questions
-                            for q in cluster.get('canonical_questions', []):
-                                if q and isinstance(q, str):  # Make sure q is a valid string
-                                    questions_with_embeddings.append({
-                                        "question": q,
-                                        "answer": f"Canonical answer for cluster {cluster.get('cluster_id', 'unknown')}",
-                                        "embedding": get_mock_embedding(q),
-                                        "is_canonical": True,
-                                        "cluster_id": cluster.get('cluster_id')
-                                    })
-                            
-                            # Add regular questions (limit to first 3 to avoid performance issues)
-                            if 'questions' in cluster:
-                                for q in cluster.get('questions', [])[:3]:
-                                    if q and isinstance(q, str) and q not in cluster.get('canonical_questions', []):
-                                        questions_with_embeddings.append({
-                                            "question": q,
-                                            "answer": f"Answer from cluster {cluster.get('cluster_id', 'unknown')}",
-                                            "embedding": get_mock_embedding(q),
-                                            "is_canonical": False,
-                                            "cluster_id": cluster.get('cluster_id')
-                                        })
+                    # Make API call to search endpoint
+                    similar_questions = post_api_data("/search/similarity", search_data)
                     
-                    # If still no questions, generate completely mock data
-                    if not questions_with_embeddings:
-                        st.warning("No cluster data available, using synthetic questions")
-                        # Generate synthetic questions for demonstration
-                        common_questions = [
-                            "How do I reset my password?",
-                            "What security measures are in place for data protection?",
-                            "How can I create a new account?",
-                            "What is the pricing structure?",
-                            "How do I export my data?",
-                            "What browsers are supported?",
-                            "How do I contact customer support?",
-                            "What are the system requirements?",
-                            "How do I change my notification settings?",
-                            "Can I integrate with other platforms?"
-                        ]
+                    # Calculate elapsed time
+                    elapsed_time = time.time() - start_time
+                    
+                    # Clear the status message
+                    search_status.empty()
+                    
+                    # Add timing information
+                    st.info(f"Search completed in {elapsed_time:.2f} seconds")
+                    
+                    # Check if we got results
+                    if similar_questions and "results" in similar_questions and similar_questions["results"]:
+                        results = similar_questions["results"]
+                        st.markdown(f"<h2 class='sub-header'>Found {len(results)} similar questions</h2>", unsafe_allow_html=True)
                         
-                        for i, q in enumerate(common_questions):
-                            questions_with_embeddings.append({
-                                "question": q,
-                                "answer": f"Answer to: {q}",
-                                "embedding": get_mock_embedding(q),
-                                "is_canonical": i % 3 == 0,
-                                "cluster_id": i // 2
-                            })
-                    
-                    # Step 3: Compute similarities and find matches
-                    similar_questions = search_similar_questions(
-                        query_embedding, 
-                        questions_with_embeddings, 
-                        top_k=top_k
-                    )
-                    
-                    # Step 4: Filter by minimum similarity threshold
-                    similar_questions = [q for q in similar_questions if q["similarity"] >= min_similarity]
-                    
-                    # Display results
-                    if similar_questions:
-                        st.markdown(f"<h2 class='sub-header'>Found {len(similar_questions)} similar questions</h2>", unsafe_allow_html=True)
-                        
-                        for i, question in enumerate(similar_questions):
+                        for i, question in enumerate(results):
                             similarity_pct = question["similarity"] * 100
                             similarity_color = "#4CAF50" if similarity_pct > 80 else "#FF9800" if similarity_pct > 60 else "#F44336"
+                            
+                            # For answer content, we'd typically fetch this using the cq_id
+                            # For now, use a placeholder
+                            answer = question.get("answer", f"This is the answer for question with ID: {question.get('cq_id', 'unknown')}")
                             
                             st.markdown(f"""
                             <div class="question-card">
@@ -969,33 +961,109 @@ elif page == "Similarity Search":
                                     <span class="question-title">{question["question"]}</span>
                                     <span style="color:{similarity_color}; font-weight:bold;">{similarity_pct:.1f}% Match</span>
                                 </div>
+                                <div class="question-meta" style="margin-bottom:10px; font-size:0.8rem; color:#666;">
+                                    ID: {question.get("cq_id", "unknown")}
+                                </div>
+                                <div class="question-answer">
+                                    {answer}
+                                </div>
+                            </div>
+                            """, unsafe_allow_html=True)
+                    else:
+                        # Show a message when no matches are found
+                        st.info("No similar questions found. Try the following:")
+                        st.markdown("""
+                        - Lower the similarity threshold
+                        - Try different wording for your question
+                        - Select a different product or category
+                        - Add more content to the database
+                        """)
+                        
+                        # Always show something useful
+                        st.markdown("<h3>Sample Questions in System</h3>", unsafe_allow_html=True)
+                        # Fetch some sample questions
+                        clusters = fetch_api_data("/clusters", {"limit": 1})
+                        if clusters and len(clusters) > 0:
+                            cluster = clusters[0]
+                            if "questions" in cluster and len(cluster["questions"]) > 0:
+                                st.markdown("<div class='card'>", unsafe_allow_html=True)
+                                st.markdown("<p>Here are some sample questions from the database:</p>", unsafe_allow_html=True)
+                                for q in cluster["questions"][:5]:
+                                    st.markdown(f"- {q}")
+                                st.markdown("</div>", unsafe_allow_html=True)
+                
+                except Exception as e:
+                    # Clear the status message
+                    search_status.empty()
+                    
+                    st.error(f"Error in similarity search: {str(e)}")
+                    
+                    # Fallback to the old mock method if the API call fails
+                    st.warning("Falling back to mock similarity search due to API error. This does not use real embeddings.")
+                    
+                    # Create mock embedding - this is just for fallback
+                    query_embedding = get_mock_embedding(user_query)
+                    
+                    # Generate mock question data
+                    common_questions = [
+                        "How do I reset my password?",
+                        "What security measures are in place for data protection?",
+                        "How can I create a new account?",
+                        "What is the pricing structure?",
+                        "How do I export my data?",
+                        "What browsers are supported?",
+                        "How do I contact customer support?",
+                        "What are the system requirements?",
+                        "How do I change my notification settings?",
+                        "Can I integrate with other platforms?"
+                    ]
+                    
+                    questions_with_embeddings = []
+                    for i, q in enumerate(common_questions):
+                        questions_with_embeddings.append({
+                            "question": q,
+                            "answer": f"Answer to: {q}",
+                            "embedding": get_mock_embedding(q),
+                            "is_canonical": i % 3 == 0,
+                            "cluster_id": i // 2
+                        })
+                    
+                    # Compute similarities
+                    mock_similar = search_similar_questions(
+                        query_embedding, 
+                        questions_with_embeddings, 
+                        top_k=top_k
+                    )
+                    
+                    # Filter by threshold
+                    mock_similar = [q for q in mock_similar if q["similarity"] >= min_similarity]
+                    
+                    # Display results
+                    if mock_similar:
+                        st.markdown(f"<h2 class='sub-header'>Found {len(mock_similar)} similar questions (mock data)</h2>", unsafe_allow_html=True)
+                        
+                        for i, question in enumerate(mock_similar):
+                            similarity_pct = question["similarity"] * 100
+                            similarity_color = "#4CAF50" if similarity_pct > 80 else "#FF9800" if similarity_pct > 60 else "#F44336"
+                            
+                            st.markdown(f"""
+                            <div class="question-card">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                                    <span class="question-title">{question["question"]}</span>
+                                    <span style="color:{similarity_color}; font-weight:bold;">{similarity_pct:.1f}% Match (Mock)</span>
+                                </div>
                                 <div class="question-answer">
                                     {question["answer"]}
                                 </div>
                             </div>
                             """, unsafe_allow_html=True)
                     else:
-                        st.warning("No similar questions found. Try a different query or lower the similarity threshold.")
-                
-                except Exception as e:
-                    st.error(f"Error in similarity search: {str(e)}")
-                    import traceback
-                    st.error(traceback.format_exc())
-                    
-                    # Provide troubleshooting suggestions
-                    st.warning("""
-                    Troubleshooting suggestions:
-                    1. Make sure the API server is running
-                    2. Check if the embedding endpoint is available
-                    3. Try again with a different query
-                    """)
+                        st.info("No similar questions found in mock data. Try lowering the similarity threshold.")
                     
         elif search_button:
             st.warning("Please enter a question or sentence to search.")
     except Exception as e:
         st.error(f"Error initializing Similarity Search page: {str(e)}")
-        import traceback
-        st.error(traceback.format_exc())
         
         # Fallback to a simple version of the similarity search
         st.markdown("<h1 class='main-header'>Sentence Similarity Search (Fallback Mode)</h1>", unsafe_allow_html=True)

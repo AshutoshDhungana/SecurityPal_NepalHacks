@@ -1,0 +1,138 @@
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Initializing QuestionMerger with model: facebook/bart-large-cnn
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Successfully loaded facebook/bart-large-cnn for question merging
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Merging 2 questions
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Merged questions into: What are the security measures in place for data access?
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Merging 2 answers
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Merged 2 answers
+2025-05-02 13:04:17,661 - merge_pipeline - INFO - Logged merge operation: qa1 + qa2 -> merged_qa1_qa2
+2025-05-02 13:50:36,643 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 13:51:24,875 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 13:54:23,409 - similarity_pipeline - INFO - Loading embedding model: all-MiniLM-L6-v2
+2025-05-02 13:54:25,270 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-05-02 13:54:25,270 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 13:54:29,496 - similarity_pipeline - INFO - Successfully loaded all-MiniLM-L6-v2
+2025-05-02 13:54:29,496 - similarity_pipeline - INFO - Generating embedding for query: Compliance...
+2025-05-02 13:54:32,885 - similarity_pipeline - INFO - Generating embeddings for 62940 questions
+2025-05-02 13:54:38,443 - similarity_pipeline - INFO - Saved 100 embeddings to cache
+2025-05-02 13:54:43,661 - similarity_pipeline - INFO - Saved 200 embeddings to cache
+2025-05-02 13:54:50,292 - similarity_pipeline - INFO - Saved 300 embeddings to cache
+2025-05-02 13:54:54,155 - similarity_pipeline - ERROR - Error generating embedding: [Errno 22] Invalid argument
+2025-05-02 13:54:54,155 - similarity_pipeline - ERROR - Error loading questions from F:\SecurityPal_NepalHacks\processed_clusters\Danfe_Corp_Product_1_clusters.json: Failed to generate embedding: [Errno 22] Invalid argument
+2025-05-02 13:54:54,222 - similarity_pipeline - WARNING - No questions found for product_id=Danfe_Corp_Product_1, category=None
+2025-05-02 13:55:21,091 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 13:57:38,615 - similarity_pipeline - INFO - Loading embedding model: all-MiniLM-L6-v2
+2025-05-02 13:57:40,420 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-05-02 13:57:40,420 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 13:57:45,801 - similarity_pipeline - INFO - Successfully loaded all-MiniLM-L6-v2
+2025-05-02 13:57:45,936 - similarity_pipeline - INFO - Loaded 300 cached embeddings
+2025-05-02 13:57:45,936 - similarity_pipeline - INFO - Generating embedding for query: compliance...
+2025-05-02 13:57:49,395 - similarity_pipeline - INFO - Generating embeddings for 62940 questions
+2025-05-02 13:57:54,914 - similarity_pipeline - INFO - Saved 400 embeddings to cache
+2025-05-02 13:58:00,881 - similarity_pipeline - INFO - Saved 500 embeddings to cache
+2025-05-02 13:58:06,693 - similarity_pipeline - INFO - Saved 600 embeddings to cache
+2025-05-02 13:58:12,440 - similarity_pipeline - INFO - Saved 700 embeddings to cache
+2025-05-02 13:58:18,305 - similarity_pipeline - INFO - Saved 800 embeddings to cache
+2025-05-02 13:58:24,730 - similarity_pipeline - INFO - Saved 900 embeddings to cache
+2025-05-02 13:58:31,308 - similarity_pipeline - INFO - Saved 1000 embeddings to cache
+2025-05-02 13:58:35,057 - similarity_pipeline - INFO - Saved 1100 embeddings to cache
+2025-05-02 13:58:37,042 - similarity_pipeline - INFO - Saved 1200 embeddings to cache
+2025-05-02 13:58:39,252 - similarity_pipeline - INFO - Saved 1300 embeddings to cache
+2025-05-02 13:58:41,375 - similarity_pipeline - INFO - Saved 1400 embeddings to cache
+2025-05-02 13:58:43,666 - similarity_pipeline - INFO - Saved 1500 embeddings to cache
+2025-05-02 13:58:45,953 - similarity_pipeline - INFO - Saved 1600 embeddings to cache
+2025-05-02 13:58:48,416 - similarity_pipeline - INFO - Saved 1700 embeddings to cache
+2025-05-02 13:58:50,907 - similarity_pipeline - INFO - Saved 1800 embeddings to cache
+2025-05-02 13:58:53,517 - similarity_pipeline - INFO - Saved 1900 embeddings to cache
+2025-05-02 13:58:56,306 - similarity_pipeline - INFO - Saved 2000 embeddings to cache
+2025-05-02 13:58:59,090 - similarity_pipeline - INFO - Saved 2100 embeddings to cache
+2025-05-02 13:59:01,957 - similarity_pipeline - INFO - Saved 2200 embeddings to cache
+2025-05-02 13:59:04,927 - similarity_pipeline - INFO - Saved 2300 embeddings to cache
+2025-05-02 13:59:08,077 - similarity_pipeline - INFO - Saved 2400 embeddings to cache
+2025-05-02 13:59:08,096 - similarity_pipeline - ERROR - Error generating embedding: [Errno 22] Invalid argument
+2025-05-02 13:59:08,096 - similarity_pipeline - ERROR - Error loading questions from F:\SecurityPal_NepalHacks\processed_clusters\Danfe_Corp_Product_1_clusters.json: Failed to generate embedding: [Errno 22] Invalid argument
+2025-05-02 13:59:08,135 - similarity_pipeline - WARNING - No questions found for product_id=Danfe Corp Product 1, category=None
+2025-05-02 13:59:09,365 - similarity_pipeline - INFO - Loading embedding model: all-MiniLM-L6-v2
+2025-05-02 13:59:09,366 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-05-02 13:59:09,366 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 13:59:12,447 - similarity_pipeline - INFO - Successfully loaded all-MiniLM-L6-v2
+2025-05-02 13:59:12,926 - similarity_pipeline - INFO - Loaded 2400 cached embeddings
+2025-05-02 13:59:12,926 - similarity_pipeline - INFO - Generating embedding for query: compliance...
+2025-05-02 13:59:14,019 - similarity_pipeline - INFO - Generating embeddings for 62940 questions
+2025-05-02 13:59:14,032 - similarity_pipeline - ERROR - Error generating embedding: [Errno 22] Invalid argument
+2025-05-02 13:59:14,032 - similarity_pipeline - ERROR - Error loading questions from F:\SecurityPal_NepalHacks\processed_clusters\Danfe_Corp_Product_1_clusters.json: Failed to generate embedding: [Errno 22] Invalid argument
+2025-05-02 13:59:14,060 - similarity_pipeline - WARNING - No questions found for product_id=Danfe Corp Product 1, category=Security
+2025-05-02 14:01:01,337 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 14:03:46,886 - similarity_pipeline - INFO - Loading embedding model: all-MiniLM-L6-v2
+2025-05-02 14:03:48,689 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-05-02 14:03:48,689 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 14:03:53,171 - similarity_pipeline - INFO - Successfully loaded all-MiniLM-L6-v2
+2025-05-02 14:03:54,021 - similarity_pipeline - INFO - Loaded 2400 cached embeddings
+2025-05-02 14:03:54,021 - similarity_pipeline - INFO - Generating embedding for query: compliance...
+2025-05-02 14:03:54,646 - similarity_pipeline - INFO - Generating embeddings for 25296 questions
+2025-05-02 14:04:02,459 - similarity_pipeline - INFO - Saved 2500 embeddings to cache
+2025-05-02 14:04:05,690 - similarity_pipeline - INFO - Saved 2600 embeddings to cache
+2025-05-02 14:04:09,032 - similarity_pipeline - INFO - Saved 2700 embeddings to cache
+2025-05-02 14:04:12,441 - similarity_pipeline - INFO - Saved 2800 embeddings to cache
+2025-05-02 14:04:15,922 - similarity_pipeline - INFO - Saved 2900 embeddings to cache
+2025-05-02 14:04:19,607 - similarity_pipeline - INFO - Saved 3000 embeddings to cache
+2025-05-02 14:04:25,950 - similarity_pipeline - INFO - Saved 3100 embeddings to cache
+2025-05-02 14:04:36,486 - similarity_pipeline - INFO - Saved 3200 embeddings to cache
+2025-05-02 14:04:46,474 - similarity_pipeline - INFO - Saved 3300 embeddings to cache
+2025-05-02 14:04:55,933 - similarity_pipeline - INFO - Saved 3400 embeddings to cache
+2025-05-02 14:05:05,809 - similarity_pipeline - INFO - Saved 3500 embeddings to cache
+2025-05-02 14:05:16,227 - similarity_pipeline - INFO - Saved 3600 embeddings to cache
+2025-05-02 14:05:26,851 - similarity_pipeline - INFO - Saved 3700 embeddings to cache
+2025-05-02 14:05:31,404 - similarity_pipeline - INFO - Saved 3800 embeddings to cache
+2025-05-02 14:05:35,870 - similarity_pipeline - INFO - Saved 3900 embeddings to cache
+2025-05-02 14:05:40,481 - similarity_pipeline - INFO - Saved 4000 embeddings to cache
+2025-05-02 14:05:45,017 - similarity_pipeline - INFO - Saved 4100 embeddings to cache
+2025-05-02 14:05:49,625 - similarity_pipeline - INFO - Saved 4200 embeddings to cache
+2025-05-02 14:05:54,154 - similarity_pipeline - INFO - Saved 4300 embeddings to cache
+2025-05-02 14:05:58,934 - similarity_pipeline - INFO - Saved 4400 embeddings to cache
+2025-05-02 14:06:03,742 - similarity_pipeline - INFO - Saved 4500 embeddings to cache
+2025-05-02 14:06:08,635 - similarity_pipeline - INFO - Saved 4600 embeddings to cache
+2025-05-02 14:06:13,560 - similarity_pipeline - INFO - Saved 4700 embeddings to cache
+2025-05-02 14:06:13,572 - similarity_pipeline - ERROR - Error generating embedding: [Errno 22] Invalid argument
+2025-05-02 14:06:13,573 - similarity_pipeline - ERROR - Error loading questions from F:\SecurityPal_NepalHacks\processed_clusters\Danfe_Corp_Product_2_clusters.json: Failed to generate embedding: [Errno 22] Invalid argument
+2025-05-02 14:06:13,584 - similarity_pipeline - WARNING - No questions found for product_id=Danfe Corp Product 2, category=Compliance
+2025-05-02 14:06:13,600 - similarity_pipeline - INFO - Loading embedding model: all-MiniLM-L6-v2
+2025-05-02 14:06:13,602 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-05-02 14:06:13,602 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 14:06:16,680 - similarity_pipeline - INFO - Successfully loaded all-MiniLM-L6-v2
+2025-05-02 14:06:17,544 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 14:06:17,544 - similarity_pipeline - INFO - Generating embedding for query: compliance...
+2025-05-02 14:06:17,917 - similarity_pipeline - INFO - Generating embeddings for 25296 questions
+2025-05-02 14:06:17,928 - similarity_pipeline - ERROR - Error generating embedding: [Errno 22] Invalid argument
+2025-05-02 14:06:17,928 - similarity_pipeline - ERROR - Error loading questions from F:\SecurityPal_NepalHacks\processed_clusters\Danfe_Corp_Product_2_clusters.json: Failed to generate embedding: [Errno 22] Invalid argument
+2025-05-02 14:06:17,936 - similarity_pipeline - WARNING - No questions found for product_id=Danfe Corp Product 2, category=Compliance
+2025-05-02 14:12:25,718 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 14:13:37,783 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 14:14:13,209 - tensorflow - WARNING - From F:\SecurityPal_NepalHacks\nepalhacks_venv\lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-05-02 14:15:07,443 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata with 1 products
+2025-05-02 14:15:07,443 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 14:15:09,411 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 14:15:09,411 - similarity_pipeline - INFO - Generating embedding for query: Compliance...
+2025-05-02 14:15:09,411 - similarity_pipeline - WARNING - No pre-computed embeddings found for product: Danfe Corp Product 2
+2025-05-02 14:15:10,050 - similarity_pipeline - INFO - Generating embeddings for 25296 questions
+2025-05-02 14:15:10,072 - similarity_pipeline - ERROR - Error generating embedding: Model not loaded, but trying to generate embedding
+2025-05-02 14:15:10,073 - similarity_pipeline - ERROR - Error loading questions from F:\SecurityPal_NepalHacks\processed_clusters\Danfe_Corp_Product_2_clusters.json: Failed to generate embedding: Model not loaded, but trying to generate embedding
+2025-05-02 14:15:10,089 - similarity_pipeline - WARNING - No questions found for product_id=Danfe Corp Product 2, category=Compliance
+2025-05-02 14:15:37,344 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata with 1 products
+2025-05-02 14:15:37,344 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 14:15:39,050 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 14:15:39,050 - similarity_pipeline - INFO - Generating embedding for query: Security...
+2025-05-02 14:15:39,051 - similarity_pipeline - ERROR - Error generating embedding: Model not loaded, but trying to generate embedding
+2025-05-02 14:15:39,051 - similarity_pipeline - ERROR - Error in similarity pipeline: Failed to generate embedding: Model not loaded, but trying to generate embedding
+2025-05-02 14:18:47,121 - similarity_pipeline - INFO - Loaded pre-computed embeddings metadata with 1 products
+2025-05-02 14:18:47,121 - similarity_pipeline - INFO - Using pre-computed embeddings, skipping model loading
+2025-05-02 14:18:48,908 - similarity_pipeline - INFO - Loaded 4700 cached embeddings
+2025-05-02 14:18:48,908 - similarity_pipeline - INFO - Generating embedding for query: Security...
+2025-05-02 14:18:48,908 - similarity_pipeline - ERROR - Error generating embedding: Model not loaded, but trying to generate embedding
+2025-05-02 14:18:48,908 - similarity_pipeline - ERROR - Error in similarity pipeline: Failed to generate embedding: Model not loaded, but trying to generate embedding

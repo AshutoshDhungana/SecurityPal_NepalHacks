@@ -2,21 +2,21 @@
   "product": "all",
   "total_questions": 53026,
   "clusters": {
-    "total": 2897,
-    "noise_points": 3463
+    "total": 3918,
+    "noise_points": 2517
   },
   "questions": {
-    "canonical": 9817,
-    "redundant": 39746,
+    "canonical": 10819,
+    "redundant": 42207,
     "archived": 37045,
     "active": 15981,
-    "active_canonical": 5259,
-    "archived_canonical": 4558
+    "active_canonical": 5495,
+    "archived_canonical": 5324
   },
   "cluster_size_distribution": {
-    "min": 8,
-    "max": 2141,
-    "mean": 17.10838798757335,
-    "median": 14.0
+    "min": 5,
+    "max": 2517,
+    "mean": 13.533945890760592,
+    "median": 10.0
   }
 }

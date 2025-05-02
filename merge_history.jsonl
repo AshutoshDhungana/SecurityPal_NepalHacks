@@ -1,0 +1,2 @@
+{"timestamp": "2025-05-02T13:04:17.661402", "user_id": "admin", "pair1_id": "qa1", "pair2_id": "qa2", "result_id": "merged_qa1_qa2", "similarity_score": -0.01042606873103642, "priority": null, "operation": "merge"}
+{"timestamp": "2025-05-02T14:30:57.836648", "user_id": "admin", "pair1_id": "qa1", "pair2_id": "qa2", "result_id": "merged_qa1_qa2", "similarity_score": -0.01042606873103642, "priority": null, "operation": "merge"}

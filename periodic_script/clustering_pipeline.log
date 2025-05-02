@@ -1,0 +1,18 @@
+2025-05-02 12:55:16,061 - clustering_pipeline - INFO - Initialized clustering pipeline
+2025-05-02 12:55:16,063 - clustering_pipeline - INFO - Models directory: F:\SecurityPal_NepalHacks\models
+2025-05-02 12:55:16,063 - clustering_pipeline - INFO - Output directory: F:\SecurityPal_NepalHacks\output
+2025-05-02 12:55:16,063 - clustering_pipeline - INFO - Clusters directory: F:\SecurityPal_NepalHacks\clusters
+2025-05-02 12:55:16,063 - clustering_pipeline - INFO - Starting clustering pipeline
+2025-05-02 12:55:16,063 - clustering_pipeline - INFO - Loading embeddings for product: Danfe_Corp_Product_1
+2025-05-02 12:55:16,124 - clustering_pipeline - INFO - Loading embeddings for product: Danfe_Corp_Product_2
+2025-05-02 12:55:16,137 - clustering_pipeline - INFO - Loading embeddings for product: Danfe_Corp_Product_3
+2025-05-02 12:55:16,147 - clustering_pipeline - INFO - Loading embeddings for product: Danfe_Corp_Product_4
+2025-05-02 12:55:16,159 - clustering_pipeline - INFO - Loaded 53026 embeddings
+2025-05-02 12:55:16,203 - clustering_pipeline - INFO - Reducing dimensions from 384 to 50 using umap
+2025-05-02 12:56:42,965 - clustering_pipeline - INFO - UMAP completed in 86.76 seconds
+2025-05-02 12:56:43,034 - clustering_pipeline - INFO - Clustering 53026 embeddings with HDBSCAN
+2025-05-02 12:56:43,034 - clustering_pipeline - INFO - Parameters: min_cluster_size=5, min_samples=2
+2025-05-02 12:58:07,143 - clustering_pipeline - INFO - Clustering completed in 84.11 seconds
+2025-05-02 12:58:07,149 - clustering_pipeline - INFO - Number of clusters: 3940
+2025-05-02 12:58:07,150 - clustering_pipeline - INFO - Number of noise points: 2303 (4.34%)
+2025-05-02 12:58:07,170 - clustering_pipeline - INFO - Generating visualization of clusters

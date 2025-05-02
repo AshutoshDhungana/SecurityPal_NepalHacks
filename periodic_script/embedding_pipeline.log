@@ -1,0 +1,707 @@
+2025-05-02 12:54:23,440 - embedding_pipeline - INFO - Starting embedding pipeline...
+2025-05-02 12:54:23,440 - embedding_pipeline - INFO - Using output directory: F:\SecurityPal_NepalHacks\output
+2025-05-02 12:54:23,440 - embedding_pipeline - INFO - Using models directory: F:\SecurityPal_NepalHacks\models
+2025-05-02 12:54:23,440 - embedding_pipeline - INFO - Output directory: F:\SecurityPal_NepalHacks\output
+2025-05-02 12:54:23,441 - embedding_pipeline - INFO - Models directory: F:\SecurityPal_NepalHacks\models
+2025-05-02 12:54:23,441 - embedding_pipeline - INFO - Initialized embedding pipeline with model: all-MiniLM-L6-v2
+2025-05-02 12:54:23,441 - embedding_pipeline - INFO - Loading model: all-MiniLM-L6-v2
+2025-05-02 12:54:25,396 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cuda:0
+2025-05-02 12:54:25,396 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-05-02 12:54:29,295 - embedding_pipeline - INFO - Model loaded in 5.85 seconds
+2025-05-02 12:54:29,295 - embedding_pipeline - INFO - Looking for products in: F:\SecurityPal_NepalHacks\output
+2025-05-02 12:54:29,295 - embedding_pipeline - INFO - Found 4 products: Danfe_Corp_Product_1, Danfe_Corp_Product_2, Danfe_Corp_Product_3, Danfe_Corp_Product_4
+2025-05-02 12:54:29,296 - embedding_pipeline - INFO - Processing 4 products
+2025-05-02 12:54:29,296 - embedding_pipeline - INFO - Processing product: Danfe_Corp_Product_1
+2025-05-02 12:54:29,296 - embedding_pipeline - INFO - Looking for categories in product: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1
+2025-05-02 12:54:29,297 - embedding_pipeline - INFO - Found 43 categories for product Danfe_Corp_Product_1
+2025-05-02 12:54:29,297 - embedding_pipeline - INFO - Processing 43 categories for product: Danfe_Corp_Product_1
+2025-05-02 12:54:29,300 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:29,308 - embedding_pipeline - INFO - Loaded 158 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:29,308 - embedding_pipeline - INFO - Generating embeddings for 158 questions in Danfe_Corp_Product_1/Acceptable_Use_Policy
+2025-05-02 12:54:29,687 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Acceptable_Use_Policy
+2025-05-02 12:54:29,687 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Access_Control\data.csv
+2025-05-02 12:54:29,705 - embedding_pipeline - INFO - Loaded 2274 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Access_Control\data.csv
+2025-05-02 12:54:29,706 - embedding_pipeline - INFO - Generating embeddings for 2274 questions in Danfe_Corp_Product_1/Access_Control
+2025-05-02 12:54:30,466 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Access_Control
+2025-05-02 12:54:30,466 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:30,472 - embedding_pipeline - INFO - Loaded 328 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:30,472 - embedding_pipeline - INFO - Generating embeddings for 328 questions in Danfe_Corp_Product_1/Anti-virus_and_Malware_Control
+2025-05-02 12:54:30,616 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Anti-virus_and_Malware_Control
+2025-05-02 12:54:30,617 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\API_Security\data.csv
+2025-05-02 12:54:30,621 - embedding_pipeline - INFO - Loaded 309 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\API_Security\data.csv
+2025-05-02 12:54:30,622 - embedding_pipeline - INFO - Generating embeddings for 309 questions in Danfe_Corp_Product_1/API_Security
+2025-05-02 12:54:30,715 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/API_Security
+2025-05-02 12:54:30,715 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Application\data.csv
+2025-05-02 12:54:30,730 - embedding_pipeline - INFO - Loaded 1910 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Application\data.csv
+2025-05-02 12:54:30,730 - embedding_pipeline - INFO - Generating embeddings for 1910 questions in Danfe_Corp_Product_1/Application
+2025-05-02 12:54:31,302 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Application
+2025-05-02 12:54:31,303 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Application_Security\data.csv
+2025-05-02 12:54:31,313 - embedding_pipeline - INFO - Loaded 695 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Application_Security\data.csv
+2025-05-02 12:54:31,314 - embedding_pipeline - INFO - Generating embeddings for 695 questions in Danfe_Corp_Product_1/Application_Security
+2025-05-02 12:54:31,549 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Application_Security
+2025-05-02 12:54:31,549 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Artificial_Intelligence\data.csv
+2025-05-02 12:54:31,560 - embedding_pipeline - INFO - Loaded 920 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Artificial_Intelligence\data.csv
+2025-05-02 12:54:31,560 - embedding_pipeline - INFO - Generating embeddings for 920 questions in Danfe_Corp_Product_1/Artificial_Intelligence
+2025-05-02 12:54:31,844 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Artificial_Intelligence
+2025-05-02 12:54:31,845 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Asset_Management\data.csv
+2025-05-02 12:54:31,856 - embedding_pipeline - INFO - Loaded 961 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Asset_Management\data.csv
+2025-05-02 12:54:31,856 - embedding_pipeline - INFO - Generating embeddings for 961 questions in Danfe_Corp_Product_1/Asset_Management
+2025-05-02 12:54:32,233 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Asset_Management
+2025-05-02 12:54:32,233 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Audit_Assurance\data.csv
+2025-05-02 12:54:32,245 - embedding_pipeline - INFO - Loaded 985 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Audit_Assurance\data.csv
+2025-05-02 12:54:32,246 - embedding_pipeline - INFO - Generating embeddings for 985 questions in Danfe_Corp_Product_1/Audit_Assurance
+2025-05-02 12:54:32,570 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Audit_Assurance
+2025-05-02 12:54:32,570 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:32,578 - embedding_pipeline - INFO - Loaded 589 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:32,579 - embedding_pipeline - INFO - Generating embeddings for 589 questions in Danfe_Corp_Product_1/Backup_Policy_and_Procedures
+2025-05-02 12:54:32,800 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Backup_Policy_and_Procedures
+2025-05-02 12:54:32,800 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:32,817 - embedding_pipeline - INFO - Loaded 1545 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:32,817 - embedding_pipeline - INFO - Generating embeddings for 1545 questions in Danfe_Corp_Product_1/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:33,394 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:33,396 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:33,405 - embedding_pipeline - INFO - Loaded 607 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:33,406 - embedding_pipeline - INFO - Generating embeddings for 607 questions in Danfe_Corp_Product_1/Change_Control_and_Configuration_Management
+2025-05-02 12:54:33,639 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Change_Control_and_Configuration_Management
+2025-05-02 12:54:33,640 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:33,658 - embedding_pipeline - INFO - Loaded 2235 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:33,658 - embedding_pipeline - INFO - Generating embeddings for 2235 questions in Danfe_Corp_Product_1/Data_Governance_and_Classification
+2025-05-02 12:54:34,498 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Data_Governance_and_Classification
+2025-05-02 12:54:34,498 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:34,507 - embedding_pipeline - INFO - Loaded 637 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:34,507 - embedding_pipeline - INFO - Generating embeddings for 637 questions in Danfe_Corp_Product_1/Data_Retention_and_Deletion
+2025-05-02 12:54:34,737 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Data_Retention_and_Deletion
+2025-05-02 12:54:34,737 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Security\data.csv
+2025-05-02 12:54:34,768 - embedding_pipeline - INFO - Loaded 3709 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Data_Security\data.csv
+2025-05-02 12:54:34,769 - embedding_pipeline - INFO - Generating embeddings for 3709 questions in Danfe_Corp_Product_1/Data_Security
+2025-05-02 12:54:35,819 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Data_Security
+2025-05-02 12:54:35,819 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Email_Security\data.csv
+2025-05-02 12:54:35,823 - embedding_pipeline - INFO - Loaded 174 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Email_Security\data.csv
+2025-05-02 12:54:35,823 - embedding_pipeline - INFO - Generating embeddings for 174 questions in Danfe_Corp_Product_1/Email_Security
+2025-05-02 12:54:35,923 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Email_Security
+2025-05-02 12:54:35,923 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:35,941 - embedding_pipeline - INFO - Loaded 1741 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:35,941 - embedding_pipeline - INFO - Generating embeddings for 1741 questions in Danfe_Corp_Product_1/Encryption_and_Key_Management
+2025-05-02 12:54:36,506 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Encryption_and_Key_Management
+2025-05-02 12:54:36,506 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\ESG\data.csv
+2025-05-02 12:54:36,512 - embedding_pipeline - INFO - Loaded 251 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\ESG\data.csv
+2025-05-02 12:54:36,513 - embedding_pipeline - INFO - Generating embeddings for 251 questions in Danfe_Corp_Product_1/ESG
+2025-05-02 12:54:36,603 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/ESG
+2025-05-02 12:54:36,603 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Hosting\data.csv
+2025-05-02 12:54:36,613 - embedding_pipeline - INFO - Loaded 953 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Hosting\data.csv
+2025-05-02 12:54:36,613 - embedding_pipeline - INFO - Generating embeddings for 953 questions in Danfe_Corp_Product_1/Hosting
+2025-05-02 12:54:36,954 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Hosting
+2025-05-02 12:54:36,955 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Human_Resources\data.csv
+2025-05-02 12:54:36,963 - embedding_pipeline - INFO - Loaded 869 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Human_Resources\data.csv
+2025-05-02 12:54:36,964 - embedding_pipeline - INFO - Generating embeddings for 869 questions in Danfe_Corp_Product_1/Human_Resources
+2025-05-02 12:54:37,318 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Human_Resources
+2025-05-02 12:54:37,319 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:37,328 - embedding_pipeline - INFO - Loaded 950 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:37,329 - embedding_pipeline - INFO - Generating embeddings for 950 questions in Danfe_Corp_Product_1/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:37,659 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:37,659 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Incident_Management\data.csv
+2025-05-02 12:54:37,677 - embedding_pipeline - INFO - Loaded 1490 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Incident_Management\data.csv
+2025-05-02 12:54:37,677 - embedding_pipeline - INFO - Generating embeddings for 1490 questions in Danfe_Corp_Product_1/Incident_Management
+2025-05-02 12:54:38,158 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Incident_Management
+2025-05-02 12:54:38,158 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Information_Security\data.csv
+2025-05-02 12:54:38,168 - embedding_pipeline - INFO - Loaded 517 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Information_Security\data.csv
+2025-05-02 12:54:38,169 - embedding_pipeline - INFO - Generating embeddings for 517 questions in Danfe_Corp_Product_1/Information_Security
+2025-05-02 12:54:38,372 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Information_Security
+2025-05-02 12:54:38,372 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Integration\data.csv
+2025-05-02 12:54:38,377 - embedding_pipeline - INFO - Loaded 246 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Integration\data.csv
+2025-05-02 12:54:38,377 - embedding_pipeline - INFO - Generating embeddings for 246 questions in Danfe_Corp_Product_1/Integration
+2025-05-02 12:54:38,473 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Integration
+2025-05-02 12:54:38,473 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:38,476 - embedding_pipeline - INFO - Loaded 123 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:38,477 - embedding_pipeline - INFO - Generating embeddings for 123 questions in Danfe_Corp_Product_1/Interoperability_and_Portability_Measures
+2025-05-02 12:54:38,526 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Interoperability_and_Portability_Measures
+2025-05-02 12:54:38,527 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Legal\data.csv
+2025-05-02 12:54:38,534 - embedding_pipeline - INFO - Loaded 616 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Legal\data.csv
+2025-05-02 12:54:38,534 - embedding_pipeline - INFO - Generating embeddings for 616 questions in Danfe_Corp_Product_1/Legal
+2025-05-02 12:54:38,763 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Legal
+2025-05-02 12:54:38,763 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:38,781 - embedding_pipeline - INFO - Loaded 1489 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:38,781 - embedding_pipeline - INFO - Generating embeddings for 1489 questions in Danfe_Corp_Product_1/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:39,337 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:39,337 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Mobile_Device_Security\data.csv
+2025-05-02 12:54:39,342 - embedding_pipeline - INFO - Loaded 246 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Mobile_Device_Security\data.csv
+2025-05-02 12:54:39,342 - embedding_pipeline - INFO - Generating embeddings for 246 questions in Danfe_Corp_Product_1/Mobile_Device_Security
+2025-05-02 12:54:39,432 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Mobile_Device_Security
+2025-05-02 12:54:39,433 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Network_Security\data.csv
+2025-05-02 12:54:39,451 - embedding_pipeline - INFO - Loaded 1820 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Network_Security\data.csv
+2025-05-02 12:54:39,451 - embedding_pipeline - INFO - Generating embeddings for 1820 questions in Danfe_Corp_Product_1/Network_Security
+2025-05-02 12:54:40,020 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Network_Security
+2025-05-02 12:54:40,020 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Organization\data.csv
+2025-05-02 12:54:40,040 - embedding_pipeline - INFO - Loaded 3139 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Organization\data.csv
+2025-05-02 12:54:40,041 - embedding_pipeline - INFO - Generating embeddings for 3139 questions in Danfe_Corp_Product_1/Organization
+2025-05-02 12:54:40,981 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Organization
+2025-05-02 12:54:40,982 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:40,993 - embedding_pipeline - INFO - Loaded 1306 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:40,993 - embedding_pipeline - INFO - Generating embeddings for 1306 questions in Danfe_Corp_Product_1/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:41,381 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:41,381 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Patch_Management\data.csv
+2025-05-02 12:54:41,392 - embedding_pipeline - INFO - Loaded 409 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Patch_Management\data.csv
+2025-05-02 12:54:41,392 - embedding_pipeline - INFO - Generating embeddings for 409 questions in Danfe_Corp_Product_1/Patch_Management
+2025-05-02 12:54:41,556 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Patch_Management
+2025-05-02 12:54:41,557 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Penetration_Testing\data.csv
+2025-05-02 12:54:41,564 - embedding_pipeline - INFO - Loaded 321 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Penetration_Testing\data.csv
+2025-05-02 12:54:41,564 - embedding_pipeline - INFO - Generating embeddings for 321 questions in Danfe_Corp_Product_1/Penetration_Testing
+2025-05-02 12:54:41,684 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Penetration_Testing
+2025-05-02 12:54:41,684 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:41,693 - embedding_pipeline - INFO - Loaded 766 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:41,693 - embedding_pipeline - INFO - Generating embeddings for 766 questions in Danfe_Corp_Product_1/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:41,932 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:41,934 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:41,945 - embedding_pipeline - INFO - Loaded 1388 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:41,945 - embedding_pipeline - INFO - Generating embeddings for 1388 questions in Danfe_Corp_Product_1/Privacy_and_Compliance
+2025-05-02 12:54:42,477 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Privacy_and_Compliance
+2025-05-02 12:54:42,477 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Risk_Management\data.csv
+2025-05-02 12:54:42,490 - embedding_pipeline - INFO - Loaded 553 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Risk_Management\data.csv
+2025-05-02 12:54:42,490 - embedding_pipeline - INFO - Generating embeddings for 553 questions in Danfe_Corp_Product_1/Risk_Management
+2025-05-02 12:54:42,788 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Risk_Management
+2025-05-02 12:54:42,788 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Security_Awareness\data.csv
+2025-05-02 12:54:42,796 - embedding_pipeline - INFO - Loaded 480 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Security_Awareness\data.csv
+2025-05-02 12:54:42,796 - embedding_pipeline - INFO - Generating embeddings for 480 questions in Danfe_Corp_Product_1/Security_Awareness
+2025-05-02 12:54:42,962 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Security_Awareness
+2025-05-02 12:54:42,963 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Server_Security\data.csv
+2025-05-02 12:54:42,971 - embedding_pipeline - INFO - Loaded 441 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Server_Security\data.csv
+2025-05-02 12:54:42,972 - embedding_pipeline - INFO - Generating embeddings for 441 questions in Danfe_Corp_Product_1/Server_Security
+2025-05-02 12:54:43,175 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Server_Security
+2025-05-02 12:54:43,176 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Session_Management\data.csv
+2025-05-02 12:54:43,179 - embedding_pipeline - INFO - Loaded 176 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Session_Management\data.csv
+2025-05-02 12:54:43,180 - embedding_pipeline - INFO - Generating embeddings for 176 questions in Danfe_Corp_Product_1/Session_Management
+2025-05-02 12:54:43,265 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Session_Management
+2025-05-02 12:54:43,266 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:43,276 - embedding_pipeline - INFO - Loaded 1080 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:43,276 - embedding_pipeline - INFO - Generating embeddings for 1080 questions in Danfe_Corp_Product_1/Software_Development_Life_Cycle
+2025-05-02 12:54:43,638 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Software_Development_Life_Cycle
+2025-05-02 12:54:43,638 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:43,650 - embedding_pipeline - INFO - Loaded 1430 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:43,651 - embedding_pipeline - INFO - Generating embeddings for 1430 questions in Danfe_Corp_Product_1/Supply_Chain__Vendor_Management
+2025-05-02 12:54:44,127 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Supply_Chain__Vendor_Management
+2025-05-02 12:54:44,127 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:44,137 - embedding_pipeline - INFO - Loaded 981 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:44,137 - embedding_pipeline - INFO - Generating embeddings for 981 questions in Danfe_Corp_Product_1/Vulnerability_and_Threat_Management
+2025-05-02 12:54:44,552 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Vulnerability_and_Threat_Management
+2025-05-02 12:54:44,553 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Wireless_Security\data.csv
+2025-05-02 12:54:44,555 - embedding_pipeline - INFO - Loaded 106 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_1\Wireless_Security\data.csv
+2025-05-02 12:54:44,555 - embedding_pipeline - INFO - Generating embeddings for 106 questions in Danfe_Corp_Product_1/Wireless_Security
+2025-05-02 12:54:44,604 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_1/Wireless_Security
+2025-05-02 12:54:44,774 - embedding_pipeline - INFO - Processing product: Danfe_Corp_Product_2
+2025-05-02 12:54:44,774 - embedding_pipeline - INFO - Looking for categories in product: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2
+2025-05-02 12:54:44,775 - embedding_pipeline - INFO - Found 41 categories for product Danfe_Corp_Product_2
+2025-05-02 12:54:44,775 - embedding_pipeline - INFO - Processing 41 categories for product: Danfe_Corp_Product_2
+2025-05-02 12:54:44,776 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:44,777 - embedding_pipeline - INFO - Loaded 18 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:44,778 - embedding_pipeline - INFO - Generating embeddings for 18 questions in Danfe_Corp_Product_2/Acceptable_Use_Policy
+2025-05-02 12:54:44,790 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Acceptable_Use_Policy
+2025-05-02 12:54:44,790 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Access_Control\data.csv
+2025-05-02 12:54:44,793 - embedding_pipeline - INFO - Loaded 162 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Access_Control\data.csv
+2025-05-02 12:54:44,793 - embedding_pipeline - INFO - Generating embeddings for 162 questions in Danfe_Corp_Product_2/Access_Control
+2025-05-02 12:54:44,876 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Access_Control
+2025-05-02 12:54:44,876 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:44,879 - embedding_pipeline - INFO - Loaded 23 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:44,879 - embedding_pipeline - INFO - Generating embeddings for 23 questions in Danfe_Corp_Product_2/Anti-virus_and_Malware_Control
+2025-05-02 12:54:44,892 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Anti-virus_and_Malware_Control
+2025-05-02 12:54:44,892 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\API_Security\data.csv
+2025-05-02 12:54:44,894 - embedding_pipeline - INFO - Loaded 18 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\API_Security\data.csv
+2025-05-02 12:54:44,894 - embedding_pipeline - INFO - Generating embeddings for 18 questions in Danfe_Corp_Product_2/API_Security
+2025-05-02 12:54:44,912 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/API_Security
+2025-05-02 12:54:44,912 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Application\data.csv
+2025-05-02 12:54:44,915 - embedding_pipeline - INFO - Loaded 89 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Application\data.csv
+2025-05-02 12:54:44,916 - embedding_pipeline - INFO - Generating embeddings for 89 questions in Danfe_Corp_Product_2/Application
+2025-05-02 12:54:44,959 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Application
+2025-05-02 12:54:44,959 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Application_Security\data.csv
+2025-05-02 12:54:44,963 - embedding_pipeline - INFO - Loaded 163 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Application_Security\data.csv
+2025-05-02 12:54:44,964 - embedding_pipeline - INFO - Generating embeddings for 163 questions in Danfe_Corp_Product_2/Application_Security
+2025-05-02 12:54:45,028 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Application_Security
+2025-05-02 12:54:45,029 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Asset_Management\data.csv
+2025-05-02 12:54:45,031 - embedding_pipeline - INFO - Loaded 59 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Asset_Management\data.csv
+2025-05-02 12:54:45,032 - embedding_pipeline - INFO - Generating embeddings for 59 questions in Danfe_Corp_Product_2/Asset_Management
+2025-05-02 12:54:45,060 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Asset_Management
+2025-05-02 12:54:45,060 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Audit_Assurance\data.csv
+2025-05-02 12:54:45,063 - embedding_pipeline - INFO - Loaded 111 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Audit_Assurance\data.csv
+2025-05-02 12:54:45,063 - embedding_pipeline - INFO - Generating embeddings for 111 questions in Danfe_Corp_Product_2/Audit_Assurance
+2025-05-02 12:54:45,134 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Audit_Assurance
+2025-05-02 12:54:45,134 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:45,136 - embedding_pipeline - INFO - Loaded 29 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:45,137 - embedding_pipeline - INFO - Generating embeddings for 29 questions in Danfe_Corp_Product_2/Backup_Policy_and_Procedures
+2025-05-02 12:54:45,151 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Backup_Policy_and_Procedures
+2025-05-02 12:54:45,152 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:45,155 - embedding_pipeline - INFO - Loaded 95 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:45,155 - embedding_pipeline - INFO - Generating embeddings for 95 questions in Danfe_Corp_Product_2/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:45,195 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:45,195 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:45,199 - embedding_pipeline - INFO - Loaded 57 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:45,199 - embedding_pipeline - INFO - Generating embeddings for 57 questions in Danfe_Corp_Product_2/Change_Control_and_Configuration_Management
+2025-05-02 12:54:45,234 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Change_Control_and_Configuration_Management
+2025-05-02 12:54:45,234 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:45,238 - embedding_pipeline - INFO - Loaded 114 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:45,238 - embedding_pipeline - INFO - Generating embeddings for 114 questions in Danfe_Corp_Product_2/Data_Governance_and_Classification
+2025-05-02 12:54:45,293 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Data_Governance_and_Classification
+2025-05-02 12:54:45,293 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:45,296 - embedding_pipeline - INFO - Loaded 55 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:45,297 - embedding_pipeline - INFO - Generating embeddings for 55 questions in Danfe_Corp_Product_2/Data_Retention_and_Deletion
+2025-05-02 12:54:45,322 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Data_Retention_and_Deletion
+2025-05-02 12:54:45,323 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Security\data.csv
+2025-05-02 12:54:45,325 - embedding_pipeline - INFO - Loaded 73 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Data_Security\data.csv
+2025-05-02 12:54:45,326 - embedding_pipeline - INFO - Generating embeddings for 73 questions in Danfe_Corp_Product_2/Data_Security
+2025-05-02 12:54:45,365 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Data_Security
+2025-05-02 12:54:45,366 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Email_Security\data.csv
+2025-05-02 12:54:45,368 - embedding_pipeline - INFO - Loaded 6 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Email_Security\data.csv
+2025-05-02 12:54:45,368 - embedding_pipeline - INFO - Generating embeddings for 6 questions in Danfe_Corp_Product_2/Email_Security
+2025-05-02 12:54:45,383 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Email_Security
+2025-05-02 12:54:45,383 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:45,386 - embedding_pipeline - INFO - Loaded 120 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:45,387 - embedding_pipeline - INFO - Generating embeddings for 120 questions in Danfe_Corp_Product_2/Encryption_and_Key_Management
+2025-05-02 12:54:45,441 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Encryption_and_Key_Management
+2025-05-02 12:54:45,441 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Hosting\data.csv
+2025-05-02 12:54:45,445 - embedding_pipeline - INFO - Loaded 49 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Hosting\data.csv
+2025-05-02 12:54:45,445 - embedding_pipeline - INFO - Generating embeddings for 49 questions in Danfe_Corp_Product_2/Hosting
+2025-05-02 12:54:45,476 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Hosting
+2025-05-02 12:54:45,477 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Human_Resources\data.csv
+2025-05-02 12:54:45,480 - embedding_pipeline - INFO - Loaded 100 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Human_Resources\data.csv
+2025-05-02 12:54:45,481 - embedding_pipeline - INFO - Generating embeddings for 100 questions in Danfe_Corp_Product_2/Human_Resources
+2025-05-02 12:54:45,531 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Human_Resources
+2025-05-02 12:54:45,533 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:45,537 - embedding_pipeline - INFO - Loaded 60 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:45,537 - embedding_pipeline - INFO - Generating embeddings for 60 questions in Danfe_Corp_Product_2/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:45,582 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:45,584 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Incident_Management\data.csv
+2025-05-02 12:54:45,587 - embedding_pipeline - INFO - Loaded 77 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Incident_Management\data.csv
+2025-05-02 12:54:45,587 - embedding_pipeline - INFO - Generating embeddings for 77 questions in Danfe_Corp_Product_2/Incident_Management
+2025-05-02 12:54:45,619 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Incident_Management
+2025-05-02 12:54:45,619 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Information_Security\data.csv
+2025-05-02 12:54:45,623 - embedding_pipeline - INFO - Loaded 62 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Information_Security\data.csv
+2025-05-02 12:54:45,623 - embedding_pipeline - INFO - Generating embeddings for 62 questions in Danfe_Corp_Product_2/Information_Security
+2025-05-02 12:54:45,661 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Information_Security
+2025-05-02 12:54:45,661 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Integration\data.csv
+2025-05-02 12:54:45,664 - embedding_pipeline - INFO - Loaded 9 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Integration\data.csv
+2025-05-02 12:54:45,664 - embedding_pipeline - INFO - Generating embeddings for 9 questions in Danfe_Corp_Product_2/Integration
+2025-05-02 12:54:45,683 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Integration
+2025-05-02 12:54:45,683 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:45,687 - embedding_pipeline - INFO - Loaded 9 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:45,688 - embedding_pipeline - INFO - Generating embeddings for 9 questions in Danfe_Corp_Product_2/Interoperability_and_Portability_Measures
+2025-05-02 12:54:45,705 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Interoperability_and_Portability_Measures
+2025-05-02 12:54:45,705 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Legal\data.csv
+2025-05-02 12:54:45,709 - embedding_pipeline - INFO - Loaded 44 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Legal\data.csv
+2025-05-02 12:54:45,709 - embedding_pipeline - INFO - Generating embeddings for 44 questions in Danfe_Corp_Product_2/Legal
+2025-05-02 12:54:45,739 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Legal
+2025-05-02 12:54:45,739 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:45,742 - embedding_pipeline - INFO - Loaded 108 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:45,743 - embedding_pipeline - INFO - Generating embeddings for 108 questions in Danfe_Corp_Product_2/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:45,796 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:45,797 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Mobile_Device_Security\data.csv
+2025-05-02 12:54:45,799 - embedding_pipeline - INFO - Loaded 47 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Mobile_Device_Security\data.csv
+2025-05-02 12:54:45,799 - embedding_pipeline - INFO - Generating embeddings for 47 questions in Danfe_Corp_Product_2/Mobile_Device_Security
+2025-05-02 12:54:45,827 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Mobile_Device_Security
+2025-05-02 12:54:45,828 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Network_Security\data.csv
+2025-05-02 12:54:45,832 - embedding_pipeline - INFO - Loaded 123 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Network_Security\data.csv
+2025-05-02 12:54:45,832 - embedding_pipeline - INFO - Generating embeddings for 123 questions in Danfe_Corp_Product_2/Network_Security
+2025-05-02 12:54:45,902 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Network_Security
+2025-05-02 12:54:45,902 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Organization\data.csv
+2025-05-02 12:54:45,907 - embedding_pipeline - INFO - Loaded 172 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Organization\data.csv
+2025-05-02 12:54:45,908 - embedding_pipeline - INFO - Generating embeddings for 172 questions in Danfe_Corp_Product_2/Organization
+2025-05-02 12:54:46,014 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Organization
+2025-05-02 12:54:46,014 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:46,017 - embedding_pipeline - INFO - Loaded 116 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:46,017 - embedding_pipeline - INFO - Generating embeddings for 116 questions in Danfe_Corp_Product_2/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:46,080 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:46,080 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Patch_Management\data.csv
+2025-05-02 12:54:46,082 - embedding_pipeline - INFO - Loaded 23 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Patch_Management\data.csv
+2025-05-02 12:54:46,083 - embedding_pipeline - INFO - Generating embeddings for 23 questions in Danfe_Corp_Product_2/Patch_Management
+2025-05-02 12:54:46,101 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Patch_Management
+2025-05-02 12:54:46,102 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Penetration_Testing\data.csv
+2025-05-02 12:54:46,105 - embedding_pipeline - INFO - Loaded 37 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Penetration_Testing\data.csv
+2025-05-02 12:54:46,105 - embedding_pipeline - INFO - Generating embeddings for 37 questions in Danfe_Corp_Product_2/Penetration_Testing
+2025-05-02 12:54:46,132 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Penetration_Testing
+2025-05-02 12:54:46,132 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:46,136 - embedding_pipeline - INFO - Loaded 95 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:46,136 - embedding_pipeline - INFO - Generating embeddings for 95 questions in Danfe_Corp_Product_2/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:46,188 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:46,188 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:46,193 - embedding_pipeline - INFO - Loaded 77 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:46,193 - embedding_pipeline - INFO - Generating embeddings for 77 questions in Danfe_Corp_Product_2/Privacy_and_Compliance
+2025-05-02 12:54:46,228 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Privacy_and_Compliance
+2025-05-02 12:54:46,229 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Risk_Management\data.csv
+2025-05-02 12:54:46,231 - embedding_pipeline - INFO - Loaded 31 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Risk_Management\data.csv
+2025-05-02 12:54:46,231 - embedding_pipeline - INFO - Generating embeddings for 31 questions in Danfe_Corp_Product_2/Risk_Management
+2025-05-02 12:54:46,250 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Risk_Management
+2025-05-02 12:54:46,251 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Security_Awareness\data.csv
+2025-05-02 12:54:46,253 - embedding_pipeline - INFO - Loaded 26 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Security_Awareness\data.csv
+2025-05-02 12:54:46,253 - embedding_pipeline - INFO - Generating embeddings for 26 questions in Danfe_Corp_Product_2/Security_Awareness
+2025-05-02 12:54:46,267 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Security_Awareness
+2025-05-02 12:54:46,267 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Server_Security\data.csv
+2025-05-02 12:54:46,269 - embedding_pipeline - INFO - Loaded 18 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Server_Security\data.csv
+2025-05-02 12:54:46,270 - embedding_pipeline - INFO - Generating embeddings for 18 questions in Danfe_Corp_Product_2/Server_Security
+2025-05-02 12:54:46,285 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Server_Security
+2025-05-02 12:54:46,285 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Session_Management\data.csv
+2025-05-02 12:54:46,288 - embedding_pipeline - INFO - Loaded 8 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Session_Management\data.csv
+2025-05-02 12:54:46,288 - embedding_pipeline - INFO - Generating embeddings for 8 questions in Danfe_Corp_Product_2/Session_Management
+2025-05-02 12:54:46,302 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Session_Management
+2025-05-02 12:54:46,302 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:46,304 - embedding_pipeline - INFO - Loaded 84 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:46,304 - embedding_pipeline - INFO - Generating embeddings for 84 questions in Danfe_Corp_Product_2/Software_Development_Life_Cycle
+2025-05-02 12:54:46,346 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Software_Development_Life_Cycle
+2025-05-02 12:54:46,346 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:46,350 - embedding_pipeline - INFO - Loaded 90 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:46,350 - embedding_pipeline - INFO - Generating embeddings for 90 questions in Danfe_Corp_Product_2/Supply_Chain__Vendor_Management
+2025-05-02 12:54:46,405 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Supply_Chain__Vendor_Management
+2025-05-02 12:54:46,406 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:46,409 - embedding_pipeline - INFO - Loaded 60 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:46,410 - embedding_pipeline - INFO - Generating embeddings for 60 questions in Danfe_Corp_Product_2/Vulnerability_and_Threat_Management
+2025-05-02 12:54:46,447 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Vulnerability_and_Threat_Management
+2025-05-02 12:54:46,447 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Wireless_Security\data.csv
+2025-05-02 12:54:46,450 - embedding_pipeline - INFO - Loaded 8 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_2\Wireless_Security\data.csv
+2025-05-02 12:54:46,451 - embedding_pipeline - INFO - Generating embeddings for 8 questions in Danfe_Corp_Product_2/Wireless_Security
+2025-05-02 12:54:46,465 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_2/Wireless_Security
+2025-05-02 12:54:46,481 - embedding_pipeline - INFO - Processing product: Danfe_Corp_Product_3
+2025-05-02 12:54:46,481 - embedding_pipeline - INFO - Looking for categories in product: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3
+2025-05-02 12:54:46,483 - embedding_pipeline - INFO - Found 42 categories for product Danfe_Corp_Product_3
+2025-05-02 12:54:46,483 - embedding_pipeline - INFO - Processing 42 categories for product: Danfe_Corp_Product_3
+2025-05-02 12:54:46,483 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:46,485 - embedding_pipeline - INFO - Loaded 18 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:46,486 - embedding_pipeline - INFO - Generating embeddings for 18 questions in Danfe_Corp_Product_3/Acceptable_Use_Policy
+2025-05-02 12:54:46,506 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Acceptable_Use_Policy
+2025-05-02 12:54:46,506 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Access_Control\data.csv
+2025-05-02 12:54:46,510 - embedding_pipeline - INFO - Loaded 169 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Access_Control\data.csv
+2025-05-02 12:54:46,510 - embedding_pipeline - INFO - Generating embeddings for 169 questions in Danfe_Corp_Product_3/Access_Control
+2025-05-02 12:54:46,622 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Access_Control
+2025-05-02 12:54:46,622 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:46,625 - embedding_pipeline - INFO - Loaded 36 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:46,625 - embedding_pipeline - INFO - Generating embeddings for 36 questions in Danfe_Corp_Product_3/Anti-virus_and_Malware_Control
+2025-05-02 12:54:46,653 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Anti-virus_and_Malware_Control
+2025-05-02 12:54:46,654 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\API_Security\data.csv
+2025-05-02 12:54:46,657 - embedding_pipeline - INFO - Loaded 15 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\API_Security\data.csv
+2025-05-02 12:54:46,658 - embedding_pipeline - INFO - Generating embeddings for 15 questions in Danfe_Corp_Product_3/API_Security
+2025-05-02 12:54:46,681 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/API_Security
+2025-05-02 12:54:46,682 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Application\data.csv
+2025-05-02 12:54:46,687 - embedding_pipeline - INFO - Loaded 88 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Application\data.csv
+2025-05-02 12:54:46,687 - embedding_pipeline - INFO - Generating embeddings for 88 questions in Danfe_Corp_Product_3/Application
+2025-05-02 12:54:46,738 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Application
+2025-05-02 12:54:46,739 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Application_Security\data.csv
+2025-05-02 12:54:46,745 - embedding_pipeline - INFO - Loaded 148 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Application_Security\data.csv
+2025-05-02 12:54:46,745 - embedding_pipeline - INFO - Generating embeddings for 148 questions in Danfe_Corp_Product_3/Application_Security
+2025-05-02 12:54:46,797 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Application_Security
+2025-05-02 12:54:46,797 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Artificial_Intelligence\data.csv
+2025-05-02 12:54:46,799 - embedding_pipeline - INFO - Loaded 1 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Artificial_Intelligence\data.csv
+2025-05-02 12:54:46,799 - embedding_pipeline - INFO - Generating embeddings for 1 questions in Danfe_Corp_Product_3/Artificial_Intelligence
+2025-05-02 12:54:46,807 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Artificial_Intelligence
+2025-05-02 12:54:46,807 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Asset_Management\data.csv
+2025-05-02 12:54:46,809 - embedding_pipeline - INFO - Loaded 65 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Asset_Management\data.csv
+2025-05-02 12:54:46,809 - embedding_pipeline - INFO - Generating embeddings for 65 questions in Danfe_Corp_Product_3/Asset_Management
+2025-05-02 12:54:46,849 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Asset_Management
+2025-05-02 12:54:46,849 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Audit_Assurance\data.csv
+2025-05-02 12:54:46,852 - embedding_pipeline - INFO - Loaded 106 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Audit_Assurance\data.csv
+2025-05-02 12:54:46,852 - embedding_pipeline - INFO - Generating embeddings for 106 questions in Danfe_Corp_Product_3/Audit_Assurance
+2025-05-02 12:54:46,912 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Audit_Assurance
+2025-05-02 12:54:46,912 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:46,915 - embedding_pipeline - INFO - Loaded 33 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:46,916 - embedding_pipeline - INFO - Generating embeddings for 33 questions in Danfe_Corp_Product_3/Backup_Policy_and_Procedures
+2025-05-02 12:54:46,947 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Backup_Policy_and_Procedures
+2025-05-02 12:54:46,947 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:46,949 - embedding_pipeline - INFO - Loaded 99 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:46,950 - embedding_pipeline - INFO - Generating embeddings for 99 questions in Danfe_Corp_Product_3/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:47,003 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:47,003 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:47,006 - embedding_pipeline - INFO - Loaded 65 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:47,006 - embedding_pipeline - INFO - Generating embeddings for 65 questions in Danfe_Corp_Product_3/Change_Control_and_Configuration_Management
+2025-05-02 12:54:47,063 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Change_Control_and_Configuration_Management
+2025-05-02 12:54:47,064 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:47,067 - embedding_pipeline - INFO - Loaded 134 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:47,068 - embedding_pipeline - INFO - Generating embeddings for 134 questions in Danfe_Corp_Product_3/Data_Governance_and_Classification
+2025-05-02 12:54:47,160 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Data_Governance_and_Classification
+2025-05-02 12:54:47,161 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:47,165 - embedding_pipeline - INFO - Loaded 61 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:47,166 - embedding_pipeline - INFO - Generating embeddings for 61 questions in Danfe_Corp_Product_3/Data_Retention_and_Deletion
+2025-05-02 12:54:47,205 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Data_Retention_and_Deletion
+2025-05-02 12:54:47,205 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Security\data.csv
+2025-05-02 12:54:47,210 - embedding_pipeline - INFO - Loaded 94 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Data_Security\data.csv
+2025-05-02 12:54:47,210 - embedding_pipeline - INFO - Generating embeddings for 94 questions in Danfe_Corp_Product_3/Data_Security
+2025-05-02 12:54:47,247 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Data_Security
+2025-05-02 12:54:47,247 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Email_Security\data.csv
+2025-05-02 12:54:47,249 - embedding_pipeline - INFO - Loaded 5 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Email_Security\data.csv
+2025-05-02 12:54:47,249 - embedding_pipeline - INFO - Generating embeddings for 5 questions in Danfe_Corp_Product_3/Email_Security
+2025-05-02 12:54:47,265 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Email_Security
+2025-05-02 12:54:47,265 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:47,269 - embedding_pipeline - INFO - Loaded 124 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:47,270 - embedding_pipeline - INFO - Generating embeddings for 124 questions in Danfe_Corp_Product_3/Encryption_and_Key_Management
+2025-05-02 12:54:47,325 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Encryption_and_Key_Management
+2025-05-02 12:54:47,325 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Hosting\data.csv
+2025-05-02 12:54:47,328 - embedding_pipeline - INFO - Loaded 58 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Hosting\data.csv
+2025-05-02 12:54:47,329 - embedding_pipeline - INFO - Generating embeddings for 58 questions in Danfe_Corp_Product_3/Hosting
+2025-05-02 12:54:47,365 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Hosting
+2025-05-02 12:54:47,365 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Human_Resources\data.csv
+2025-05-02 12:54:47,368 - embedding_pipeline - INFO - Loaded 85 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Human_Resources\data.csv
+2025-05-02 12:54:47,368 - embedding_pipeline - INFO - Generating embeddings for 85 questions in Danfe_Corp_Product_3/Human_Resources
+2025-05-02 12:54:47,445 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Human_Resources
+2025-05-02 12:54:47,445 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:47,447 - embedding_pipeline - INFO - Loaded 51 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:47,448 - embedding_pipeline - INFO - Generating embeddings for 51 questions in Danfe_Corp_Product_3/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:47,471 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:47,471 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Incident_Management\data.csv
+2025-05-02 12:54:47,474 - embedding_pipeline - INFO - Loaded 109 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Incident_Management\data.csv
+2025-05-02 12:54:47,474 - embedding_pipeline - INFO - Generating embeddings for 109 questions in Danfe_Corp_Product_3/Incident_Management
+2025-05-02 12:54:47,537 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Incident_Management
+2025-05-02 12:54:47,537 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Information_Security\data.csv
+2025-05-02 12:54:47,541 - embedding_pipeline - INFO - Loaded 58 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Information_Security\data.csv
+2025-05-02 12:54:47,541 - embedding_pipeline - INFO - Generating embeddings for 58 questions in Danfe_Corp_Product_3/Information_Security
+2025-05-02 12:54:47,587 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Information_Security
+2025-05-02 12:54:47,587 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Integration\data.csv
+2025-05-02 12:54:47,589 - embedding_pipeline - INFO - Loaded 6 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Integration\data.csv
+2025-05-02 12:54:47,590 - embedding_pipeline - INFO - Generating embeddings for 6 questions in Danfe_Corp_Product_3/Integration
+2025-05-02 12:54:47,610 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Integration
+2025-05-02 12:54:47,610 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:47,613 - embedding_pipeline - INFO - Loaded 10 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:47,613 - embedding_pipeline - INFO - Generating embeddings for 10 questions in Danfe_Corp_Product_3/Interoperability_and_Portability_Measures
+2025-05-02 12:54:47,634 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Interoperability_and_Portability_Measures
+2025-05-02 12:54:47,634 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Legal\data.csv
+2025-05-02 12:54:47,638 - embedding_pipeline - INFO - Loaded 37 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Legal\data.csv
+2025-05-02 12:54:47,638 - embedding_pipeline - INFO - Generating embeddings for 37 questions in Danfe_Corp_Product_3/Legal
+2025-05-02 12:54:47,665 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Legal
+2025-05-02 12:54:47,666 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:47,669 - embedding_pipeline - INFO - Loaded 100 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:47,670 - embedding_pipeline - INFO - Generating embeddings for 100 questions in Danfe_Corp_Product_3/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:47,733 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:47,733 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Mobile_Device_Security\data.csv
+2025-05-02 12:54:47,736 - embedding_pipeline - INFO - Loaded 34 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Mobile_Device_Security\data.csv
+2025-05-02 12:54:47,736 - embedding_pipeline - INFO - Generating embeddings for 34 questions in Danfe_Corp_Product_3/Mobile_Device_Security
+2025-05-02 12:54:47,759 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Mobile_Device_Security
+2025-05-02 12:54:47,759 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Network_Security\data.csv
+2025-05-02 12:54:47,762 - embedding_pipeline - INFO - Loaded 137 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Network_Security\data.csv
+2025-05-02 12:54:47,762 - embedding_pipeline - INFO - Generating embeddings for 137 questions in Danfe_Corp_Product_3/Network_Security
+2025-05-02 12:54:47,840 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Network_Security
+2025-05-02 12:54:47,840 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Organization\data.csv
+2025-05-02 12:54:47,845 - embedding_pipeline - INFO - Loaded 217 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Organization\data.csv
+2025-05-02 12:54:47,845 - embedding_pipeline - INFO - Generating embeddings for 217 questions in Danfe_Corp_Product_3/Organization
+2025-05-02 12:54:47,954 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Organization
+2025-05-02 12:54:47,954 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:47,957 - embedding_pipeline - INFO - Loaded 121 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:47,958 - embedding_pipeline - INFO - Generating embeddings for 121 questions in Danfe_Corp_Product_3/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:48,016 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:48,016 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Patch_Management\data.csv
+2025-05-02 12:54:48,019 - embedding_pipeline - INFO - Loaded 25 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Patch_Management\data.csv
+2025-05-02 12:54:48,020 - embedding_pipeline - INFO - Generating embeddings for 25 questions in Danfe_Corp_Product_3/Patch_Management
+2025-05-02 12:54:48,035 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Patch_Management
+2025-05-02 12:54:48,035 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Penetration_Testing\data.csv
+2025-05-02 12:54:48,038 - embedding_pipeline - INFO - Loaded 35 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Penetration_Testing\data.csv
+2025-05-02 12:54:48,038 - embedding_pipeline - INFO - Generating embeddings for 35 questions in Danfe_Corp_Product_3/Penetration_Testing
+2025-05-02 12:54:48,073 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Penetration_Testing
+2025-05-02 12:54:48,073 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:48,077 - embedding_pipeline - INFO - Loaded 116 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:48,078 - embedding_pipeline - INFO - Generating embeddings for 116 questions in Danfe_Corp_Product_3/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:48,133 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:48,134 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:48,136 - embedding_pipeline - INFO - Loaded 89 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:48,136 - embedding_pipeline - INFO - Generating embeddings for 89 questions in Danfe_Corp_Product_3/Privacy_and_Compliance
+2025-05-02 12:54:48,177 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Privacy_and_Compliance
+2025-05-02 12:54:48,177 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Risk_Management\data.csv
+2025-05-02 12:54:48,180 - embedding_pipeline - INFO - Loaded 56 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Risk_Management\data.csv
+2025-05-02 12:54:48,181 - embedding_pipeline - INFO - Generating embeddings for 56 questions in Danfe_Corp_Product_3/Risk_Management
+2025-05-02 12:54:48,208 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Risk_Management
+2025-05-02 12:54:48,209 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Security_Awareness\data.csv
+2025-05-02 12:54:48,211 - embedding_pipeline - INFO - Loaded 31 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Security_Awareness\data.csv
+2025-05-02 12:54:48,211 - embedding_pipeline - INFO - Generating embeddings for 31 questions in Danfe_Corp_Product_3/Security_Awareness
+2025-05-02 12:54:48,236 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Security_Awareness
+2025-05-02 12:54:48,236 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Server_Security\data.csv
+2025-05-02 12:54:48,238 - embedding_pipeline - INFO - Loaded 29 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Server_Security\data.csv
+2025-05-02 12:54:48,238 - embedding_pipeline - INFO - Generating embeddings for 29 questions in Danfe_Corp_Product_3/Server_Security
+2025-05-02 12:54:48,256 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Server_Security
+2025-05-02 12:54:48,256 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Session_Management\data.csv
+2025-05-02 12:54:48,259 - embedding_pipeline - INFO - Loaded 7 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Session_Management\data.csv
+2025-05-02 12:54:48,259 - embedding_pipeline - INFO - Generating embeddings for 7 questions in Danfe_Corp_Product_3/Session_Management
+2025-05-02 12:54:48,282 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Session_Management
+2025-05-02 12:54:48,282 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:48,287 - embedding_pipeline - INFO - Loaded 80 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:48,287 - embedding_pipeline - INFO - Generating embeddings for 80 questions in Danfe_Corp_Product_3/Software_Development_Life_Cycle
+2025-05-02 12:54:48,328 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Software_Development_Life_Cycle
+2025-05-02 12:54:48,328 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:48,332 - embedding_pipeline - INFO - Loaded 93 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:48,332 - embedding_pipeline - INFO - Generating embeddings for 93 questions in Danfe_Corp_Product_3/Supply_Chain__Vendor_Management
+2025-05-02 12:54:48,405 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Supply_Chain__Vendor_Management
+2025-05-02 12:54:48,405 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:48,408 - embedding_pipeline - INFO - Loaded 73 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:48,408 - embedding_pipeline - INFO - Generating embeddings for 73 questions in Danfe_Corp_Product_3/Vulnerability_and_Threat_Management
+2025-05-02 12:54:48,447 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Vulnerability_and_Threat_Management
+2025-05-02 12:54:48,447 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Wireless_Security\data.csv
+2025-05-02 12:54:48,449 - embedding_pipeline - INFO - Loaded 7 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_3\Wireless_Security\data.csv
+2025-05-02 12:54:48,449 - embedding_pipeline - INFO - Generating embeddings for 7 questions in Danfe_Corp_Product_3/Wireless_Security
+2025-05-02 12:54:48,459 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_3/Wireless_Security
+2025-05-02 12:54:48,479 - embedding_pipeline - INFO - Processing product: Danfe_Corp_Product_4
+2025-05-02 12:54:48,480 - embedding_pipeline - INFO - Looking for categories in product: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4
+2025-05-02 12:54:48,482 - embedding_pipeline - INFO - Found 43 categories for product Danfe_Corp_Product_4
+2025-05-02 12:54:48,482 - embedding_pipeline - INFO - Processing 43 categories for product: Danfe_Corp_Product_4
+2025-05-02 12:54:48,482 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:48,485 - embedding_pipeline - INFO - Loaded 7 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Acceptable_Use_Policy\data.csv
+2025-05-02 12:54:48,485 - embedding_pipeline - INFO - Generating embeddings for 7 questions in Danfe_Corp_Product_4/Acceptable_Use_Policy
+2025-05-02 12:54:48,523 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Acceptable_Use_Policy
+2025-05-02 12:54:48,523 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Access_Control\data.csv
+2025-05-02 12:54:48,529 - embedding_pipeline - INFO - Loaded 174 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Access_Control\data.csv
+2025-05-02 12:54:48,530 - embedding_pipeline - INFO - Generating embeddings for 174 questions in Danfe_Corp_Product_4/Access_Control
+2025-05-02 12:54:48,633 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Access_Control
+2025-05-02 12:54:48,633 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:48,636 - embedding_pipeline - INFO - Loaded 27 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Anti-virus_and_Malware_Control\data.csv
+2025-05-02 12:54:48,636 - embedding_pipeline - INFO - Generating embeddings for 27 questions in Danfe_Corp_Product_4/Anti-virus_and_Malware_Control
+2025-05-02 12:54:48,658 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Anti-virus_and_Malware_Control
+2025-05-02 12:54:48,658 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\API_Security\data.csv
+2025-05-02 12:54:48,661 - embedding_pipeline - INFO - Loaded 24 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\API_Security\data.csv
+2025-05-02 12:54:48,661 - embedding_pipeline - INFO - Generating embeddings for 24 questions in Danfe_Corp_Product_4/API_Security
+2025-05-02 12:54:48,680 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/API_Security
+2025-05-02 12:54:48,681 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Application\data.csv
+2025-05-02 12:54:48,715 - embedding_pipeline - INFO - Loaded 2755 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Application\data.csv
+2025-05-02 12:54:48,716 - embedding_pipeline - INFO - Generating embeddings for 2755 questions in Danfe_Corp_Product_4/Application
+2025-05-02 12:54:49,403 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Application
+2025-05-02 12:54:49,403 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Application_Security\data.csv
+2025-05-02 12:54:49,406 - embedding_pipeline - INFO - Loaded 150 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Application_Security\data.csv
+2025-05-02 12:54:49,407 - embedding_pipeline - INFO - Generating embeddings for 150 questions in Danfe_Corp_Product_4/Application_Security
+2025-05-02 12:54:49,471 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Application_Security
+2025-05-02 12:54:49,471 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Artificial_Intelligence\data.csv
+2025-05-02 12:54:49,473 - embedding_pipeline - INFO - Loaded 11 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Artificial_Intelligence\data.csv
+2025-05-02 12:54:49,474 - embedding_pipeline - INFO - Generating embeddings for 11 questions in Danfe_Corp_Product_4/Artificial_Intelligence
+2025-05-02 12:54:49,487 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Artificial_Intelligence
+2025-05-02 12:54:49,487 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Asset_Management\data.csv
+2025-05-02 12:54:49,490 - embedding_pipeline - INFO - Loaded 59 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Asset_Management\data.csv
+2025-05-02 12:54:49,491 - embedding_pipeline - INFO - Generating embeddings for 59 questions in Danfe_Corp_Product_4/Asset_Management
+2025-05-02 12:54:49,531 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Asset_Management
+2025-05-02 12:54:49,531 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Audit_Assurance\data.csv
+2025-05-02 12:54:49,534 - embedding_pipeline - INFO - Loaded 93 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Audit_Assurance\data.csv
+2025-05-02 12:54:49,534 - embedding_pipeline - INFO - Generating embeddings for 93 questions in Danfe_Corp_Product_4/Audit_Assurance
+2025-05-02 12:54:49,590 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Audit_Assurance
+2025-05-02 12:54:49,590 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:49,593 - embedding_pipeline - INFO - Loaded 29 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Backup_Policy_and_Procedures\data.csv
+2025-05-02 12:54:49,593 - embedding_pipeline - INFO - Generating embeddings for 29 questions in Danfe_Corp_Product_4/Backup_Policy_and_Procedures
+2025-05-02 12:54:49,608 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Backup_Policy_and_Procedures
+2025-05-02 12:54:49,608 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:49,612 - embedding_pipeline - INFO - Loaded 158 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Business_Continuity_and_Disaster_Recovery\data.csv
+2025-05-02 12:54:49,613 - embedding_pipeline - INFO - Generating embeddings for 158 questions in Danfe_Corp_Product_4/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:49,683 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Business_Continuity_and_Disaster_Recovery
+2025-05-02 12:54:49,683 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:49,686 - embedding_pipeline - INFO - Loaded 48 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Change_Control_and_Configuration_Management\data.csv
+2025-05-02 12:54:49,686 - embedding_pipeline - INFO - Generating embeddings for 48 questions in Danfe_Corp_Product_4/Change_Control_and_Configuration_Management
+2025-05-02 12:54:49,731 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Change_Control_and_Configuration_Management
+2025-05-02 12:54:49,731 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:49,734 - embedding_pipeline - INFO - Loaded 138 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Governance_and_Classification\data.csv
+2025-05-02 12:54:49,734 - embedding_pipeline - INFO - Generating embeddings for 138 questions in Danfe_Corp_Product_4/Data_Governance_and_Classification
+2025-05-02 12:54:49,820 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Data_Governance_and_Classification
+2025-05-02 12:54:49,820 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:49,823 - embedding_pipeline - INFO - Loaded 55 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Retention_and_Deletion\data.csv
+2025-05-02 12:54:49,823 - embedding_pipeline - INFO - Generating embeddings for 55 questions in Danfe_Corp_Product_4/Data_Retention_and_Deletion
+2025-05-02 12:54:49,858 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Data_Retention_and_Deletion
+2025-05-02 12:54:49,858 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Security\data.csv
+2025-05-02 12:54:49,861 - embedding_pipeline - INFO - Loaded 76 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Data_Security\data.csv
+2025-05-02 12:54:49,862 - embedding_pipeline - INFO - Generating embeddings for 76 questions in Danfe_Corp_Product_4/Data_Security
+2025-05-02 12:54:49,904 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Data_Security
+2025-05-02 12:54:49,905 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Email_Security\data.csv
+2025-05-02 12:54:49,907 - embedding_pipeline - INFO - Loaded 5 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Email_Security\data.csv
+2025-05-02 12:54:49,907 - embedding_pipeline - INFO - Generating embeddings for 5 questions in Danfe_Corp_Product_4/Email_Security
+2025-05-02 12:54:49,923 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Email_Security
+2025-05-02 12:54:49,923 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:49,926 - embedding_pipeline - INFO - Loaded 112 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Encryption_and_Key_Management\data.csv
+2025-05-02 12:54:49,926 - embedding_pipeline - INFO - Generating embeddings for 112 questions in Danfe_Corp_Product_4/Encryption_and_Key_Management
+2025-05-02 12:54:49,985 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Encryption_and_Key_Management
+2025-05-02 12:54:49,985 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\ESG\data.csv
+2025-05-02 12:54:49,988 - embedding_pipeline - INFO - Loaded 1 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\ESG\data.csv
+2025-05-02 12:54:49,988 - embedding_pipeline - INFO - Generating embeddings for 1 questions in Danfe_Corp_Product_4/ESG
+2025-05-02 12:54:50,001 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/ESG
+2025-05-02 12:54:50,001 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Hosting\data.csv
+2025-05-02 12:54:50,004 - embedding_pipeline - INFO - Loaded 61 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Hosting\data.csv
+2025-05-02 12:54:50,004 - embedding_pipeline - INFO - Generating embeddings for 61 questions in Danfe_Corp_Product_4/Hosting
+2025-05-02 12:54:50,042 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Hosting
+2025-05-02 12:54:50,042 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Human_Resources\data.csv
+2025-05-02 12:54:50,045 - embedding_pipeline - INFO - Loaded 83 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Human_Resources\data.csv
+2025-05-02 12:54:50,045 - embedding_pipeline - INFO - Generating embeddings for 83 questions in Danfe_Corp_Product_4/Human_Resources
+2025-05-02 12:54:50,110 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Human_Resources
+2025-05-02 12:54:50,110 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:50,112 - embedding_pipeline - INFO - Loaded 44 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Identity_and_Access_Management_(IAM)\data.csv
+2025-05-02 12:54:50,113 - embedding_pipeline - INFO - Generating embeddings for 44 questions in Danfe_Corp_Product_4/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:50,198 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Identity_and_Access_Management_(IAM)
+2025-05-02 12:54:50,198 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Incident_Management\data.csv
+2025-05-02 12:54:50,203 - embedding_pipeline - INFO - Loaded 89 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Incident_Management\data.csv
+2025-05-02 12:54:50,203 - embedding_pipeline - INFO - Generating embeddings for 89 questions in Danfe_Corp_Product_4/Incident_Management
+2025-05-02 12:54:50,257 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Incident_Management
+2025-05-02 12:54:50,258 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Information_Security\data.csv
+2025-05-02 12:54:50,260 - embedding_pipeline - INFO - Loaded 50 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Information_Security\data.csv
+2025-05-02 12:54:50,261 - embedding_pipeline - INFO - Generating embeddings for 50 questions in Danfe_Corp_Product_4/Information_Security
+2025-05-02 12:54:50,329 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Information_Security
+2025-05-02 12:54:50,329 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Integration\data.csv
+2025-05-02 12:54:50,332 - embedding_pipeline - INFO - Loaded 12 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Integration\data.csv
+2025-05-02 12:54:50,333 - embedding_pipeline - INFO - Generating embeddings for 12 questions in Danfe_Corp_Product_4/Integration
+2025-05-02 12:54:50,355 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Integration
+2025-05-02 12:54:50,356 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:50,358 - embedding_pipeline - INFO - Loaded 6 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Interoperability_and_Portability_Measures\data.csv
+2025-05-02 12:54:50,359 - embedding_pipeline - INFO - Generating embeddings for 6 questions in Danfe_Corp_Product_4/Interoperability_and_Portability_Measures
+2025-05-02 12:54:50,394 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Interoperability_and_Portability_Measures
+2025-05-02 12:54:50,394 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Legal\data.csv
+2025-05-02 12:54:50,399 - embedding_pipeline - INFO - Loaded 27 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Legal\data.csv
+2025-05-02 12:54:50,399 - embedding_pipeline - INFO - Generating embeddings for 27 questions in Danfe_Corp_Product_4/Legal
+2025-05-02 12:54:50,420 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Legal
+2025-05-02 12:54:50,420 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:50,424 - embedding_pipeline - INFO - Loaded 84 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Logging,_Monitoring_and_Audit_Trail\data.csv
+2025-05-02 12:54:50,424 - embedding_pipeline - INFO - Generating embeddings for 84 questions in Danfe_Corp_Product_4/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:50,482 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Logging,_Monitoring_and_Audit_Trail
+2025-05-02 12:54:50,482 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Mobile_Device_Security\data.csv
+2025-05-02 12:54:50,485 - embedding_pipeline - INFO - Loaded 37 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Mobile_Device_Security\data.csv
+2025-05-02 12:54:50,485 - embedding_pipeline - INFO - Generating embeddings for 37 questions in Danfe_Corp_Product_4/Mobile_Device_Security
+2025-05-02 12:54:50,509 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Mobile_Device_Security
+2025-05-02 12:54:50,510 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Network_Security\data.csv
+2025-05-02 12:54:50,512 - embedding_pipeline - INFO - Loaded 121 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Network_Security\data.csv
+2025-05-02 12:54:50,513 - embedding_pipeline - INFO - Generating embeddings for 121 questions in Danfe_Corp_Product_4/Network_Security
+2025-05-02 12:54:50,573 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Network_Security
+2025-05-02 12:54:50,573 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Organization\data.csv
+2025-05-02 12:54:50,580 - embedding_pipeline - INFO - Loaded 261 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Organization\data.csv
+2025-05-02 12:54:50,581 - embedding_pipeline - INFO - Generating embeddings for 261 questions in Danfe_Corp_Product_4/Organization
+2025-05-02 12:54:50,706 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Organization
+2025-05-02 12:54:50,707 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:50,709 - embedding_pipeline - INFO - Loaded 102 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Password_Policy_and_authentication_procedures\data.csv
+2025-05-02 12:54:50,709 - embedding_pipeline - INFO - Generating embeddings for 102 questions in Danfe_Corp_Product_4/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:50,753 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Password_Policy_and_authentication_procedures
+2025-05-02 12:54:50,753 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Patch_Management\data.csv
+2025-05-02 12:54:50,755 - embedding_pipeline - INFO - Loaded 22 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Patch_Management\data.csv
+2025-05-02 12:54:50,756 - embedding_pipeline - INFO - Generating embeddings for 22 questions in Danfe_Corp_Product_4/Patch_Management
+2025-05-02 12:54:50,769 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Patch_Management
+2025-05-02 12:54:50,769 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Penetration_Testing\data.csv
+2025-05-02 12:54:50,771 - embedding_pipeline - INFO - Loaded 25 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Penetration_Testing\data.csv
+2025-05-02 12:54:50,771 - embedding_pipeline - INFO - Generating embeddings for 25 questions in Danfe_Corp_Product_4/Penetration_Testing
+2025-05-02 12:54:50,790 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Penetration_Testing
+2025-05-02 12:54:50,790 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:50,793 - embedding_pipeline - INFO - Loaded 101 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Physical_Security_and_Environmental_Controls\data.csv
+2025-05-02 12:54:50,794 - embedding_pipeline - INFO - Generating embeddings for 101 questions in Danfe_Corp_Product_4/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:50,849 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Physical_Security_and_Environmental_Controls
+2025-05-02 12:54:50,849 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:50,851 - embedding_pipeline - INFO - Loaded 69 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Privacy_and_Compliance\data.csv
+2025-05-02 12:54:50,852 - embedding_pipeline - INFO - Generating embeddings for 69 questions in Danfe_Corp_Product_4/Privacy_and_Compliance
+2025-05-02 12:54:50,888 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Privacy_and_Compliance
+2025-05-02 12:54:50,888 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Risk_Management\data.csv
+2025-05-02 12:54:50,891 - embedding_pipeline - INFO - Loaded 50 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Risk_Management\data.csv
+2025-05-02 12:54:50,891 - embedding_pipeline - INFO - Generating embeddings for 50 questions in Danfe_Corp_Product_4/Risk_Management
+2025-05-02 12:54:50,951 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Risk_Management
+2025-05-02 12:54:50,951 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Security_Awareness\data.csv
+2025-05-02 12:54:50,954 - embedding_pipeline - INFO - Loaded 26 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Security_Awareness\data.csv
+2025-05-02 12:54:50,955 - embedding_pipeline - INFO - Generating embeddings for 26 questions in Danfe_Corp_Product_4/Security_Awareness
+2025-05-02 12:54:50,975 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Security_Awareness
+2025-05-02 12:54:50,975 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Server_Security\data.csv
+2025-05-02 12:54:50,978 - embedding_pipeline - INFO - Loaded 30 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Server_Security\data.csv
+2025-05-02 12:54:50,978 - embedding_pipeline - INFO - Generating embeddings for 30 questions in Danfe_Corp_Product_4/Server_Security
+2025-05-02 12:54:50,995 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Server_Security
+2025-05-02 12:54:50,995 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Session_Management\data.csv
+2025-05-02 12:54:50,997 - embedding_pipeline - INFO - Loaded 6 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Session_Management\data.csv
+2025-05-02 12:54:50,997 - embedding_pipeline - INFO - Generating embeddings for 6 questions in Danfe_Corp_Product_4/Session_Management
+2025-05-02 12:54:51,015 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Session_Management
+2025-05-02 12:54:51,016 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:51,018 - embedding_pipeline - INFO - Loaded 80 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Software_Development_Life_Cycle\data.csv
+2025-05-02 12:54:51,018 - embedding_pipeline - INFO - Generating embeddings for 80 questions in Danfe_Corp_Product_4/Software_Development_Life_Cycle
+2025-05-02 12:54:51,057 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Software_Development_Life_Cycle
+2025-05-02 12:54:51,057 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:51,061 - embedding_pipeline - INFO - Loaded 81 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Supply_Chain__Vendor_Management\data.csv
+2025-05-02 12:54:51,061 - embedding_pipeline - INFO - Generating embeddings for 81 questions in Danfe_Corp_Product_4/Supply_Chain__Vendor_Management
+2025-05-02 12:54:51,118 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Supply_Chain__Vendor_Management
+2025-05-02 12:54:51,118 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:51,121 - embedding_pipeline - INFO - Loaded 58 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Vulnerability_and_Threat_Management\data.csv
+2025-05-02 12:54:51,121 - embedding_pipeline - INFO - Generating embeddings for 58 questions in Danfe_Corp_Product_4/Vulnerability_and_Threat_Management
+2025-05-02 12:54:51,146 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Vulnerability_and_Threat_Management
+2025-05-02 12:54:51,146 - embedding_pipeline - INFO - Loading data from: F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Wireless_Security\data.csv
+2025-05-02 12:54:51,148 - embedding_pipeline - INFO - Loaded 6 rows from F:\SecurityPal_NepalHacks\output\Danfe_Corp_Product_4\Wireless_Security\data.csv
+2025-05-02 12:54:51,149 - embedding_pipeline - INFO - Generating embeddings for 6 questions in Danfe_Corp_Product_4/Wireless_Security
+2025-05-02 12:54:51,161 - embedding_pipeline - INFO - Saved embeddings and index for Danfe_Corp_Product_4/Wireless_Security
+2025-05-02 12:54:51,446 - embedding_pipeline - INFO - Embedding pipeline completed. Metadata saved to: F:\SecurityPal_NepalHacks\models\embeddings_metadata.json
+2025-05-02 12:54:51,446 - embedding_pipeline - INFO - Embedding pipeline completed successfully.
