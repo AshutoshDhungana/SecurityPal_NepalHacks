@@ -62,7 +62,7 @@ export default function Dashboard() {
   return (
     <MainLayout>
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold text-blue-600 mb-6">QnA Content Management Dashboard</h1>
+        <h1 className="text-3xl font-bold text-blue-600 mb-6">Dashboard</h1>
 
         {loading ? (
           <div className="flex items-center justify-center h-64">
@@ -130,50 +130,9 @@ export default function Dashboard() {
                 </ResponsiveContainer>
               </div>
             </div>
-
-            {/* Products Table */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Products</h2>
-              {productData.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        {Object.keys(productData[0]).map(key => (
-                          <th key={key} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            {key.replace(/_/g, ' ')}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {productData.map((product, idx) => (
-                        <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          {Object.values(product).map((value: any, valueIdx) => (
-                            <td key={valueIdx} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              {value}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <p className="text-gray-500">No products available</p>
-              )}
-            </div>
           </>
         ) : (
-          <div className="bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded mb-4">
-            <p>Unable to load summary data. Please ensure the backend API is running.</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="mt-2 px-4 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-700 text-sm font-medium transition-colors"
-            >
-              Retry
-            </button>
-          </div>
+          <></>
         )}
       </div>
     </MainLayout>

@@ -1,0 +1,7 @@
+{
+  "id": "merged_qa1_qa2",
+  "question": "What are the security measures in place for data access?",
+  "answer": "Our system implements role-based access control (RBAC) to manage data access permissions. All data requests are logged and audited. We use encryption for data at rest and in transit, and employ multi-factor authentication for sensitive operations.\n\nWe use role-based access control to manage permissions. All access is logged. Data is encrypted both at rest and in transit, and we require multi-factor authentication for sensitive operations.",
+  "merged_at": "2025-05-03T12:42:38.510303",
+  "is_canonical": true
+}

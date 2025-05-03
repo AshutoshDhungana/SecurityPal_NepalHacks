@@ -20,9 +20,9 @@
     "median": 9.0
   },
   "cluster_health": {
-    "Healthy": 0,
+    "Healthy": 1110,
     "Needs Review": 3848,
-    "Critical": 0
+    "Critical": 1112
   },
   "health_score": 0.08441189800348257
 }

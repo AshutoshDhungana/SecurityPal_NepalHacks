@@ -30,6 +30,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         { name: 'Outdated Content', href: '/outdated', icon: Clock },
         { name: 'Review Panel', href: '/review', icon: ClipboardList },
         { name: 'Pipeline Control', href: '/pipeline', icon: Play },
+        { name: 'Upload Dataset', href: '/import', icon: FileQuestion }
     ];
 
     const isActive = (path: string) => {
@@ -45,8 +46,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
                     <div className="flex items-center justify-between p-4 border-b">
                         {!collapsed && (
                             <div>
-                                <h1 className="text-xl font-bold text-blue-600">QnA Manager</h1>
-                                <p className="text-xs text-gray-500">Content Platform</p>
+                                <h1 className="text-2xl font-bold text-blue-600">KLense</h1>
+                                <p className="text-xs text-gray-500"></p>
                             </div>
                         )}
                         <button
@@ -84,8 +85,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
                     <div className="p-4 border-t text-center text-xs text-gray-500">
                         {!collapsed && (
                             <>
-                                <p>QnA Manager v1.0</p>
-                                <p className="mt-1">© 2023 SecurityPal</p>
+                                <p>KLense v1.0</p>
+                                <p className="mt-1"></p>
                             </>
                         )}
                     </div>

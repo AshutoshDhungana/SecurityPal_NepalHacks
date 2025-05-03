@@ -107,6 +107,24 @@ class ApiClient {
         return this.request<any[]>(`/outdated${query}`);
     }
 
+    // Update an outdated entry
+    async updateOutdatedEntry(entryId: string, mergedContent?: { question: string; answer: string; }) {
+        const updateData = {
+            entry_id: entryId,
+            user_id: 'admin', // In a real app, get this from authentication
+            merged_content: mergedContent ? {
+                id: `merged_update_${entryId}`,
+                question: mergedContent.question,
+                answer: mergedContent.answer
+            } : undefined
+        };
+
+        return this.request<any>('/update-outdated-entry', {
+            method: 'POST',
+            body: JSON.stringify(updateData)
+        });
+    }
+
     // Search similar questions
     async searchSimilarQuestions(query: string, product?: string, topK: number = 5) {
         const params: Record<string, string> = {

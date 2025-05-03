@@ -38,6 +38,32 @@ export default function ReviewPanelPage() {
         fetchMergedHistory();
     }, []);
 
+    // Check for outdated entry in localStorage on component mount
+    useEffect(() => {
+        // Check if there's an outdated entry in localStorage
+        const outdatedEntryJson = localStorage.getItem('outdatedEntryToMerge');
+        if (outdatedEntryJson) {
+            try {
+                const outdatedEntry = JSON.parse(outdatedEntryJson);
+                // Set the outdated entry as the first QA pair
+                setQaPair1({
+                    id: outdatedEntry.id,
+                    question: outdatedEntry.question,
+                    answer: outdatedEntry.answer,
+                    last_updated: outdatedEntry.last_updated || "Unknown"
+                });
+
+                // Clear the localStorage item to avoid reusing it on page refresh
+                localStorage.removeItem('outdatedEntryToMerge');
+
+                // Show a toast notification
+                toast.info("Outdated entry loaded for merging");
+            } catch (error) {
+                console.error("Error parsing outdated entry:", error);
+            }
+        }
+    }, []);
+
     // Fetch merged QA pairs history
     const fetchMergedHistory = async () => {
         setFetchingHistory(true);
@@ -206,6 +232,10 @@ export default function ReviewPanelPage() {
 
                 // After saving, refresh the merged history
                 fetchMergedHistory();
+
+                // Reset the QA pairs with new example data after successful save
+                resetQAPairsWithNewData();
+
             } catch (error) {
                 console.error('Error from API:', error);
                 toast.info("Save simulation successful (API unavailable)");
@@ -218,6 +248,9 @@ export default function ReviewPanelPage() {
                     },
                     ...prev
                 ]);
+
+                // Reset the QA pairs with new example data after simulation
+                resetQAPairsWithNewData();
             }
         } catch (error) {
             console.error('Error saving merged QA pair:', error);
@@ -231,6 +264,28 @@ export default function ReviewPanelPage() {
     const resetMerge = () => {
         setMergedPair(null);
         setSimilarityScore(null);
+    };
+
+    // Function to load new QA pairs after a successful merge
+    const resetQAPairsWithNewData = () => {
+        // Reset the merged state
+        setMergedPair(null);
+        setSimilarityScore(null);
+
+        // Set new example QA pairs
+        setQaPair1({
+            id: `qa${Math.floor(Math.random() * 1000)}`,
+            question: "How often are security patches applied to the system?",
+            answer: "Security patches are applied monthly during our regular maintenance window. Critical security updates are applied within 24 hours of release following our expedited testing process.",
+            last_updated: "2023-08-12"
+        });
+
+        setQaPair2({
+            id: `qa${Math.floor(Math.random() * 1000)}`,
+            question: "What is your security patching schedule?",
+            answer: "We follow a monthly patching schedule for regular updates. However, for critical security vulnerabilities, we implement patches within 24 hours after appropriate testing.",
+            last_updated: "2024-01-05"
+        });
     };
 
     // Update the merged result
@@ -260,7 +315,7 @@ export default function ReviewPanelPage() {
                             <Card>
                                 <CardHeader>
                                     <CardTitle>Entry 1</CardTitle>
-                                    <CardDescription>ID: {qaPair1.id}</CardDescription>
+                                    {/*  */}
                                 </CardHeader>
                                 <CardContent>
                                     <div className="space-y-4">
@@ -295,7 +350,7 @@ export default function ReviewPanelPage() {
                             <Card>
                                 <CardHeader>
                                     <CardTitle>Entry 2</CardTitle>
-                                    <CardDescription>ID: {qaPair2.id}</CardDescription>
+                                    {/* <CardDescription>ID: {qaPair2.id}</CardDescription> */}
                                 </CardHeader>
                                 <CardContent>
                                     <div className="space-y-4">

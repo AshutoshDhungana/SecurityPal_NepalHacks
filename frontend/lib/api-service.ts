@@ -112,14 +112,14 @@ const handleApiError = async (response: Response): Promise<ApiError> => {
     status: response.status,
     message: response.statusText || "Unknown error occurred",
   };
-  
+
   try {
     const errorData = await response.json();
     error.message = errorData.detail || errorData.message || response.statusText;
   } catch {
     // If parsing fails, use the status text
   }
-  
+
   return error;
 };
 
@@ -132,22 +132,22 @@ const fetchApi = async <T>(
   try {
     // Build URL with query parameters if provided
     let url = `${API_BASE_URL}${endpoint}`;
-    
+
     if (params) {
       const queryParams = new URLSearchParams();
-      
+
       Object.entries(params).forEach(([key, value]) => {
         if (value !== undefined && value !== null) {
           queryParams.append(key, String(value));
         }
       });
-      
+
       const queryString = queryParams.toString();
       if (queryString) {
         url = `${url}?${queryString}`;
       }
     }
-    
+
     // Make the request
     const response = await fetch(url, {
       ...options,
@@ -157,13 +157,13 @@ const fetchApi = async <T>(
         ...(options?.headers || {}),
       },
     });
-    
+
     // Handle error responses
     if (!response.ok) {
       const error = await handleApiError(response);
       throw error;
     }
-    
+
     // Parse and return the response
     return await response.json() as T;
   } catch (error) {
@@ -182,12 +182,12 @@ export const apiService = {
       product ? { product } : undefined
     );
   },
-  
+
   // Get products list
   async getProducts(): Promise<Product[]> {
     return fetchApi<Product[]>("/products");
   },
-  
+
   // Get clusters with optional filtering
   async getClusters(params: {
     limit?: number;
@@ -198,17 +198,17 @@ export const apiService = {
   } = {}): Promise<Cluster[]> {
     return fetchApi<Cluster[]>("/clusters", undefined, params);
   },
-  
+
   // Get detailed information about a specific cluster
   async getClusterDetails(clusterId: string): Promise<Cluster> {
     return fetchApi<Cluster>(`/clusters/${clusterId}`);
   },
-  
+
   // Get all entries in a specific cluster
   async getClusterEntries(clusterId: string): Promise<QAEntry[]> {
     return fetchApi<QAEntry[]>(`/cluster/${clusterId}/entries`);
   },
-  
+
   // Get outdated entries
   async getOutdatedEntries(params: {
     min_days?: number;
@@ -218,7 +218,7 @@ export const apiService = {
   } = {}): Promise<QAEntry[]> {
     return fetchApi<QAEntry[]>("/outdated", undefined, params);
   },
-  
+
   // Get pairs of entries with high similarity
   async getSimilarPairs(params: {
     min_similarity?: number;
@@ -228,12 +228,12 @@ export const apiService = {
   } = {}): Promise<SimilarPair[]> {
     return fetchApi<SimilarPair[]>("/similar-pairs", undefined, params);
   },
-  
+
   // Get available pipeline steps
   async getPipelineSteps(): Promise<PipelineStep[]> {
     return fetchApi<PipelineStep[]>("/pipeline/steps");
   },
-  
+
   // Run the pipeline with specific options
   async runPipeline(options: PipelineOptions): Promise<{ message: string; options: PipelineOptions }> {
     return fetchApi<{ message: string; options: PipelineOptions }>(
@@ -244,12 +244,12 @@ export const apiService = {
       }
     );
   },
-  
+
   // Get merged QA pairs
   async getMergedQAPairs(): Promise<QAPair[]> {
     return fetchApi<QAPair[]>("/merged-qa-pairs");
   },
-  
+
   // Merge two QA pairs
   async mergeQAPairs(mergeRequest: MergeRequest): Promise<QAPair> {
     return fetchApi<QAPair>(
@@ -260,7 +260,7 @@ export const apiService = {
       }
     );
   },
-  
+
   // Save a merged QA pair
   async saveMergedPair(pair: QAPair): Promise<{ success: boolean; file_path: string; merged_pair: QAPair }> {
     return fetchApi<{ success: boolean; file_path: string; merged_pair: QAPair }>(
@@ -271,7 +271,7 @@ export const apiService = {
       }
     );
   },
-  
+
   // Search for similar questions
   async searchSimilarQuestions(query: string, params: {
     product?: string;
@@ -288,7 +288,7 @@ export const apiService = {
       }
     );
   },
-  
+
   // Get cluster visualizations
   async getClusterVisualization(params: {
     product?: string;
@@ -296,50 +296,104 @@ export const apiService = {
   } = {}): Promise<string> {
     // This returns HTML content directly
     const response = await fetch(
-      `${API_BASE_URL}/visualizations/clusters${params ? 
+      `${API_BASE_URL}/visualizations/clusters${params ?
         `?${new URLSearchParams(
           Object.entries(params)
             .filter(([_, v]) => v !== undefined)
             .map(([k, v]) => [k, String(v)])
         )}` : ''}`
     );
-    
+
     if (!response.ok) {
       const error = await handleApiError(response);
       throw error;
     }
-    
+
     return await response.text();
   },
-  
+
   // Get health dashboard visualization
   async getHealthDashboard(): Promise<string> {
     const response = await fetch(`${API_BASE_URL}/visualizations/health-dashboard`);
-    
+
     if (!response.ok) {
       const error = await handleApiError(response);
       throw error;
     }
-    
+
     return await response.text();
   },
-  
+
   // Upload a file
   async uploadFile(file: File): Promise<any> {
     const formData = new FormData();
     formData.append("file", file);
-    
+
     const response = await fetch(`${API_BASE_URL}/upload`, {
       method: "POST",
       body: formData,
     });
-    
+
     if (!response.ok) {
       const error = await handleApiError(response);
       throw error;
     }
-    
+
     return await response.json();
+  },
+
+  // Upload CSV files
+  async uploadCSV(files: File[]): Promise<{ success: boolean; message: string; fileCount: number }> {
+    const formData = new FormData();
+
+    files.forEach((file, index) => {
+      formData.append(`file_${index}`, file);
+    });
+
+    formData.append("fileCount", files.length.toString());
+
+    const response = await fetch(`${API_BASE_URL}/upload/csv`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const error = await handleApiError(response);
+      throw error;
+    }
+
+    return await response.json();
+  },
+
+  // Trigger processing pipeline
+  async triggerProcessing(options: {
+    productId?: string;
+    processType?: 'embedding' | 'clustering' | 'all';
+  } = {}): Promise<{ success: boolean; message: string; jobId?: string }> {
+    return fetchApi<{ success: boolean; message: string; jobId?: string }>(
+      "/trigger-processing",
+      {
+        method: "POST",
+        body: JSON.stringify(options),
+      }
+    );
+  },
+
+  // Get import history
+  async getImportHistory(): Promise<{
+    id: string;
+    filename: string;
+    uploadedAt: string;
+    status: string;
+    recordCount: number;
+  }[]> {
+    return fetchApi<{
+      id: string;
+      filename: string;
+      uploadedAt: string;
+      status: string;
+      recordCount: number;
+    }[]>("/import-history");
   },
 };
 

@@ -371,7 +371,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Products Table */}
-            <Card>
+            {/* <Card>
               <CardHeader>
                 <CardTitle>Products</CardTitle>
               </CardHeader>
@@ -429,11 +429,11 @@ export default function DashboardPage() {
                   </div>
                 )}
               </CardContent>
-            </Card>
+            </Card> */}
           </>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-500">No summary data available</p>
+            {/* <p className="text-gray-500">No summary data available</p> */}
           </div>
         )}
       </div>

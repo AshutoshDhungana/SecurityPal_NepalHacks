@@ -99,6 +99,11 @@ class SimilaritySearchRequest(BaseModel):
     threshold: float = 0.6
     top_k: int = 5
 
+class UpdateEntryRequest(BaseModel):
+    entry_id: str
+    merged_content: Optional[QAPair] = None
+    user_id: str = "admin"
+
 # -- API Routes --
 @app.get("/")
 async def root():
@@ -354,10 +359,13 @@ async def get_outdated_entries(
     try:
         # Determine file path based on product
         if product:
+            print("two")
             dataset_path = CLEANED_DATASET_PATH / f"{product.replace(' ', '_')}_complete_dataset.csv"
             if not dataset_path.exists():
+                print("one")
                 dataset_path = CLEANED_DATASET_PATH / "all_complete_dataset.csv"
         else:
+            print("two")
             dataset_path = CLEANED_DATASET_PATH / "all_complete_dataset.csv"
             
         # Load the dataset
@@ -743,13 +751,13 @@ async def api_merge_qa_pairs_by_ids(merge_request: MergeByIdsRequest):
 @app.post("/save-merged-pair")
 async def save_merged_qa_pair(merged_pair: QAPair):
     """
-    Save a merged QA pair to a file
+    Save a merged QA pair to a file and add it to the main dataset
     
     Args:
         merged_pair: QAPair object containing the merged question and answer
         
     Returns:
-        The file path where the merged pair was saved
+        The file path where the merged pair was saved and confirmation of dataset integration
     """
     try:
         # Initialize the merger utility
@@ -769,13 +777,195 @@ async def save_merged_qa_pair(merged_pair: QAPair):
         pair_dict["merged_at"] = datetime.now().isoformat()
         pair_dict["is_canonical"] = True
         
+        # Save to file
         success = merger.save_merged_pair(pair_dict, str(output_file))
         
+        # Add the merged pair to the main dataset
         if success:
+            # Determine if this merged pair has information about its sources
+            source_ids = []
+            product = None
+            cluster_id = None
+            
+            # Check if the pair has sources information
+            if 'sources' in pair_dict:
+                source_ids = pair_dict['sources']
+            elif '_' in merged_pair.id:
+                # Try to extract source IDs from the merged ID (assuming format like merged_id1_id2)
+                parts = merged_pair.id.split('_')
+                if len(parts) >= 2:
+                    source_ids = parts[1:]
+            
+            # Try to find which cluster and product the source questions belong to
+            if source_ids:
+                # Look for the first source in the dataset to determine cluster and product
+                for file in PROCESSED_CLUSTERS_PATH.glob("*_clusters.json"):
+                    try:
+                        with open(file, 'r') as f:
+                            clusters_data = json.load(f)
+                        
+                        # Get clusters
+                        clusters_list = clusters_data.get('clusters', clusters_data)
+                        
+                        # Extract product name from filename
+                        file_name = file.name
+                        if file_name != "all_clusters.json":
+                            # Extract product name from filename (format: Product_Name_clusters.json)
+                            product_name = file_name.replace("_clusters.json", "")
+                        
+                        # Check each cluster for the source questions
+                        for cluster in clusters_list:
+                            if "questions" in cluster:
+                                # Check if any of our source IDs match questions in this cluster
+                                for question in cluster.get("questions", []):
+                                    if any(source_id in question for source_id in source_ids):
+                                        cluster_id = cluster.get("cluster_id")
+                                        product = product_name
+                                        break
+                                
+                            # Also check canonical questions 
+                            if "canonical_questions" in cluster:
+                                for canon_q in cluster.get("canonical_questions", []):
+                                    if any(source_id in canon_q for source_id in source_ids):
+                                        cluster_id = cluster.get("cluster_id")
+                                        product = product_name
+                                        break
+                            
+                            if cluster_id:
+                                break
+                        
+                        if cluster_id:
+                            break
+                    except Exception as e:
+                        logger.error(f"Error processing cluster file {file}: {str(e)}")
+                        continue
+            
+            # If we found a cluster, update it
+            if cluster_id and product:
+                # Load the specific product clusters file
+                clusters_file = PROCESSED_CLUSTERS_PATH / f"{product}_clusters.json"
+                if clusters_file.exists():
+                    try:
+                        with open(clusters_file, 'r') as f:
+                            product_clusters = json.load(f)
+                        
+                        clusters_list = product_clusters.get('clusters', product_clusters)
+                        
+                        # Find the specific cluster
+                        for cluster in clusters_list:
+                            if cluster.get("cluster_id") == cluster_id:
+                                # Add the merged question to canonical questions if not already there
+                                if "canonical_questions" not in cluster:
+                                    cluster["canonical_questions"] = []
+                                
+                                if merged_pair.question not in cluster["canonical_questions"]:
+                                    cluster["canonical_questions"].append(merged_pair.question)
+                                    
+                                # Update last_modified timestamp
+                                cluster["last_modified"] = datetime.now().isoformat()
+                                
+                                # Mark cluster as requiring review
+                                cluster["health_status"] = "Needs Review"
+                                break
+                        
+                        # Save the updated clusters file
+                        with open(clusters_file, 'w') as f:
+                            if 'clusters' in product_clusters:
+                                product_clusters['clusters'] = clusters_list
+                                json.dump(product_clusters, f, indent=2)
+                            else:
+                                json.dump(clusters_list, f, indent=2)
+                        
+                        # Update all_clusters.json as well
+                        all_clusters_file = PROCESSED_CLUSTERS_PATH / "all_clusters.json"
+                        if all_clusters_file.exists():
+                            try:
+                                with open(all_clusters_file, 'r') as f:
+                                    all_clusters = json.load(f)
+                                
+                                clusters_list = all_clusters.get('clusters', all_clusters)
+                                
+                                # Find the specific cluster
+                                for cluster in clusters_list:
+                                    if cluster.get("cluster_id") == cluster_id:
+                                        # Add the merged question to canonical questions if not already there
+                                        if "canonical_questions" not in cluster:
+                                            cluster["canonical_questions"] = []
+                                        
+                                        if merged_pair.question not in cluster["canonical_questions"]:
+                                            cluster["canonical_questions"].append(merged_pair.question)
+                                            
+                                        # Update last_modified timestamp
+                                        cluster["last_modified"] = datetime.now().isoformat()
+                                        
+                                        # Mark cluster as requiring review
+                                        cluster["health_status"] = "Needs Review"
+                                        break
+                                
+                                # Save the updated all_clusters.json file
+                                with open(all_clusters_file, 'w') as f:
+                                    if 'clusters' in all_clusters:
+                                        all_clusters['clusters'] = clusters_list
+                                        json.dump(all_clusters, f, indent=2)
+                                    else:
+                                        json.dump(clusters_list, f, indent=2)
+                            except Exception as e:
+                                logger.error(f"Error updating all_clusters.json: {str(e)}")
+                    except Exception as e:
+                        logger.error(f"Error updating cluster file for product {product}: {str(e)}")
+            
+            # Also add to the cleaned dataset
+            try:
+                dataset_path = CLEANED_DATASET_PATH / "all_complete_dataset.csv"
+                if dataset_path.exists():
+                    df = pd.read_csv(dataset_path)
+                    
+                    # Create a new row for the merged pair
+                    new_row = {
+                        'id': merged_pair.id,
+                        'question': merged_pair.question,
+                        'answer': merged_pair.answer,
+                        'created_at': datetime.now().isoformat(),
+                        'last_updated': datetime.now().isoformat(),
+                        'is_canonical': True,
+                        'is_merged': True,
+                        'merged_at': pair_dict["merged_at"]
+                    }
+                    
+                    # Add cluster_id if available
+                    if cluster_id:
+                        new_row['cluster_id'] = cluster_id
+                    
+                    # Add product if available
+                    if product:
+                        new_row['product'] = product
+                    
+                    # Append the new row
+                    df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+                    
+                    # Save the updated dataset
+                    df.to_csv(dataset_path, index=False)
+                    
+                    # If we have product info, update product-specific dataset too
+                    if product:
+                        product_dataset_path = CLEANED_DATASET_PATH / f"{product}_complete_dataset.csv"
+                        if product_dataset_path.exists():
+                            try:
+                                product_df = pd.read_csv(product_dataset_path)
+                                product_df = pd.concat([product_df, pd.DataFrame([new_row])], ignore_index=True)
+                                product_df.to_csv(product_dataset_path, index=False)
+                            except Exception as e:
+                                logger.error(f"Error updating product dataset {product_dataset_path}: {str(e)}")
+            except Exception as e:
+                logger.error(f"Error updating dataset with merged pair: {str(e)}")
+            
             return {
                 "success": True,
                 "file_path": str(output_file),
-                "merged_pair": pair_dict
+                "merged_pair": pair_dict,
+                "integrated_to_dataset": True,
+                "cluster_id": cluster_id,
+                "product": product
             }
         else:
             raise HTTPException(
@@ -865,4 +1055,107 @@ async def search_similar_questions(search_request: SimilaritySearchRequest):
         raise HTTPException(
             status_code=500,
             detail=f"Error searching for similar questions: {str(e)}\nTrace: {trace}"
-        ) 
+        )
+
+@app.post("/update-outdated-entry")
+async def update_outdated_entry(update_request: UpdateEntryRequest):
+    """
+    Update an outdated entry either with merged content or just by refreshing its timestamp.
+    
+    Args:
+        update_request: UpdateEntryRequest containing entry ID and optional merged content
+        
+    Returns:
+        The updated entry
+    """
+    try:
+        entry_id = update_request.entry_id
+        
+        # Find the entry in the dataset
+        dataset_path = CLEANED_DATASET_PATH / "all_complete_dataset.csv"
+        if not dataset_path.exists():
+            raise HTTPException(status_code=404, detail="Dataset not found")
+            
+        df = pd.read_csv(dataset_path)
+        
+        # Find the entry by ID
+        entry_mask = df['id'] == entry_id
+        if not entry_mask.any():
+            raise HTTPException(status_code=404, detail=f"Entry with ID {entry_id} not found")
+        
+        # Get the product info for product-specific updates
+        product = None
+        if 'product' in df.columns:
+            product = df.loc[entry_mask, 'product'].iloc[0]
+        
+        # Update the entry
+        current_time = datetime.now().isoformat()
+        
+        # If we have merged content, update the question and answer
+        if update_request.merged_content:
+            df.loc[entry_mask, 'question'] = update_request.merged_content.question
+            df.loc[entry_mask, 'answer'] = update_request.merged_content.answer
+            df.loc[entry_mask, 'is_merged'] = True
+            
+            # Create merged entry record for tracking
+            merged_pair = {
+                "id": f"merged_update_{entry_id}",
+                "question": update_request.merged_content.question,
+                "answer": update_request.merged_content.answer,
+                "merged_at": current_time,
+                "is_canonical": True,
+                "source_id": entry_id,
+                "updated_by": update_request.user_id
+            }
+            
+            # Save the merged content to the merged_qa_pairs directory
+            output_dir = BASE_DIR / "merged_qa_pairs"
+            os.makedirs(output_dir, exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            file_name = f"merged_update_{timestamp}_{entry_id}.json"
+            output_file = output_dir / file_name
+            
+            with open(output_file, 'w') as f:
+                json.dump(merged_pair, f, indent=2)
+        
+        # Always update the last_updated timestamp
+        df.loc[entry_mask, 'last_updated'] = current_time
+        
+        # Save the updated dataset
+        df.to_csv(dataset_path, index=False)
+        
+        # If we have product info, update product-specific dataset too
+        if product:
+            product_dataset_path = CLEANED_DATASET_PATH / f"{product}_complete_dataset.csv"
+            if product_dataset_path.exists():
+                try:
+                    product_df = pd.read_csv(product_dataset_path)
+                    product_mask = product_df['id'] == entry_id
+                    if product_mask.any():
+                        if update_request.merged_content:
+                            product_df.loc[product_mask, 'question'] = update_request.merged_content.question
+                            product_df.loc[product_mask, 'answer'] = update_request.merged_content.answer
+                            product_df.loc[product_mask, 'is_merged'] = True
+                        product_df.loc[product_mask, 'last_updated'] = current_time
+                        product_df.to_csv(product_dataset_path, index=False)
+                except Exception as e:
+                    logger.error(f"Error updating product dataset {product_dataset_path}: {str(e)}")
+        
+        # Return the updated entry
+        updated_row = df[entry_mask].iloc[0].to_dict()
+        
+        # Clean the data to ensure it's JSON serializable
+        updated_row = clean_json_data(updated_row)
+        
+        return {
+            "success": True,
+            "message": "Entry updated successfully",
+            "entry": updated_row
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error updating outdated entry: {str(e)}"
+        )

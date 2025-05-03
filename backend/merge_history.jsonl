@@ -1,0 +1,4 @@
+{"timestamp": "2025-05-03T07:50:53.452786", "user_id": "admin", "pair1_id": "qa1", "pair2_id": "qa2", "result_id": "merged_qa1_qa2", "similarity_score": 0.5687443744374437, "priority": null, "operation": "merge"}
+{"timestamp": "2025-05-03T08:17:20.444515", "user_id": "admin", "pair1_id": "qa1", "pair2_id": "qa2", "result_id": "merged_qa1_qa2", "similarity_score": 0.5, "priority": null, "operation": "merge"}
+{"timestamp": "2025-05-03T12:41:40.660868", "user_id": "admin", "pair1_id": "qa1", "pair2_id": "qa2", "result_id": "merged_qa1_qa2", "similarity_score": 0.5, "priority": null, "operation": "merge"}
+{"timestamp": "2025-05-03T12:46:24.484101", "user_id": "admin", "pair1_id": "qa1", "pair2_id": "qa2", "result_id": "merged_qa1_qa2", "similarity_score": 0.5, "priority": null, "operation": "merge"}
